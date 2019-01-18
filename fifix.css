@@ -1,0 +1,13 @@
+.reveal section img { border: none; }
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+    margin: 0 0 40px 0;
+    font-weight: 600;
+    font-size: 2em;
+    line-height: 1.2;
+    word-wrap: break-word; }
+.reveal pre { width: 100%; font-size: 1em;}
