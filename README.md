@@ -1,3 +1,3 @@
 # Python Introduction Slides
 
-https://hackinscience.frama.io/python-introduction/
+https://mdk.fr/python-initiation/
