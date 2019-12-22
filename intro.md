@@ -1,38 +1,42 @@
 # Python 3.8
-<tt>in ~38 minutes</tt>
+<tt>en ~38 minutes</tt>
+
+par
+
+Julien Palard <julien@palard.fr>
 
 Notes: Introduce yourself!
 
 ----
 
-# Python : Introduction
+## Python : Introduction
 
 Python est un langage de programmation permettant de s'exprimer de
 manière **concise** et **lisible**.
 
 ----
 
-# Qui utilise Python ?
+## Qui utilise Python ?
 
 YouTube, Dropbox, Reddit, Instagram, Spotify, NASA…
 
-![](Black-hole-M87.jpg)
+![](static/Black-hole-M87.jpg)
 
 ----
 
-# Qui utilise Python ?
+## Combien utilisent Python ?
 
-![](Evolution_of_Python.png)
+![](static/Evolution_of_Python.png)
 
 ----
 
-# Installation
+## Installation
 
 https://python.org
 
 — ou —
 
-![](Anaconda_Logo.png)
+![](static/Anaconda_Logo.png)
 
 
 Notes:
@@ -43,17 +47,17 @@ Notes:
 
 ----
 
-# Démarrer un interpréteur
+## Démarrer un interpréteur
 
 Sur Windows :
 
-```
+```text
 py
 ```
 
 Sur tous les autres OS :
 
-```
+```text
 python3
 ```
 
@@ -63,9 +67,9 @@ Notes:
 
 ----
 
-# L'interpréteur
+## L'interpréteur
 
-Parfois appelé le *REPL* ou *la console interactive*, c'est un interpréteur interactif de Python.
+Parfois appelé le *REPL* ou *la console interactive*.
 
 ```python
 $ python3
@@ -80,13 +84,15 @@ Permet d'essayer un peu de Python sans pour autant ouvrir un fichier.
 
 Et oui, même après 10 ans de Python, on l'utilise encore.
 
+Expliquer les parties "R", "E", "P", "L".
+
 ----
 
-# L'interpréteur
+## L'interpréteur
 
 Il en existe plusieurs : Celui natif à Python, IDLE, IPython, …
 
-Ça ressemble soit à ça :
+Il ressemble généralement soit à ça :
 
 ```bash
 >>>
@@ -98,38 +104,7 @@ In [1]:
 
 ----
 
-# L'interpréteur
-
-```python
->>> print("Hello world")
-Hello world
->>>
-```
-
-Notes:
-
-Show them the:
-
-- Read
-- Eval
-- Print
-- Loop (Read again)
-
-----
-
-# Un programme
-
-Un programme c'est des instructions et des données.
-
-```python
->>> print("Hello world")
-```
-
-Ici `print` c'est une fonction, "Hello world" c'est la donnée.
-
-----
-
-# Testons l'interpréteur
+## Testons l'interpréteur
 
 ```python
 >>> 10
@@ -144,7 +119,7 @@ pour qu'on puisse le lire.
 
 ----
 
-# C'est votre nouvelle calculatrice
+## C'est votre nouvelle calculatrice
 
 ```python
 >>> 60 * 60 * 4
@@ -153,7 +128,7 @@ pour qu'on puisse le lire.
 
 ----
 
-# Les exceptions
+## Les exceptions
 
 ```python
 >>> 5 -* 3
@@ -174,9 +149,9 @@ SyntaxError ...
 
 # Les types
 
----
+----
 
-# Booléens
+## Booléens
 
 ```python
 >>> True
@@ -187,26 +162,49 @@ False
 
 ----
 
-# Booléens
+## Entiers
 
 ```python
->>> True or False
-True
->>> True and False
-False
+>>> 42
+42
 ```
 
 ----
 
-# Les chaînes de caractères
+## Entiers
+
+```python
+>>> 18446744073709551616
+18446744073709551616
+```
+
+----
+
+## Virgule flottante
+
+```python
+>>> 3.1415
+3.1415
+```
+
+----
+
+## Virgule flottante
+
+```python
+>>> 0.1 + 0.2
+0.30000000000000004
+```
+
+https://0.30000000000000004.com
+
+----
+
+## Chaînes de caractères
 
 ```python
 >>> "Anne Elk's Theory"
 "Anne Elk's Theory"
->>> 'Colin "Bomber" Harris'
-'Colin "Bomber" Harris'
->>> """Anne Elk's Theory est "mieux"."""
-'Anne Elk\'s Theory est "mieux".'
 ```
 Notes:
 
@@ -215,12 +213,29 @@ dans un cours de C89.
 
 ----
 
-
-# Les listes
+## Chaînes de caractères
 
 ```python
->>> [1, 2, 3, 4, 5, 6, 7, 8]
-[1, 2, 3, 4, 5, 6, 7, 8]
+>>> 'Colin "Bomber" Harris'
+'Colin "Bomber" Harris'
+```
+----
+
+## Chaînes de caractères
+
+```python
+>>> """Anne Elk's Theory est "mieux"."""
+'Anne Elk\'s Theory est "mieux".'
+```
+
+----
+
+
+## Listes
+
+```python
+>>> [2, 3, 5, 7]
+[2, 3, 5, 7]
 ```
 
 Notes:
@@ -229,7 +244,7 @@ La représentation est souvent du Python valide.
 
 ----
 
-# Les listes
+## Listes
 
 ```python
 >>> [1, 1.5, 2, 2.5]
@@ -242,7 +257,7 @@ Attention à ne pas en abuser.
 
 ----
 
-# Les listes
+## Listes
 
 ```python
 >>> [[1, 1], [1, 2], [2, 1], [2, 2]]
@@ -253,7 +268,7 @@ Une liste c'est de la donnée, ce qu'elle contint c'est de la donnée.
 
 ----
 
-# *n*-uplets
+## *n*-uplets
 ```python
 >>> 1, 2
 (1, 2)
@@ -265,21 +280,22 @@ C'est la virgule qui fait le n-uplet, pas les parenthèses.
 
 ----
 
-# Les ensembles
+## Ensembles
 ```python
->>> {2, 5, 7, 3}
-{2, 3, 5, 7}
+>>> {101, 103, 107, 109}
+{109, 107, 101, 103}
+
 ```
 Notes:
 Un ensemble n'est pas ordonné.
 
 ----
 
-# Dictionnaires
+## Dictionnaires
 
 ```python
->>> {"Graham": 1941, "John": 1939}
-{"Graham": 1941, "John": 1939}
+>>> {"Zero": 0, "Un": 1, "Deux": 2}
+{'Zero': 0, 'Un': 1, 'Deux': 2}
 ```
 Notes:
 On associe une valeur à une clé.
@@ -287,6 +303,11 @@ On associe une valeur à une clé.
 ---
 
 # Les opérateurs
+
+----
+
+## Les opérateurs
+### Mathématiques
 
 ```python
 >>> 10 + 10
@@ -299,7 +320,26 @@ On associe une valeur à une clé.
 
 ----
 
-# Les opérateurs
+## Les opérateurs
+### Mathématiques
+
+```python
+>>> (4 * 10 ** 1) + (2 * 10 ** 0)
+42
+```
+
+----
+
+## Les opérateurs
+### Mathématiques
+
+```python
+>>> 10 / 2
+5.0
+```
+----
+
+## Les opérateurs
 
 
 ```python
@@ -311,7 +351,7 @@ It's called concatenation of strings.
 
 ----
 
-# Les opérateurs
+## Les opérateurs
 
 ```python
 >>> "Tu tum pak " * 2
@@ -322,16 +362,16 @@ Tant qu'il n'y a pas d'ambiguité, c'est implémenté.
 
 ----
 
-# Les opérateurs
+## Les opérateurs
 
 ```python
->>> ["Graham", "John"] + [1, 2, 3]
-['Graham', 'John', 1, 2, 3]
+>>> [2, 3, 5] + [7, 11, 13, 17]
+[2, 3, 5, 7, 11, 13, 17]
 ```
 
 ----
 
-# Les Comparisons
+## Les Comparisons
 
 
 ```python
@@ -343,9 +383,28 @@ True
 False
 ```
 
+Notes:
+
+Déconseiller l'utilisation de `is`, de toute facons PyLint leur dira
+quand l'utiliser.
+
 ----
 
-# Test d'appartenance
+## Logique
+
+```python
+>>> True or False
+True
+>>> True and False
+False
+>>> not True
+False
+```
+
+
+----
+
+## Test d'appartenance
 
 ```python
 >>> "aa" in "sacré graal"
@@ -354,7 +413,7 @@ True
 
 ----
 
-# Test d'appartenance
+## Test d'appartenance
 
 ```python
 >>> 7 in {2, 3, 5, 7, 11}
@@ -364,7 +423,7 @@ True
 
 ----
 
-# Travailler avec les ensembles
+## Travailler avec les ensembles
 
 ```python
 >>> {"a", "b"} | {"a", "x", "y"}
@@ -376,7 +435,7 @@ C'est une union.
 
 ----
 
-# Travailler avec les ensembles
+## Travailler avec les ensembles
 
 ```python
 >>> {"a", "b"} & {"a", "x", "y"}
@@ -388,7 +447,7 @@ Une intersection.
 
 ----
 
-# Mais en cas d'ambiguité…
+## Mais en cas d'ambiguité…
 
 ```python
 >>> "D'oh!" * "D'oh!"
@@ -399,7 +458,7 @@ TypeError: can't multiply sequence by non-int of type 'str'
 
 ----
 
-# Mais en cas d'ambiguité…
+## Mais en cas d'ambiguité…
 
 ```python
 >>> {"a", "b"} + {"a", "x", "y"}
@@ -410,48 +469,49 @@ TypeError: unsupported operand type(s) for +: 'set' and 'set'
 
 ---
 
-# Les méthodes
-
-```python
->>> "La vie de Brian".upper()
-'LA VIE DE BRIAN'
->>> "La vie de Brian".isupper()
-False
->>> "La vie de Brian".startswith("La")
-True
->>> "La vie de Brian".startswith("Vie")
-False
-```
+# Variables
 
 ----
 
-# Les variables
+## Affectation
 
 ```python
->>> names = ["Graham", "John", "Terry"]
->>> births = {"Graham": 1941,
-...           "John": 1939}
->>> names
-["Graham", "John", "Terry"]
->>> births
-{'Graham': 1941, 'John': 1939}
-
+>>> x = 10
+>>> y = 10
+>>> x + y
+20
 ```
 
 Notes:
 
-On ne dit pas "la liste est mise dans la variable", on dit "la
-variable names est assignée à la liste".
+« x » est assigné à 10.
+
+JAMAIS dire: 10 est assigné à « x ».
+JAMAIS JAMAIS dire : On met 10 dans « x ».
 
 ----
 
-# Accès par indice
+## Affectation multiple
 
 ```python
->>> names[0]
-'Graham'
->>> names[1]
-'John'
+>>> x, y = 2, 3
+>>> x
+2
+>>> y
+3
+```
+
+
+----
+
+## Accès par indice
+
+```python
+>>> first_primes = [2, 3, 5, 7, 11, 13]
+>>> first_primes[0]
+2
+>>> first_primes[1]
+3
 ```
 Notes:
 On réutilise le nom pour accéder au contenu.
@@ -460,20 +520,65 @@ Bien prendre le temps d'expliquer la syntaxe ici.
 
 ----
 
-# Accès par clé
+## Accès par clé
 
 ```python
->>> births["John"]
-1939
+>>> d = {"zero": 0, "un": 1, "deux": 2}
+>>> d["deux"] + d["deux"]
+4
+```
+
+---
+
+# Les méthodes
+----
+
+## Sur les chaînes
+```python
+>>> s = "The prime numbers."
+>>> s.title()
+'The Prime Numbers.'
+>>> s.startswith("The")
+True
+>>> s.split()
+['The', 'prime', 'numbers.']
+```
+
+----
+
+## Sur les listes
+
+```python
+>>> l = [2, 3, 5, 7]
+>>> l.append(11)
+>>> l.sort(reverse=True)
+>>> l
+[11, 7, 5, 3, 2]
+```
+
+----
+
+## Sur les dictionnaires
+
+```python
+>>> d = {"zero": 0, "un": 1, "deux": 2}
+>>> d.keys()
+dict_keys(['zero', 'un', 'deux'])
+>>> d.values()
+dict_values([0, 1, 2])
+>>> d.items()
+dict_items([('zero', 0), ('un', 1), ('deux', 2)])
 ```
 
 ---
 
 # Les instructions
+----
+## if
 
 ```python
->>> if births["John"] >= 2000:
-...     print("John est super jeune !")
+>>> if 1 in {2, 3, 5, 7, 11}
+...     print("1 serait-il premier ?"}
 ...
 >>>
 ```
@@ -484,23 +589,100 @@ Parler de l'indentation !
 
 Notez le `...`, on a du appyer un coup en « entrée » pour fermer ce bloc.
 
+1 était premier, avant, mais ça casse le théorème « Every possible
+whole number can be written as a _unique_ product of primes ».
+
 ----
 
-# Les instructions
+## for
 
 ```python
->>> for name in names:
-...     print(name)
+>>> d = {"zero": 0, "un": 1, "deux": 2}
+>>> for number in d:
+...     print(number)
 ...
-Graham
-John
-Terry
+zero
+un
+deux
+>>>
+```
+
+----
+
+## for
+
+```python
+>>> d = {"zero": 0, "un": 1, "deux": 2}
+>>> for number, value in d.items():
+...     print(number, value)
+...
+zero 0
+un 1
+deux 2
 >>>
 ```
 
 ---
 
 # Les fonctions
+----
+
+## Natives
+
+```python
+>>> print("zero")
+zero
+```
+
+----
+
+## Natives
+
+```python
+>>> exit()
+$
+```
+
+----
+
+## Natives
+
+```python
+>>> len([1, 2, 3])
+3
+```
+
+----
+
+## Natives
+
+```python
+>>> for i in range(5):
+...     print(i)
+0
+1
+2
+3
+4
+```
+
+----
+
+## Natives
+
+```python
+>>> for i in range(10, 15):
+...     print(i)
+10
+11
+12
+13
+14
+```
+
+
+----
+## Les fonctions
 
 ```python
 >>> def max(a, b):
@@ -509,6 +691,7 @@ Terry
 ...     else:
 ...         return b
 ...
+```
 
 Notes:
 

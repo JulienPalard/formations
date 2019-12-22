@@ -5,5 +5,5 @@ if [ "$1" = "" ]; then
     echo "With file one of" *.md
 else
     npm i reveal-md
-    ./node_modules/.bin/reveal-md $0 -w --theme simple --css fifix.css --highlight-theme github
+    ./node_modules/.bin/reveal-md $1 -w --theme simple --css static/fifix.css --highlight-theme github
 fi
