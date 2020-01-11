@@ -1,152 +1,3 @@
-# Python 3.8
-<tt>en ~38 minutes</tt>
-
-par
-
-Julien Palard <julien@palard.fr>
-
-Notes: Introduce yourself!
-
-----
-
-## Python : Introduction
-
-Python est un langage de programmation permettant de s'exprimer de
-manière **concise** et **lisible**.
-
-----
-
-## Qui utilise Python ?
-
-YouTube, Dropbox, Reddit, Instagram, Spotify, NASA…
-
-![](static/Black-hole-M87.jpg)
-
-----
-
-## Combien utilisent Python ?
-
-![](static/Evolution_of_Python.png)
-
-----
-
-## Installation
-
-https://python.org
-
-— ou —
-
-![](static/Anaconda_Logo.png)
-
-
-Notes:
-- On windows use the WSL, or gitforwindows.org if you can't
-- https://docs.python.org/3/using/windows.html
-- https://docs.python.org/3/using/mac.html
-- On windows, don't install from the Microsoft Store.
-
-----
-
-## Démarrer un interpréteur
-
-Sur Windows :
-
-```text
-py
-```
-
-Sur tous les autres OS :
-
-```text
-python3
-```
-
-Notes:
-- Définir « Interpréteur »
-- `py` sur Windows trouve l'interpréteur le plus récent.
-
-----
-
-## L'interpréteur
-
-Parfois appelé le *REPL* ou *la console interactive*.
-
-```python
-$ python3
->>> 10800 / 60 / 60
-3.0
->>>
-```
-
-Notes:
-
-Permet d'essayer un peu de Python sans pour autant ouvrir un fichier.
-
-Et oui, même après 10 ans de Python, on l'utilise encore.
-
-Expliquer les parties "R", "E", "P", "L".
-
-----
-
-## L'interpréteur
-
-Il en existe plusieurs : Celui natif à Python, IDLE, IPython, …
-
-Il ressemble généralement soit à ça :
-
-```bash
->>>
-```
-soit à ça :
-```bash
-In [1]:
-```
-
-----
-
-## Testons l'interpréteur
-
-```python
->>> 10
-10
-```
-Notes:
-
-L'interpréteur à lu les caractères `1` `0`, a compris que c'était un
-nombre entier, l'a stocké dans sa représentation interne, un objet,
-puis nous l'a représenté à son tour avec deux caractères `1` et `0`
-pour qu'on puisse le lire.
-
-----
-
-## C'est votre nouvelle calculatrice
-
-```python
->>> 60 * 60 * 4
-14400
-```
-
-----
-
-## Les exceptions
-
-```python
->>> 5 -* 3
-  File "<stdin>", line 1
-    5 -*
-       ^
-SyntaxError: invalid syntax
-```
-
-Notes:
-Lisez *TOUJOURS* la dernière ligne en premier !
-
-Let's give him some nonsense...
-Python is explicit when something's wrong.
-SyntaxError ...
-
----
-
 # Les types
 
 ----
@@ -253,7 +104,7 @@ La représentation est souvent du Python valide.
 
 Notes:
 
-Attention à ne pas en abuser.
+Attention à ne pas abuser du mélange autorisé des types.
 
 ----
 
@@ -627,7 +478,7 @@ deux 2
 # Les fonctions
 ----
 
-## Natives
+## Fonctions natives
 
 ```python
 >>> print("zero")
@@ -636,7 +487,7 @@ zero
 
 ----
 
-## Natives
+## Fonctions natives
 
 ```python
 >>> exit()
@@ -645,7 +496,17 @@ $
 
 ----
 
-## Natives
+## Fonctions natives
+
+```python
+>>> help(list)
+>>> d = {}
+>>> help(d)
+```
+
+----
+
+## Fonctions natives
 
 ```python
 >>> len([1, 2, 3])
@@ -654,7 +515,7 @@ $
 
 ----
 
-## Natives
+## Fonctions natives
 
 ```python
 >>> for i in range(5):
@@ -668,7 +529,7 @@ $
 
 ----
 
-## Natives
+## Fonctions natives
 
 ```python
 >>> for i in range(10, 15):
@@ -680,31 +541,8 @@ $
 14
 ```
 
-
-----
-## Les fonctions
-
-```python
->>> def max(a, b):
-...     if a > b:
-...         return a
-...     else:
-...         return b
-...
-```
-
-Notes:
-
-Passer du temps sur la syntaxe et le vocabulaire
- - fonction
- - paramètre
- - `return`
-
 ----
 
-# Les fonctions
+## Fonctions natives
 
-```python
->>> max(10, 20)
-20
-```
+docs.python.org/3/library/functions.html
