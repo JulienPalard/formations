@@ -2,6 +2,7 @@
 
 https://mdk.fr/python-initiation/
 
+
 ## Programme
 
 - Jour 1, matin
@@ -28,10 +29,8 @@ https://mdk.fr/python-initiation/
 
 ## TODO
 
-- La notation par intension
-- la portée des variables
-- objets immuables vs modifiables
-- PDB
+- objets immuables vs modifiales
+- pdb /
 - pytest et assert
 - Bonnes pratiques :
   - Nommer correctement.

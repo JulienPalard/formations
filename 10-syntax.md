@@ -100,3 +100,69 @@ en :
 ----
 
 ## La notation par intension
+
+Ou :
+
+```python
+def phi(n):
+    numbers = []
+    for i in range(n):
+        if math.gcd(i, n) == 1:
+            numbers.append(i)
+    return len(numbers)
+```
+
+----
+
+## La notation par intension
+
+en :
+
+```python
+def phi(n):
+    return len(
+        [
+            i
+            for i in range(n)
+            if math.gcd(i, n) == i
+        ]
+    )
+
+```
+
+Notes: Elle devrait s'écrire sur une seule ligne, mais, vidéoprojecteur...
+
+---
+
+# Les variables
+
+----
+
+## Le type des variables
+
+En Python, les variables ne sont que des noms.
+
+*Des « étiquettes » qu'on colle aux objets.*
+
+Seul les valeurs sont typées.
+
+*Toutes les valeurs sont des objets.*
+
+Notes: Sans. Exceptions.
+
+On peut « coller » plusieurs étiquettes à une même valeur.
+
+C'est pour ça que pour `n = 10` on dit "n est assigné à 10", et non "10 est mis dans n".
+
+
+----
+
+## La portée des variables
+
+Dans une fonction :
+- Si on ne fait qu'accéder, ce sera une globale.
+- Si on affecte, c'est une locale.
+
+Notes:
+Pour l'accès pensez à `print` par exemple, l'utiliser n'en fait pas une locale.
+Une variable ne peut *presque* jamais ne pas contenir de valeur, et on ne peut pas la "déclarer".

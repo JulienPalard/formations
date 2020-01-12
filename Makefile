@@ -5,6 +5,9 @@ HTML := $(addprefix output/,$(SRCS:.md=.html))
 test:
 	python test.py *.md
 
+index.md:
+	for file in *-*.md; do printf "%s\n\n" "$$file"; grep '^#' "$$file" | sed 's/.md:/  /;s/^/    /'; printf "\n\n"; done | uniq > $@
+
 .PHONY: static
 static: $(HTML)
 	rm -f output/index.html
