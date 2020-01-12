@@ -1,4 +1,6 @@
-# Les types
+# Types natifs
+
+Les types natifs, leurs opérateurs et leurs méthodes, les variables.
 
 ----
 
@@ -206,7 +208,7 @@ It's called concatenation of strings.
 
 ```python
 >>> "Tu tum pak " * 2
-'Tu tum pak Tu tum pak'
+'Tu tum pak Tu tum pak '
 ```
 Notes:
 Tant qu'il n'y a pas d'ambiguité, c'est implémenté.
@@ -277,8 +279,8 @@ True
 ## Travailler avec les ensembles
 
 ```python
->>> {"a", "b"} | {"a", "x", "y"}
-{'a', 'x', 'y', 'b'}
+>>> {1, 2} | {1, 3, 4} == {1, 2, 3, 4}
+True
 ```
 
 Notes:
@@ -420,129 +422,3 @@ dict_values([0, 1, 2])
 >>> d.items()
 dict_items([('zero', 0), ('un', 1), ('deux', 2)])
 ```
-
----
-
-# Les instructions
-----
-## if
-
-```python
->>> if 1 in {2, 3, 5, 7, 11}
-...     print("1 serait-il premier ?"}
-...
->>>
-```
-
-Notes:
-
-Parler de l'indentation !
-
-Notez le `...`, on a du appyer un coup en « entrée » pour fermer ce bloc.
-
-1 était premier, avant, mais ça casse le théorème « Every possible
-whole number can be written as a _unique_ product of primes ».
-
-----
-
-## for
-
-```python
->>> d = {"zero": 0, "un": 1, "deux": 2}
->>> for number in d:
-...     print(number)
-...
-zero
-un
-deux
->>>
-```
-
-----
-
-## for
-
-```python
->>> d = {"zero": 0, "un": 1, "deux": 2}
->>> for number, value in d.items():
-...     print(number, value)
-...
-zero 0
-un 1
-deux 2
->>>
-```
-
----
-
-# Les fonctions
-----
-
-## Fonctions natives
-
-```python
->>> print("zero")
-zero
-```
-
-----
-
-## Fonctions natives
-
-```python
->>> exit()
-$
-```
-
-----
-
-## Fonctions natives
-
-```python
->>> help(list)
->>> d = {}
->>> help(d)
-```
-
-----
-
-## Fonctions natives
-
-```python
->>> len([1, 2, 3])
-3
-```
-
-----
-
-## Fonctions natives
-
-```python
->>> for i in range(5):
-...     print(i)
-0
-1
-2
-3
-4
-```
-
-----
-
-## Fonctions natives
-
-```python
->>> for i in range(10, 15):
-...     print(i)
-10
-11
-12
-13
-14
-```
-
-----
-
-## Fonctions natives
-
-docs.python.org/3/library/functions.html
