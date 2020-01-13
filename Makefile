@@ -6,13 +6,19 @@ test:
 	python test.py *.md
 
 index.md: $(SRCS)
-	for file in *-*.md; do printf "%s\n\n" "$$file"; grep '^#' "$$file" | sed 's/.md:/  /;s/^/    /'; printf "\n\n"; done | uniq > $@
+	for file in *-*.md; \
+	    do printf "# [%s](%s)\n\n" "$$file" "$$(printf "%s" "$$file" | sed s/.md/.html/)"; \
+	    grep -h '^#' "$$file" | sed 's/^# /- /;s/^## /    - /'; \
+	done | uniq > $@
+
+index.html: index.md
+	mkdir -p output
+	python -m markdown -o html $< -f $@
 
 .PHONY: static
-static: $(HTML)
+static: $(HTML) index.html
 	rm -f output/index.html
 	cp index.html output/index.html
-	cd output; printf "%s\n" *-*.html | sed 's#.*#<li><a href="\0">\0</a></li>#g' >> index.html
 
 output/%.html: %.md node_modules/.bin/reveal-md
 	./node_modules/.bin/reveal-md $< --theme simple --css static/fifix.css --highlight-theme github --static output/
@@ -30,4 +36,4 @@ node_modules/.bin/reveal-md:
 
 .PHONY: clean
 clean:
-	rm -fr output
+	rm -fr output index.md index.html

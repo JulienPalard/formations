@@ -1,4 +1,6 @@
 .ipynb_checkpoints/
+/index.html
+/index.md
 __pycache__/
 node_modules/
 output/

@@ -311,8 +311,7 @@ pas les clefs à l'avance, sinon c'est une classe.
 
 ----
 
-## Les opérateurs
-### Mathématiques
+## Les opérateurs mathématiques
 
 ```python
 >>> 10 + 10
@@ -325,8 +324,7 @@ pas les clefs à l'avance, sinon c'est une classe.
 
 ----
 
-## Les opérateurs
-### Mathématiques
+## Les opérateurs mathématiques
 
 ```python
 >>> (4 * 10 ** 1) + (2 * 10 ** 0)
@@ -335,8 +333,7 @@ pas les clefs à l'avance, sinon c'est une classe.
 
 ----
 
-## Les opérateurs
-### Mathématiques
+## Les opérateurs mathématiques
 
 ```python
 >>> 10 / 2
@@ -474,7 +471,7 @@ TypeError: unsupported operand type(s) for +: 'set' and 'set'
 
 ---
 
-# Variables
+# Les variables
 
 ----
 
@@ -551,6 +548,16 @@ True
 
 ----
 
+## Sur les chaînes
+
+```python
+>>> s = "phi = {}"
+>>> s.format((1 + 5 ** 0.5) / 2)
+'phi = 1.618033988749895'
+```
+
+----
+
 ## Sur les listes
 
 ```python
@@ -577,15 +584,7 @@ dict_items([('zero', 0), ('un', 1), ('deux', 2)])
 
 ---
 
-# Les fonctions
-
-Les fonctions natives, et comment en créer.
-
-----
-
-## Fonctions natives
-
-docs.python.org/3/library/functions.html
+# Les fonctions natives
 
 ----
 
@@ -782,14 +781,6 @@ deux 2
 3
 4
 ```
-
----
-
-# Les instructions (suite)
-
-Notes:
-
-On couvre un peu plus de syntaxe après quelques exercices.
 
 ----
 
@@ -1080,7 +1071,7 @@ dire quand même : pour `True`, `False`, et `None`.
 
 ---
 
-# Fonctions (suite)
+# Les fonctions (suite)
 
 Créer ses propres fonctions
 
