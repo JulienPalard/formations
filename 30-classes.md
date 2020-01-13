@@ -44,7 +44,5 @@ class Point:
 ## Exemple
 
 ```python
->>> import requests
->>> requests.get("https://mdk.fr", headers={"X-Csrf-Token": "i8XNjC4"})
-<Response [200]>
+>>> headers = {"X-Csrf-Token": "i8XNjC4"}
 ```

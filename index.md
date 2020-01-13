@@ -1,4 +1,4 @@
-1-intro.md
+01-intro.md
 
     # Python 3.8
     ## Python : Introduction
@@ -11,19 +11,7 @@
     ## C'est votre nouvelle calculatrice
     ## Les exceptions
 
-10-syntax.md
-
-    # Python 3.8
-    ## L'instruction `while`
-    ## `break` et `continue`
-    ## `break`
-    ## `continue`
-    ## La notation par intension
-    # Les variables
-    ## Le type des variables
-    ## La portée des variables
-
-2-types.md
+02-types.md
 
     # Types natifs
     ## Booléens
@@ -57,7 +45,7 @@
     ## Sur les listes
     ## Sur les dictionnaires
 
-3-functions.md
+03-functions.md
 
     # Les fonctions
     ## Fonctions natives
@@ -71,21 +59,62 @@
     ## enumerate
     ## sorted
     ## exit
-    # Constuire ses propres fonctions
-    ## Syntaxe
-    ## Paramètres
-    ## Arguments
 
-4-instructions.md
+04-instructions.md
 
     # Les instructions
     ## if
     ## for
 
-5-classes.md
+10-syntax.md
+
+    # Les instructions (suite)
+    ## L'instruction `while`
+    ## `break` et `continue`
+    ## `break`
+    ## `continue`
+    ## Le `else`
+    ## Le `elif`
+    ## Les exceptions
+    ## Les exceptions : `try`
+    ## La notation par intension
+    # Les variables (suite)
+    ## Le type des variables
+    ## La portée des variables
+    ## Immuables vs modifiables
+    ## Les types modifiables
+    ## les types immuables
+    ## La vérité
+
+11-pip.md
+
+    # pip, conda, et venvs
+    ## pip
+    ## venv
+    # Conda
+    ## conda
+
+20-qualité.md
+
+    # Les bonnes pratiques
+    ## Les « linters »
+    ## flake8
+    ## pylint
+    ## mypy
+    ## bandit
+    ## isort
+
+30-classes.md
 
     # Les classes en Python
     ## La syntaxe
     ## À retenir
     ## Exemple
+
+40-functions.md
+
+    # Fonctions (suite)
+    ## Syntaxe
+    ## Paramètres
+    ## Arguments
 
