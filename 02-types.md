@@ -131,6 +131,9 @@ Une liste c'est de la donnée, ce qu'elle contint c'est de la donnée.
 Notes:
 C'est la virgule qui fait le n-uplet, pas les parenthèses.
 
+Pensez au *n*-uplet comme une structure C, *a record*, pas comme une
+liste, par exemple des coordonnées : (x, y).
+
 ----
 
 ## Ensembles
@@ -151,7 +154,9 @@ Un ensemble n'est pas ordonné.
 {'Zero': 0, 'Un': 1, 'Deux': 2}
 ```
 Notes:
-On associe une valeur à une clé.
+
+On associe une valeur à une clé. Utile *seulement* si on ne connaît
+pas les clefs à l'avance, sinon c'est une classe.
 
 ---
 
