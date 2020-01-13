@@ -1,4 +1,4 @@
-# Python 3.8
+# Les instructions (suite)
 
 Notes:
 
@@ -73,6 +73,67 @@ suivant. Qu'on soit dans un `for` ou dans un `while`.
 
 ----
 
+## Le `else`
+
+Après un bloc `if`, on peut ajouter un bloc `else` :
+
+```python
+def fib(x):
+    if x < 2:
+        return 1
+    else:
+        return fib(x - 1) + fib(x - 2)
+```
+
+Notes:
+(Juste pour doctest :)
+```python
+>>> [fib(x) for x in range(10)]
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+```
+
+----
+
+## Le `elif`
+
+Après un `if`, on peut ajouter un ou des bloc `elif` :
+
+```python
+def is_prime(n):
+    if n == 2:
+        return True
+    elif n == 1 or n % 2 == 0:
+        return False
+    else:
+        ...
+```
+
+Notes: Parler de `pass` et de `...`.
+
+----
+
+
+## Les exceptions
+
+```python
+>>> int("abc")
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+ValueError: invalid literal for int() with base 10: 'abc'
+```
+
+## Les exceptions : `try`
+
+```python
+>>> try:
+...     int("abc")
+... except ValueError:
+...     print("Raté")
+Raté
+```
+
+---
+
 ## La notation par intension
 
 C'est transformer ça :
@@ -134,7 +195,7 @@ Notes: Elle devrait s'écrire sur une seule ligne, mais, vidéoprojecteur...
 
 ---
 
-# Les variables
+# Les variables (suite)
 
 ----
 
@@ -166,3 +227,64 @@ Dans une fonction :
 Notes:
 Pour l'accès pensez à `print` par exemple, l'utiliser n'en fait pas une locale.
 Une variable ne peut *presque* jamais ne pas contenir de valeur, et on ne peut pas la "déclarer".
+
+----
+
+## Immuables vs modifiables
+
+Certains types sont modifiables, d'autres, non.
+
+Notes: On dit qu'elles sont immuables (*immutable* en anglais).
+
+Attention, les variables sont toujours ... variables, nous n'avons pas
+de constantes.
+
+----
+
+## Les types modifiables
+
+Parmis les types modifiables on trouve :
+
+Les listes, les dictionnaires, les ensembles, …
+
+*On peut ajouter a une liste, modifier la valeur pour une clé d'un
+dictionnaire, ou vider un ensemble par exemple.*
+
+----
+
+## les types immuables
+
+Parmis les types immuables on trouve :
+
+Les chaînes de caractères, les *n*-uplets, les entiers, les booléens, …
+
+*On ne peut pas dire que maintenant 10 vaut 12, ni que faux est vrai.*
+
+
+Notes:
+
+Pour les chaînes c'est discutable, mais avoir des chaînes immuables
+est confortable (clef de dictionnaires par exemple, ou la garantie
+qu'un appel à une fonction avec une chaîne en paramètre ne va pas la
+modifier).
+
+----
+
+## La vérité
+
+En Python, ce qui est vide est faux, 0 est faux. Le reste est vrai :
+
+```python
+>>> bool("Non vide")
+True
+>>> bool([])  # Une liste vide
+False
+>>> bool(0.0)
+False
+```
+
+Notes:
+Attention à la sémantique : `if foo` est différent de `if foo is True`.
+
+Leur rappeler que c'est pylint qui leur dira quand utiliser `is`, leur
+dire quand même : pour `True`, `False`, et `None`.
