@@ -1,3 +1,9 @@
+# Python
+
+Jour 2
+
+---
+
 # Les tranches
 
 *slices* en anglais
