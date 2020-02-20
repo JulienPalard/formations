@@ -3,14 +3,12 @@
 https://mdk.fr/python-initiation/
 
 
-## Programme
-
-  - 5-classes.md
-
-
 ## TODO
 
 - Les imports
+- Attention avec `def fib` jour 1 on montre les fonctions avant de les
+  avoir expliquées.
+- with statement
 
 
 ## Notes

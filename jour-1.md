@@ -268,7 +268,7 @@ Une liste c'est de la donnée, ce qu'elle contint c'est de la donnée.
 
 ----
 
-## *n*-uplets
+## *n*-uplets, *tuple*
 ```python
 >>> 1, 2
 (1, 2)
