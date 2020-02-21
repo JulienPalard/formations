@@ -7,6 +7,7 @@ REVEAL_JS := output/reveal.js-$(REVEAL_JS_VERSION)/up-to-date
 .PHONY: help
 help:
 	@echo "Usage:"
+	@echo "  make static  # to build static version."
 	@echo "  make test  # to run tests."
 	@echo "  make rsync  # rsync to prod"
 	@echo "  make clean"
@@ -39,7 +40,7 @@ static: $(HTML) index.html
 # To discover pandoc variables: less $(dpkg -L pandoc-data | grep reveal)
 output/%.html: %.md $(REVEAL_JS)
 	mkdir -p output/
-	cd output; pandoc -f markdown -t revealjs ../$< '-s' '--slide-level=2' -V css=static/fifix.css -V 'css=static/github.css' -V highlighting-css= '-V' 'revealjs-url=reveal.js-$(REVEAL_JS_VERSION)' '-V' 'theme=simple' > ../$@
+	python3 ../md2reveal/md2reveal.py --revealjs-url "reveal.js-$(REVEAL_JS_VERSION)" $< $@
 	cp -a static output
 
 .PHONY: rsync
