@@ -1,16 +1,19 @@
 # Python 3.8
-<tt>en ~38 minutes</tt>
+
+## Python 3.8 en ~38 minutes
 
 par
 
 Julien Palard <julien@palard.fr>
 
-Notes: Introduce yourself!
+::: notes
+
+Introduce yourself!
 
 Ça couvre les types de bases survol quelques stricutres de contrôle,
 et quelques fonctions natives.
 
-----
+:::
 
 ## Python : Introduction
 
@@ -25,13 +28,11 @@ YouTube, Dropbox, Reddit, Instagram, Spotify, NASA…
 
 ![](static/Black-hole-M87.jpg)
 
-----
 
 ## Combien utilisent Python ?
 
 ![](static/Evolution_of_Python.png)
 
-----
 
 ## Installation
 
@@ -42,13 +43,14 @@ https://python.org
 ![](static/Anaconda_Logo.png)
 
 
-Notes:
+::: notes
+
 - On windows use the WSL, or gitforwindows.org if you can't
 - https://docs.python.org/3/using/windows.html
 - https://docs.python.org/3/using/mac.html
 - On windows, don't install from the Microsoft Store.
 
-----
+:::
 
 ## Démarrer un interpréteur
 
@@ -64,11 +66,12 @@ Sur tous les autres OS :
 python3
 ```
 
-Notes:
+::: notes
+
 - Définir « Interpréteur »
 - `py` sur Windows trouve l'interpréteur le plus récent.
 
-----
+:::
 
 ## L'interpréteur
 
@@ -81,7 +84,7 @@ $ python3
 >>>
 ```
 
-Notes:
+::: notes
 
 Permet d'essayer un peu de Python sans pour autant ouvrir un fichier.
 
@@ -89,7 +92,7 @@ Et oui, même après 10 ans de Python, on l'utilise encore.
 
 Expliquer les parties "R", "E", "P", "L".
 
-----
+:::
 
 ## L'interpréteur
 
@@ -105,7 +108,6 @@ soit à ça :
 In [1]:
 ```
 
-----
 
 ## Testons l'interpréteur
 
@@ -113,14 +115,15 @@ In [1]:
 >>> 10
 10
 ```
-Notes:
+
+::: notes
 
 L'interpréteur à lu les caractères `1` `0`, a compris que c'était un
 nombre entier, l'a stocké dans sa représentation interne, un objet,
 puis nous l'a représenté à son tour avec deux caractères `1` et `0`
 pour qu'on puisse le lire.
 
-----
+:::
 
 ## C'est votre nouvelle calculatrice
 
@@ -129,7 +132,6 @@ pour qu'on puisse le lire.
 14400
 ```
 
-----
 
 ## Les exceptions
 
@@ -140,16 +142,16 @@ Traceback (most recent call last):
 ZeroDivisionError: division by zero
 ```
 
-Notes:
+::: notes
+
 Lisez *TOUJOURS* la dernière ligne en premier !
 
----
+:::
 
 # Types natifs
 
 Les types natifs, leurs opérateurs et leurs méthodes, les variables.
 
-----
 
 ## Booléens
 
@@ -160,7 +162,6 @@ True
 False
 ```
 
-----
 
 ## Entiers
 
@@ -169,7 +170,6 @@ False
 42
 ```
 
-----
 
 ## Entiers
 
@@ -178,7 +178,6 @@ False
 18446744073709551616
 ```
 
-----
 
 ## Virgule flottante
 
@@ -187,7 +186,6 @@ False
 3.1415
 ```
 
-----
 
 ## Virgule flottante
 
@@ -198,7 +196,6 @@ False
 
 https://0.30000000000000004.com
 
-----
 
 ## Chaînes de caractères
 
@@ -206,12 +203,13 @@ https://0.30000000000000004.com
 >>> "Anne Elk's Theory"
 "Anne Elk's Theory"
 ```
-Notes:
+
+::: notes
 
 Expliquer ce qu'est une chaîne, sans parler de pointeurs, on est pas
 dans un cours de C89.
 
-----
+:::
 
 ## Chaînes de caractères
 
@@ -219,7 +217,7 @@ dans un cours de C89.
 >>> 'Colin "Bomber" Harris'
 'Colin "Bomber" Harris'
 ```
-----
+
 
 ## Chaînes de caractères
 
@@ -227,8 +225,6 @@ dans un cours de C89.
 >>> """Anne Elk's Theory est "mieux"."""
 'Anne Elk\'s Theory est "mieux".'
 ```
-
-----
 
 
 ## Listes
@@ -238,11 +234,11 @@ dans un cours de C89.
 [2, 3, 5, 7]
 ```
 
-Notes:
+::: notes
 
 La représentation est souvent du Python valide.
 
-----
+:::
 
 ## Listes
 
@@ -251,11 +247,11 @@ La représentation est souvent du Python valide.
 [1, 1.5, 2, 2.5]
 ```
 
-Notes:
+::: notes
 
 Attention à ne pas abuser du mélange autorisé des types.
 
-----
+:::
 
 ## Listes
 
@@ -263,10 +259,12 @@ Attention à ne pas abuser du mélange autorisé des types.
 >>> [[1, 1], [1, 2], [2, 1], [2, 2]]
 [[1, 1], [1, 2], [2, 1], [2, 2]]
 ```
-Notes:
+
+::: notes
+
 Une liste c'est de la donnée, ce qu'elle contint c'est de la donnée.
 
-----
+:::
 
 ## *n*-uplets, *tuple*
 ```python
@@ -275,24 +273,29 @@ Une liste c'est de la donnée, ce qu'elle contint c'est de la donnée.
 >>> "Graham", "John", "Terry"
 ('Graham', 'John', 'Terry')
 ```
-Notes:
+
+::: notes
+
 C'est la virgule qui fait le n-uplet, pas les parenthèses.
 
 Pensez au *n*-uplet comme une structure C, *a record*, pas comme une
 liste, par exemple des coordonnées : (x, y).
 
-----
+:::
 
 ## Ensembles
+
 ```python
 >>> {101, 103, 107, 109}
 {109, 107, 101, 103}
 
 ```
-Notes:
+
+::: notes
+
 Un ensemble n'est pas ordonné.
 
-----
+:::
 
 ## Dictionnaires
 
@@ -300,16 +303,15 @@ Un ensemble n'est pas ordonné.
 >>> {"Zero": 0, "Un": 1, "Deux": 2}
 {'Zero': 0, 'Un': 1, 'Deux': 2}
 ```
-Notes:
+
+::: notes
 
 On associe une valeur à une clé. Utile *seulement* si on ne connaît
 pas les clefs à l'avance, sinon c'est une classe.
 
----
+:::
 
 # Les opérateurs
-
-----
 
 ## Les opérateurs mathématiques
 
@@ -322,7 +324,6 @@ pas les clefs à l'avance, sinon c'est une classe.
 12.5
 ```
 
-----
 
 ## Les opérateurs mathématiques
 
@@ -331,15 +332,12 @@ pas les clefs à l'avance, sinon c'est une classe.
 42
 ```
 
-----
-
 ## Les opérateurs mathématiques
 
 ```python
 >>> 10 / 2
 5.0
 ```
-----
 
 ## Les opérateurs
 
@@ -348,10 +346,12 @@ pas les clefs à l'avance, sinon c'est une classe.
 >>> "La vie " + "de Brian"
 'La vie de Brian'
 ```
-Notes:
+
+::: notes
+
 It's called concatenation of strings.
 
-----
+:::
 
 ## Les opérateurs
 
@@ -359,10 +359,12 @@ It's called concatenation of strings.
 >>> "Tu tum pak " * 2
 'Tu tum pak Tu tum pak '
 ```
-Notes:
+
+::: notes
+
 Tant qu'il n'y a pas d'ambiguité, c'est implémenté.
 
-----
+:::
 
 ## Les opérateurs
 
@@ -371,7 +373,6 @@ Tant qu'il n'y a pas d'ambiguité, c'est implémenté.
 [2, 3, 5, 7, 11, 13, 17]
 ```
 
-----
 
 ## Les Comparisons
 
@@ -385,12 +386,12 @@ True
 False
 ```
 
-Notes:
+::: notes
 
 Déconseiller l'utilisation de `is`, de toute facons PyLint leur dira
 quand l'utiliser.
 
-----
+:::
 
 ## Logique
 
@@ -404,8 +405,6 @@ False
 ```
 
 
-----
-
 ## Test d'appartenance
 
 ```python
@@ -413,7 +412,6 @@ False
 True
 ```
 
-----
 
 ## Test d'appartenance
 
@@ -423,8 +421,6 @@ True
 ```
 
 
-----
-
 ## Travailler avec les ensembles
 
 ```python
@@ -432,10 +428,11 @@ True
 True
 ```
 
-Notes:
+::: notes
+
 C'est une union.
 
-----
+:::
 
 ## Travailler avec les ensembles
 
@@ -444,10 +441,11 @@ C'est une union.
 {'a'}
 ```
 
-Notes:
+::: notes
+
 Une intersection.
 
-----
+:::
 
 ## Mais en cas d'ambiguité…
 
@@ -458,7 +456,6 @@ Traceback (most recent call last):
 TypeError: can't multiply sequence by non-int of type 'str'
 ```
 
-----
 
 ## Mais en cas d'ambiguité…
 
@@ -469,11 +466,8 @@ Traceback (most recent call last):
 TypeError: unsupported operand type(s) for +: 'set' and 'set'
 ```
 
----
 
 # Les variables
-
-----
 
 ## Affectation
 
@@ -484,14 +478,14 @@ TypeError: unsupported operand type(s) for +: 'set' and 'set'
 20
 ```
 
-Notes:
+::: notes
 
 « x » est assigné à 10.
 
 JAMAIS dire: 10 est assigné à « x ».
 JAMAIS JAMAIS dire : On met 10 dans « x ».
 
-----
+:::
 
 ## Affectation multiple
 
@@ -504,8 +498,6 @@ JAMAIS JAMAIS dire : On met 10 dans « x ».
 ```
 
 
-----
-
 ## Accès par indice
 
 ```python
@@ -515,12 +507,14 @@ JAMAIS JAMAIS dire : On met 10 dans « x ».
 >>> first_primes[1]
 3
 ```
-Notes:
+
+::: notes
+
 On réutilise le nom pour accéder au contenu.
 
 Bien prendre le temps d'expliquer la syntaxe ici.
 
-----
+:::
 
 ## Accès par clé
 
@@ -530,10 +524,8 @@ Bien prendre le temps d'expliquer la syntaxe ici.
 4
 ```
 
----
 
 # Les méthodes
-----
 
 ## Sur les chaînes
 ```python
@@ -546,7 +538,6 @@ True
 ['The', 'prime', 'numbers.']
 ```
 
-----
 
 ## Sur les chaînes
 
@@ -556,7 +547,6 @@ True
 'phi = 1.618033988749895'
 ```
 
-----
 
 ## Sur les listes
 
@@ -568,7 +558,6 @@ True
 [11, 7, 5, 3, 2]
 ```
 
-----
 
 ## Sur les dictionnaires
 
@@ -582,11 +571,9 @@ dict_values([0, 1, 2])
 dict_items([('zero', 0), ('un', 1), ('deux', 2)])
 ```
 
----
 
 # Les fonctions natives
 
-----
 
 ## print
 
@@ -595,11 +582,11 @@ dict_items([('zero', 0), ('un', 1), ('deux', 2)])
 zero
 ```
 
-Notes:
+::: notes
 
 C'est leur première fonction, s'attarder sur la syntaxe !
 
-----
+:::
 
 ## print
 
@@ -608,13 +595,13 @@ C'est leur première fonction, s'attarder sur la syntaxe !
 √2 = 1.4142135623730951
 ```
 
-Notes:
+::: notes
 
 En effet, le P de REPL étant `print`, le print est implicite dans un REPL.
 
 Mais le REPL sert a tester : on peut bien tester print dans le REPL.
 
-----
+:::
 
 ## len
 
@@ -625,7 +612,6 @@ Mais le REPL sert a tester : on peut bien tester print dans le REPL.
 7
 ```
 
-----
 
 ## range
 
@@ -636,7 +622,6 @@ Mais le REPL sert a tester : on peut bien tester print dans le REPL.
 [5, 6, 7, 8, 9]
 ```
 
-----
 
 ## all
 
@@ -649,7 +634,6 @@ True
 False
 ```
 
-----
 
 ## any
 
@@ -662,13 +646,11 @@ True
 False
 ```
 
-----
 
 ## breakpoint
 
 Invoque un débugger Python, très utile, plus tard.
 
-----
 
 ## help
 
@@ -679,12 +661,12 @@ Affiche la documentation de n'importe quoi, essayez :
    - `help(list)`
    - `help("list")`
 
-Notes:
+::: notes
 
 Accepte aussi une variable mais attention: si la variable est une
 chaîne, help n'affichera pas la documentation des chaînes.
 
-----
+:::
 
 ## enumerate
 
@@ -697,7 +679,6 @@ chaîne, help n'affichera pas la documentation des chaînes.
 [(0, 'Zero'), (1, 'Un'), (2, 'Deux')]
 ```
 
-----
 
 ## sorted
 
@@ -706,19 +687,19 @@ chaîne, help n'affichera pas la documentation des chaînes.
 [1, 2, 6, 7]
 ```
 
-----
 
 ## exit
 
 Appeler `exit()` quitte simplement le REPL.
 
-Notes: Préferer `sys.exit()` dans un programme.
+::: notes
 
----
+Préferer `sys.exit()` dans un programme.
+
+:::
 
 # Les instructions
 
-----
 
 ## if
 
@@ -729,7 +710,7 @@ Notes: Préferer `sys.exit()` dans un programme.
 >>>
 ```
 
-Notes:
+::: notes
 
 Parler de l'indentation !
 
@@ -738,7 +719,7 @@ Notez le `...`, on a du appyer un coup en « entrée » pour fermer ce bloc.
 1 était premier, avant, mais ça casse le théorème « Every possible
 whole number can be written as a _unique_ product of primes ».
 
-----
+:::
 
 ## for
 
@@ -753,7 +734,6 @@ deux
 >>>
 ```
 
-----
 
 ## for
 
@@ -768,7 +748,6 @@ deux 2
 >>>
 ```
 
----
 
 ## for
 
@@ -782,7 +761,6 @@ deux 2
 4
 ```
 
-----
 
 ## L'instruction `while`
 
@@ -792,7 +770,6 @@ cependant dans quelques cas:
 - `while True:`
 - `while il_reste_du_travail_à_faire:`
 
-----
 
 ## L'instruction `while`
 
@@ -807,19 +784,19 @@ cependant dans quelques cas:
 2.2360679779158037
 ```
 
-Notes:
+::: notes
+
 Je sais pour la faute de frappe sur guess, mais sinon ça dépasse.
 
 Méthode_de_Héron.
 
-----
+:::
 
 ## `break` et `continue`
 
 Break sert à interrompre une boucle, continue sert à passer à l'élément
 suivant. Qu'on soit dans un `for` ou dans un `while`.
 
-----
 
 ## `break`
 
@@ -834,7 +811,6 @@ suivant. Qu'on soit dans un `for` ou dans un `while`.
 2.2360679779158037
 ```
 
-----
 
 ## `continue`
 
@@ -849,7 +825,6 @@ suivant. Qu'on soit dans un `for` ou dans un `while`.
 4
 ```
 
-----
 
 ## Le `else`
 
@@ -863,14 +838,15 @@ def fib(x):
         return fib(x - 1) + fib(x - 2)
 ```
 
-Notes:
+::: notes
+
 (Juste pour doctest :)
 ```python
 >>> [fib(x) for x in range(10)]
 [1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
 ```
 
-----
+:::
 
 ## Le `elif`
 
@@ -886,9 +862,11 @@ def is_prime(n):
         ...
 ```
 
-Notes: Parler de `pass` et de `...`.
+::: notes
 
-----
+Parler de `pass` et de `...`.
+
+:::
 
 
 ## Les exceptions
@@ -900,7 +878,6 @@ Traceback (most recent call last):
 ValueError: invalid literal for int() with base 10: 'abc'
 ```
 
-----
 
 ## Les exceptions : `try`
 
@@ -912,7 +889,6 @@ ValueError: invalid literal for int() with base 10: 'abc'
 Raté
 ```
 
----
 
 ## La notation par intension
 
@@ -927,7 +903,6 @@ C'est transformer ça :
 ```
 
 
-----
 
 ## La notation par intension
 
@@ -938,7 +913,6 @@ en :
 [1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
 ```
 
-----
 
 ## La notation par intension
 
@@ -953,7 +927,6 @@ def phi(n):
     return len(numbers)
 ```
 
-----
 
 ## La notation par intension
 
@@ -971,13 +944,14 @@ def phi(n):
 
 ```
 
-Notes: Elle devrait s'écrire sur une seule ligne, mais, vidéoprojecteur...
+::: notes
 
----
+Elle devrait s'écrire sur une seule ligne, mais, vidéoprojecteur...
+
+:::
 
 # Les variables (suite)
 
-----
 
 ## Le type des variables
 
@@ -989,14 +963,15 @@ Seul les valeurs sont typées.
 
 *Toutes les valeurs sont des objets.*
 
-Notes: Sans. Exceptions.
+::: notes
+
+Sans. Exceptions.
 
 On peut « coller » plusieurs étiquettes à une même valeur.
 
 C'est pour ça que pour `n = 10` on dit "n est assigné à 10", et non "10 est mis dans n".
 
-
-----
+:::
 
 ## La portée des variables
 
@@ -1004,22 +979,25 @@ Dans une fonction :
 - Si on ne fait qu'accéder, ce sera une globale.
 - Si on affecte, c'est une locale.
 
-Notes:
+::: notes
+
 Pour l'accès pensez à `print` par exemple, l'utiliser n'en fait pas une locale.
 Une variable ne peut *presque* jamais ne pas contenir de valeur, et on ne peut pas la "déclarer".
 
-----
+:::
 
 ## Immuables vs modifiables
 
 Certains types sont modifiables, d'autres, non.
 
-Notes: On dit qu'elles sont immuables (*immutable* en anglais).
+::: notes
+
+On dit qu'elles sont immuables (*immutable* en anglais).
 
 Attention, les variables sont toujours ... variables, nous n'avons pas
 de constantes.
 
-----
+:::
 
 ## Les types modifiables
 
@@ -1030,7 +1008,6 @@ Les listes, les dictionnaires, les ensembles, …
 *On peut ajouter a une liste, modifier la valeur pour une clé d'un
 dictionnaire, ou vider un ensemble par exemple.*
 
-----
 
 ## les types immuables
 
@@ -1041,14 +1018,14 @@ Les chaînes de caractères, les *n*-uplets, les entiers, les booléens, …
 *On ne peut pas dire que maintenant 10 vaut 12, ni que faux est vrai.*
 
 
-Notes:
+::: notes
 
 Pour les chaînes c'est discutable, mais avoir des chaînes immuables
 est confortable (clef de dictionnaires par exemple, ou la garantie
 qu'un appel à une fonction avec une chaîne en paramètre ne va pas la
 modifier).
 
-----
+:::
 
 ## La vérité
 
@@ -1063,19 +1040,19 @@ False
 False
 ```
 
-Notes:
+::: notes
+
 Attention à la sémantique : `if foo` est différent de `if foo is True`.
 
 Leur rappeler que c'est pylint qui leur dira quand utiliser `is`, leur
 dire quand même : pour `True`, `False`, et `None`.
 
----
+:::
 
 # Les fonctions (suite)
 
 Créer ses propres fonctions
 
-----
 
 ## Syntaxe
 
@@ -1086,15 +1063,14 @@ def la_fonction(ses_paramètres):
     # Le corps de la fonction
 ```
 
-Notes:
+::: notes
 
 Passer du temps sur la syntaxe et le vocabulaire
  - fonction
  - paramètre, argument
  - `return`
 
-
-----
+:::
 
 ## Paramètres
 
@@ -1105,7 +1081,6 @@ def ones_in_binary(value):
     as_binary = bin(value)
     return as_binary.count("1")
 ```
-----
 
 ## Arguments
 
