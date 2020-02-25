@@ -364,77 +364,82 @@ class Counter:
 ```
 
 
-# La suite
+## Pendant qu'on parle de `yield`
+
+Connaissez-vous `yield from` ?
 
 
-- Langage, syntaxe, datamodel
-  - f-strings, .format
-  - else du for, while et try
-  - User defined exceptions
-  - functions: *args, **kwargs
-  - unpacking, deep unpacking, starred unpacking
-  - packing (* dans des listes et ** dans des dicts)
-  - Imprécision des float IEEE 754
-  - is vs ==, `id`
-  - Le protocole d'itération, les générateurs
-    - yield
-    - yield from
-  - string interning
-  - types immuables
-  - Les décorateurs, les décorateurs paramétrés
-    - global, nonlocal
-    - closures
-    - @property
-  - Les gestionnaires de contexte, montrer `with ... as (a, b):`
-  - Datamodel / Special method names (depends on classes) : en parler
-    en abordant les différents sujets.
+## Pendant qu'on parle de `for`
 
-- Classes et Objets
-  - staticmethod vs classmethod
-  - héritage et MRO, coopération des classes avec super()
-  - métaclasses
-  - Les descripteurs
+Connaissez-vous le `else` du `for` ?
 
-- L'encodage
- - Unicode, UTF-8
- - str, bytes
+Notes:
 
-- Packaging
- - pip install -e .
- - Rappel sur la distinction module / package, venv / pip
- - setuptools, wheel, sdist, bidst_wheel
- - __main__
- - cookiecutter : docs/, tests/, README, setup.cfg, setup.py, ...
-- List comprehension avancé
-  - Double for, double if, walrus
-- Multiprocessing / Multithreading / Asyncio
- - IO Bound vs CPU Bound
- - Locks vs Queues
-- Code quality
- - import this, explicit is better
- - TDD
- - -Xdev
- - black, ..., pass
- - pytest, doctest
- - pytest-cov
- - hypothesis
- - flake8
- - flake8-bugbear
- - tox
- - mypy
- - black
- - pdb, breakpoint()
- - EAFP, LBYL
-- Performance
- - Les types natifs : Leur complexité algorithmique
- - Cython
- - pypy
- - cffi
- - cprofile / pstats
-- Libs
- - re
- - argparse
- - pathlib
- - logging
- - numpy
- - jupyter
+Il ne s'exécute que si le `for` sort sans `break`.
+
+
+## `else`
+
+```python
+n = 13
+for i in range(2, n - 1):
+    if n % i == 0:
+        print(f"{n} is not prime")
+        break
+else:
+    print(f"{n} is prime")
+```
+
+Notes:
+
+Typiquement utile lors des recherches, la sémantique :
+ - Trouvé, plus besoin de chercher, break.
+ - else: pas trouvé.
+
+Fonctionne aussi sur le while.
+
+Ah j'ai utilisé une f-string.
+
+
+## Literal String Interpolation
+
+```python
+>>> f"{42:08b}"
+00101010
+```
+
+Notes:
+
+Attention aux ':' et '!' dans l'expression, bien que ce soit accepté
+si c'est entre guillemet, crochets, parenthèses, ... sinon toute
+expression Python est autorisée (comme avec .format, mais avec .format
+c'est plus évident).
+
+
+## Literal String Interpolation
+
+```python
+>>> f"{(lambda x: x.upper())('hello'):^11}"
+'   HELLO   '
+```
+
+Notes:
+
+Attention à rester lisible, mais ici le `:` de la lambda est entre
+parenthèses, donc c'est bon.
+
+En parlant de parenthèse, fermons une parenthèse.
+
+
+## On parlais d'itérables
+
+Si on parlais d'unpacking ?
+
+Notes:
+
+Pour se remémorer ces choses, cherchez les PEPs, typiquement la 448, la 3132, ...
+
+Parler de `deep unpacking`.
+
+
+## Ça peut rappeler *args et **kwargs

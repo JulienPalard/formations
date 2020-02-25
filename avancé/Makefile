@@ -41,7 +41,7 @@ static: $(HTML) index.html
 output/%.html: %.md $(REVEAL_JS)
 	mkdir -p output/
 	python3 ../md2reveal/md2reveal.py --revealjs-url "reveal.js-$(REVEAL_JS_VERSION)" $< $@
-	[ -d static ] && cp -a static output
+	if [ -d static ]; then cp -a static output; fi
 
 .PHONY: rsync
 rsync: static
