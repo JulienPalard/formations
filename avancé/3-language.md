@@ -4,9 +4,9 @@
 
 Notes:
 
-- `is` pour les singletsons `None`, `True`, `False`.
+- `is` : pour les singletons `None`, `True`, `False`.
 - `id` : identifiant unique, l'adresse mémoire en CPython.
-- `is` sémantiquement est donc `id(left) == id(right)` mais attention au GC.
+- `is` : proche de `id(left) == id(right)` mais attention au GC.
 
 
 ## Parenthèse sur les singletons
@@ -70,7 +70,7 @@ Notes: Oui, il y a un else ici aussi.
 
 ## try, except, else, finally
 
-## Les décorateurs
+## Les gestionnaires de contexte
 
 ```python
 with open("/etc/hosts") as f:
@@ -81,6 +81,89 @@ Notes:
 
 En initiation on apprend a les utiliser.
 En avancé on apprend à en faire.
+
+
+## Les gestionnaires de contexte
+
+- ``__enter__``
+- ``__exit__``
+
+
+Notes:
+
+Expliquer le protocole.
+
+
+## Les gestionnaires de contexte
+
+```python
+class transaction:
+    def __init__(self, db):
+        self.db = db
+    def __enter__(self):
+        self.db.begin()
+    def __exit__(self, type, value, tb):
+        if type is None:
+            self.db.commit()
+        else:
+            self.db.rollback()
+```
+
+Notes:
+
+C'est un exemple de gestionnaire de contexte de transaction de base de donnée.
+
+Astuce, `__enter__` peut renvoyre un tuple, qu'on peut décomposer à
+droite du as, typiquement `ifile`, `ofile`.
+
+
+## Les décorateurs
+
+`@`
+
+Notes:
+
+En initiation on apprend a les utiliser.
+En avancé on apprend à en faire.
+
+
+## Les décorateurs
+
+```python3
+@clock
+def fib(...
+```
+
+équivaut à
+
+```python3
+fib = clock(fib)
+```
+
+Notes:
+
+Bien insister sur le fait que `@` est bien séparé de son
+`dotted_name`, pas n'importe quelle expression.  sur le fait qu'on
+peut les empiler (clarifier l'ordre).
+
+
+## Les décorateurs
+
+```python3
+@clock(deadline=10)
+def fib(...
+```
+
+équivaut à
+
+```python3
+fib = clock(deadline=10)(fib)
+```
+
+Notes:
+
+Rappeler que `()` n'est qu'un opérateur.
+
 
 ## Les décorateurs
 
@@ -123,17 +206,34 @@ Notes:
 `@route("/")` par exemple.
 
 
+## Les décorateurs
+
+- `@staticmethod`
+- `@classmethod`
+- `@property`
+
+
+## contextlib
+
+- `@suppress`
+- `@contextmanager`
+
+
+## contextlib
+
+Un décorateur peut-il être aussi un gestionnaire de contexte ?
+
+Est-ce utile ? Pertinent ?
+
+Notes:
+
+Oui, par exemple Django `@atomic` et with `atomic:`, `contextlib.ContextDecorator`.
+
+Parler des gestionnaires de contextes réutilisables, puis réentrants.
+
+
 # La suite
 
-
-- Langage, syntaxe, datamodel
-  - Les décorateurs, les décorateurs paramétrés
-    - global, nonlocal
-    - closures
-    - @property
-  - Les gestionnaires de contexte, montrer `with ... as (a, b):`
-  - Datamodel / Special method names (depends on classes) : en parler
-    en abordant les différents sujets.
 
 - L'encodage
  - Unicode, UTF-8
@@ -155,7 +255,12 @@ Notes:
 
 - Code quality
 - import this, explicit is better
+ - sémantique : les ternaires, les listes en intension, sont des
+   expressions, elles doivent être utilisées comme des expressions,
+   pas comme des instructions.
  - TDD
+ - pas de print, logging FTW.
+ - pas de "logging tiers", personne ne connaît, on reste sur `logging`.
  - -Xdev
  - black, ..., pass
  - pytest, doctest

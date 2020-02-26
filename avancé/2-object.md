@@ -67,3 +67,5 @@ class MyCls(metaclass=M):
         print(f"cls.__init__(*{args}, **{kwargs})")
         super().__init__(*args, **kwargs)
 ```
+
+Vous pouvez aussi utiliser un décorateur pour personaliser une classe.
