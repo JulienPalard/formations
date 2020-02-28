@@ -2,17 +2,14 @@
 
 Jour 3
 
----
 
 # Le packaging
 
-----
 
 ## Le packaging
 
 Restez dans les standards : `setup.py`, `setup.cfg`.
 
-----
 
 ## setup.py
 
@@ -25,7 +22,6 @@ __import__('setuptools').setup()
 - https://github.com/JulienPalard/teacher
 - https://setuptools.readthedocs.io/
 
-----
 
 ## pip
 
@@ -33,7 +29,6 @@ __import__('setuptools').setup()
 (test) $ pip install -e .
 ```
 
-----
 
 ## pytest
 
@@ -45,7 +40,6 @@ __import__('setuptools').setup()
 
 Notes: C'est l'occasion de parler de assert.
 
-----
 
 ## hypothesis
 
@@ -56,11 +50,13 @@ def test_fib(i):
     assert fib(i) == fib(i-1) + fib(i-2)
 ```
 
-----
 
 ## pdb
 
-----
+```
+breakpoint()
+```
+
 
 ## PYTHONDEVMODE=y
 
@@ -69,7 +65,6 @@ Et `./configure --with-pydebug`.
 Notes: Voir mon bashrc :] Surtout "viable" depuis la 3.8.
 
 
----
 
 # Les modules utiles
 
@@ -78,7 +73,6 @@ Notes: Voir mon bashrc :] Surtout "viable" depuis la 3.8.
 - csv (quand on a pas Pandas)
 - subprocess
 
----
 
 # La communauté
 
@@ -87,7 +81,6 @@ Notes: Voir mon bashrc :] Surtout "viable" depuis la 3.8.
 — Brett Cannon
 
 
-----
 
 ## Les PyCons
 

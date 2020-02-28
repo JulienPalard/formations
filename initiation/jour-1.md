@@ -162,7 +162,7 @@ False
 ```
 
 
-## Entiers
+## Nombres
 
 ```python
 >>> 42
@@ -170,7 +170,7 @@ False
 ```
 
 
-## Entiers
+## Nombres
 
 ```python
 >>> 18446744073709551616
@@ -178,22 +178,12 @@ False
 ```
 
 
-## Virgule flottante
+## Nombres
 
 ```python
 >>> 3.1415
 3.1415
 ```
-
-
-## Virgule flottante
-
-```python
->>> 0.1 + 0.2
-0.30000000000000004
-```
-
-https://0.30000000000000004.com
 
 
 ## Chaînes de caractères
@@ -215,14 +205,6 @@ dans un cours de C89.
 ```python
 >>> 'Colin "Bomber" Harris'
 'Colin "Bomber" Harris'
-```
-
-
-## Chaînes de caractères
-
-```python
->>> """Anne Elk's Theory est "mieux"."""
-'Anne Elk\'s Theory est "mieux".'
 ```
 
 
@@ -317,8 +299,6 @@ pas les clefs à l'avance, sinon c'est une classe.
 ```python
 >>> 10 + 10
 20
->>> 1j * 1j
-(-1+0j)
 >>> 10.5 + 2
 12.5
 ```
@@ -646,11 +626,6 @@ False
 ```
 
 
-## breakpoint
-
-Invoque un débugger Python, très utile, plus tard.
-
-
 ## help
 
 Affiche la documentation de n'importe quoi, essayez :
@@ -791,39 +766,6 @@ Méthode_de_Héron.
 
 :::
 
-## `break` et `continue`
-
-Break sert à interrompre une boucle, continue sert à passer à l'élément
-suivant. Qu'on soit dans un `for` ou dans un `while`.
-
-
-## `break`
-
-```python
->>> sq, gues = 5, 2
->>> while True:
-...     gues = (gues + sq / gues) / 2
-...     error = abs(sq - gues * gues)
-...     if error < 0.0001:
-...         break
->>> gues
-2.2360679779158037
-```
-
-
-## `continue`
-
-```python-repl
->>> for i in range(5):
-...     if i == 0:
-...         continue
-...     print(i)
-1
-2
-3
-4
-```
-
 
 ## Le `else`
 
@@ -867,26 +809,6 @@ Parler de `pass` et de `...`.
 
 :::
 
-
-## Les exceptions
-
-```python
->>> int("abc")
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-ValueError: invalid literal for int() with base 10: 'abc'
-```
-
-
-## Les exceptions : `try`
-
-```python
->>> try:
-...     int("abc")
-... except ValueError:
-...     print("Raté")
-Raté
-```
 
 # Les variables (suite)
 

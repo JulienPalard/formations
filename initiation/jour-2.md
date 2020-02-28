@@ -63,7 +63,6 @@ Elle devrait s'écrire sur une seule ligne, mais, vidéoprojecteur...
 :::
 
 
----
 
 # Les tranches
 
@@ -74,7 +73,6 @@ Notes:
 seq = list("ABCDEF")
 ```
 
-----
 
 # Les *slices*
 
@@ -87,7 +85,6 @@ seq = list("ABCDEF")
 'A'
 ```
 
-----
 
 # Les *slices*
 
@@ -96,7 +93,6 @@ seq = list("ABCDEF")
 ['A', 'B', 'C']
 ```
 
-----
 
 # Les *slices*
 
@@ -105,7 +101,6 @@ seq = list("ABCDEF")
 ['D', 'E', 'F']
 ```
 
-----
 
 # Les *slices*
 
@@ -114,7 +109,6 @@ seq = list("ABCDEF")
 ['A', 'B', 'C', 'D', 'E', 'F']
 ```
 
-----
 
 # Les *slices*
 
@@ -123,7 +117,6 @@ seq = list("ABCDEF")
 ['B', 'C', 'D', 'E', 'F']
 ```
 
-----
 
 # Les *slices*
 
@@ -132,7 +125,6 @@ seq = list("ABCDEF")
 'F'
 ```
 
-----
 
 # Les *slices*
 
@@ -141,7 +133,6 @@ seq = list("ABCDEF")
 ['A', 'B', 'C', 'D']
 ```
 
-----
 
 # Les *slices*
 
@@ -150,7 +141,6 @@ seq = list("ABCDEF")
 ['A', 'C', 'E']
 ```
 
-----
 
 # Les *slices*
 
@@ -159,17 +149,14 @@ seq = list("ABCDEF")
 ['F', 'E', 'D', 'C', 'B', 'A']
 ```
 
-----
 
 # Les *slices*
 
 `seq[<start>:<stop>:<step>]`
 
----
 
 # `*`, `**`
 
-----
 
 ## `*` pour aggréger
 
@@ -185,7 +172,6 @@ Notes:
 Équivaut à:
 begin, rest = seq[0], seq[1:]
 
-----
 
 ## `*` pour aggréger
 
@@ -197,7 +183,6 @@ begin, rest = seq[0], seq[1:]
 (1, 2, 3, 4, 5)
 ```
 
-----
 
 ## `*` pour déconstruire
 
@@ -206,7 +191,6 @@ begin, rest = seq[0], seq[1:]
 [0, 0, 0, 0, 1, 2]
 ```
 
-----
 
 ## `*` pour déconstruire
 
@@ -215,7 +199,6 @@ begin, rest = seq[0], seq[1:]
 0 1 2 3 4
 ```
 
-----
 
 ## `**` pour aggréger
 
@@ -229,7 +212,6 @@ x → 10
 y → 12
 ```
 
-----
 
 ## `**` pour déconstruire
 
@@ -240,7 +222,6 @@ y → 12
 {'path': './', 'pattern': '*.md'}
 ```
 
-----
 
 ## `**` pour déconstruire
 
@@ -255,11 +236,9 @@ x → 10
 y → 12
 ```
 
----
 
 # L'encodage
 
-----
 
 # encoder
 
@@ -272,7 +251,6 @@ b"L'\xc3\xa9t\xc3\xa9"
 [76, 39, 195, 169, 116, 195, 169]
 ```
 
-----
 
 # décoder
 
@@ -289,11 +267,9 @@ Parler d'unicode, d'UTF-8, de latin-1. Ne pas oubilier de mentionner
 que latin-1 et companie sont à taille fixe, et qu'UTF-8 est à taille
 variable.
 
----
 
 # Les classes
 
-----
 
 ## La syntaxe
 
@@ -310,7 +286,6 @@ Notes:
 Dédramatiser l'héritage, l'héritage multiple, les interfaces,
 les abstraites, les virtuelles, ...
 
-----
 
 ## À retenir
 
@@ -322,7 +297,6 @@ On pourrait trier les données en deux types :
 1) à toutes les étapes du programme.
 
 
-----
 
 ## Exemple
 
@@ -335,7 +309,6 @@ class Point:
 
 Notes: On connaît les attributs.
 
-----
 
 ## Exemple
 
@@ -345,7 +318,6 @@ Notes: On connaît les attributs.
 
 Notes: On ne les connaît pas.
 
-----
 
 ## Syntaxe → les méthodes
 
@@ -362,7 +334,6 @@ données. Pensez aux structs C.
 
 La données d'abord, l'algorithme après.
 
-----
 
 ## Syntaxe → le constructeur
 
@@ -379,7 +350,6 @@ Notes: Leur faire faire implémenter le __repr__, min, max, et mean.
 
 Leur faire faire 1000 tirages dans un Counter, avec des valeurs ENTIẼRES.
 
-----
 
 ## Utilisation
 
@@ -390,7 +360,6 @@ Leur faire faire 1000 tirages dans un Counter, avec des valeurs ENTIẼRES.
 4
 ```
 
-----
 
 ## Utilisation
 
@@ -407,11 +376,9 @@ Faire quelques exemples d'héritage simples avant de passer a la suite.
 
 super() considered super() !
 
----
 
 # pip, venvs, conda
 
-----
 
 ## pip
 
@@ -423,7 +390,6 @@ $ python3 -m pip install <package-name>
 
 Mais, ça installe où ?
 
-----
 
 ## venv
 
@@ -435,7 +401,6 @@ Notes:
 
 Pratique pour avoir des versions différentes.
 
-----
 
 ## venv
 
@@ -450,7 +415,6 @@ Insister sur le côté "trashable du venv" :
 - Ne rien mettre dans .venv
 - rm -fr .venv  # au moindre souci
 
-----
 
 ## conda
 
@@ -460,26 +424,22 @@ $ conda activate test
 (test) $ conda install numpy
 ```
 
----
 
 # Les bonnes pratiques
 
 Notes: Prérequis: pip et venv.
 
-----
 
 ## Bonnes habitudes
 
 > There are 2 hard problems in computer science: cache invalidation,
 > naming things, and off-by-1 errors.
 
-----
 
 ## Bonnes habitudes
 
 Pas plus de 7.
 
-----
 
 ## Garder son code lisible
 
@@ -489,7 +449,6 @@ deux à cette fonction et c'est réglé ».
 Notes: Deux ans après la fonction fait 800 lignes, et personne ne l'a
 vu venir. flake8 peut aider.
 
-----
 
 ## Garder son API évolutive
 
@@ -499,7 +458,6 @@ Notes:
 
 help(sum)
 
-----
 
 ## Les « linters »
 
@@ -517,7 +475,6 @@ Notes: Leur faire implémenter un `is_prime(x)` pour jouer avec.
 
 La règle des 7.
 
-----
 
 ## flake8
 
@@ -536,7 +493,6 @@ qu'une catégorie de problèmes.
 
 9 est trop bas, 15 est probablement un bon choix.
 
-----
 
 ## pylint
 
@@ -545,7 +501,6 @@ qu'une catégorie de problèmes.
 (test) $ pylint is_prime.py
 ```
 
-----
 
 ## mypy
 
@@ -558,7 +513,6 @@ qu'une catégorie de problèmes.
 
 Notes: --ignore-missing-imports
 
-----
 
 ## bandit
 
@@ -569,7 +523,6 @@ Bandit cherche les failles de sécurité...
 (test) $ bandit is_prime.py
 ```
 
-----
 
 ## tox
 
