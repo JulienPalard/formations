@@ -20,7 +20,6 @@ et quelques fonctions natives.
 Python est un langage de programmation permettant de s'exprimer de
 manière **concise** et **lisible**.
 
-----
 
 ## Qui utilise Python ?
 
@@ -814,7 +813,7 @@ suivant. Qu'on soit dans un `for` ou dans un `while`.
 
 ## `continue`
 
-```python
+```python-repl
 >>> for i in range(5):
 ...     if i == 0:
 ...         continue
@@ -888,67 +887,6 @@ ValueError: invalid literal for int() with base 10: 'abc'
 ...     print("Raté")
 Raté
 ```
-
-
-## La notation par intension
-
-C'est transformer ça :
-
-```python
->>> accumulator = []
->>> for i in range(10):
-...    accumulator.append(2 ** i)
->>> accumulator
-[1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
-```
-
-
-
-## La notation par intension
-
-en :
-
-```python
->>> [2 ** i for i in range(10)]
-[1, 2, 4, 8, 16, 32, 64, 128, 256, 512]
-```
-
-
-## La notation par intension
-
-Ou :
-
-```python
-def phi(n):
-    numbers = []
-    for i in range(n):
-        if math.gcd(i, n) == 1:
-            numbers.append(i)
-    return len(numbers)
-```
-
-
-## La notation par intension
-
-en :
-
-```python
-def phi(n):
-    return len(
-        [
-            i
-            for i in range(n)
-            if math.gcd(i, n) == i
-        ]
-    )
-
-```
-
-::: notes
-
-Elle devrait s'écrire sur une seule ligne, mais, vidéoprojecteur...
-
-:::
 
 # Les variables (suite)
 

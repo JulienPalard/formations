@@ -18,6 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
   <link rel="stylesheet" href="{{ revealjs_url }}/css/reset.css">
   <link rel="stylesheet" href="{{ revealjs_url }}/css/reveal.css">
+  <link rel="stylesheet" href="static/github.css">
   <style>
     {{ styles }}
   </style>
@@ -25,6 +26,7 @@
   <link rel="stylesheet" href="{{ revealjs_url }}/css/theme/{{ theme }}.css" id="theme">
 {% else %}
   <link rel="stylesheet" href="{{ revealjs_url }}/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" href="static/fifix.css">
 {% endif %}
 {% for css in css %}
   <link rel="stylesheet" href="{{ css }}"/>
@@ -59,7 +61,7 @@
   {% for slide in section %}
   <section data-markdown>
     <script type="text/template">
-      {{ slide }}
+{{ slide }}
     </script>
   </section>
   {% endfor%}

@@ -39,7 +39,7 @@ static: $(HTML) index.html
 
 # To discover pandoc variables: less $(dpkg -L pandoc-data | grep reveal)
 output/%.html: %.md $(REVEAL_JS)
-	mkdir -p output/
+	# cp -a output/reveal.js-$(REVEAL_JS_VERSION)/plugin/ output/
 	python3 ../md2reveal/md2reveal.py --revealjs-url "reveal.js-$(REVEAL_JS_VERSION)" $< $@
 	cp -a static output
 
@@ -49,4 +49,4 @@ rsync: static
 
 .PHONY: clean
 clean:
-	rm -fr output index.md index.html
+	rm -f output/*.html index.md index.html
