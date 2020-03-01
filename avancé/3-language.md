@@ -18,7 +18,7 @@ Un module est un singleton.
 
 ## String interning
 
-```python3
+```python
 a = "Bonjour !"
 b = "Bonjour !"
 a is b
@@ -113,7 +113,7 @@ Notes:
 
 C'est un exemple de gestionnaire de contexte de transaction de base de donnée.
 
-Astuce, `__enter__` peut renvoyre un tuple, qu'on peut décomposer à
+Astuce, `__enter__` peut renvoyer un tuple, qu'on peut décomposer à
 droite du as, typiquement `ifile`, `ofile`.
 
 
@@ -127,8 +127,6 @@ En initiation on apprend a les utiliser.
 En avancé on apprend à en faire.
 
 
-Notes:
-
 Just for doctest:
 ```python
 def clock(f=None, *args, **kwargs):
@@ -137,7 +135,7 @@ def clock(f=None, *args, **kwargs):
 
 ## Les décorateurs
 
-```python3
+```python
 @clock
 def fib(n):
     ...
@@ -145,7 +143,7 @@ def fib(n):
 
 équivaut à
 
-```python3
+```python
 fib = clock(fib)
 ```
 
@@ -158,7 +156,7 @@ peut les empiler (clarifier l'ordre).
 
 ## Les décorateurs
 
-```python3
+```python
 @clock(deadline=10)
 def fib(n):
     ...
@@ -166,7 +164,7 @@ def fib(n):
 
 équivaut à
 
-```python3
+```python
 fib = clock(deadline=10)(fib)
 ```
 
@@ -202,7 +200,7 @@ Faire ses décorateurs paramétrés.
 
 Notes:
 
-Leur faire implémenter @memoize qui prend paramètre une limite.
+Leur faire implémenter @memoize qui prend en paramètre une limite.
 
 En profiter pour parler de `global`, `nonlocal`, et des closures.
 

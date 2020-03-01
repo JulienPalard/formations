@@ -10,7 +10,7 @@ True
 Notes:
 
 Notez qu'en hexadecimal, deux symboles permet de représenter
-exactement 8 bites, donc exactement un octet.
+exactement 8 bits, donc exactement un octet.
 
 
 ## ASCII
