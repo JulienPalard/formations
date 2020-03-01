@@ -45,7 +45,7 @@ output/%.html: %.md $(REVEAL_JS)
 
 .PHONY: rsync
 rsync: static
-	rsync -vah --delete output/ mdk@mdk.fr:/var/www/mdk.fr/python-initiation/
+	rsync -vah --delete output/ mdk@mdk.fr:/var/www/mdk.fr/python-avancé/
 
 .PHONY: clean
 clean:
