@@ -28,7 +28,6 @@ Notes:
  - un nombre entier, #obvious, c'est géré par Python
    - ouvrir une parenthèse si nécessaire, avec 6 ** 6 ** 6
  - un float, en les faisant hésiter vu qu'ils sont « gérés par le CPU »
-   - ouvrir une parenthèse si nécessaire avec http:// .1 + .2
  - une fonction
  - une classe (et une instance)
  - range !
@@ -192,7 +191,7 @@ vérifications (que l'itérateur renvoyé soit bien un itérateur).
 ...     def __getitem__(self, i):
 ...         return i
 ...
->>> i = iter(A())
+>>> i = iter(Counter())
 >>> i
 <iterator object at ...>
 >>> next(i)
@@ -294,11 +293,21 @@ class Counter:
 6 7
 ```
 
+
 ## On recommence
 
 Notes:
 
 Cette fois avec un itérateur dédié.
+
+
+## Solution
+
+```python
+class BetterCounter:
+    def __iter__(self):
+        return CounterIterator()
+```
 
 
 ## Solution
@@ -311,15 +320,22 @@ class CounterIterator:
     def __next__(self):
         self.i += 1
         return self.i
+```
 
-class Counter:
-    def __iter__(self):
-        return CounterIterator()
 
-c = Counter()
-for i, j in zip(c, c):
-    if i > 5: break
-    print(i, j)
+## Solution
+
+```python
+>>> c = BetterCounter()
+>>> for i, j in zip(c, c):
+...     if i > 5: break
+...     print(i, j)
+0 0
+1 1
+2 2
+3 3
+4 4
+5 5
 ```
 
 Notes:
@@ -338,7 +354,7 @@ itérables.
 
 Attention, une fonction générateur renvoie un itérateur, (qu'on
 appelle un générateur), pas un itérable ! Et là on est bien contents
-qu'un itérateur ai un __iter__ qui se renvoie lui même, pour pouvoir
+qu'un itérateur ai un `__iter__` qui se renvoie lui même, pour pouvoir
 l'utiliser dans un for !
 
 
@@ -355,7 +371,7 @@ Oui.
 ## Exemple
 
 ```python
-class Counter:
+class GenCounter:
     def __iter__(self):
         i = 0
         while True:
@@ -381,13 +397,14 @@ Il ne s'exécute que si le `for` sort sans `break`.
 ## `else`
 
 ```python
-n = 13
-for i in range(2, n - 1):
-    if n % i == 0:
-        print(f"{n} is not prime")
-        break
-else:
-    print(f"{n} is prime")
+>>> n = 13
+>>> for i in range(2, n - 1):
+...     if n % i == 0:
+...         print(f"{n} is not prime")
+...         break
+... else:
+...     print(f"{n} is prime")
+13 is prime
 ```
 
 Notes:
@@ -405,7 +422,7 @@ Ah j'ai utilisé une f-string.
 
 ```python
 >>> f"{42:08b}"
-00101010
+'00101010'
 ```
 
 Notes:
@@ -439,7 +456,12 @@ Notes:
 
 Pour se remémorer ces choses, cherchez les PEPs, typiquement la 448, la 3132, ...
 
-Parler de `deep unpacking`.
+- Parler de `deep unpacking`.
+- Parler de `head, *rest`, ...
 
 
-## Ça peut rappeler *args et **kwargs
+## Ça peut rappeler `*args` et `**kwargs`
+
+Notes:
+
+Démo si nécessaire.

@@ -10,11 +10,20 @@
 
 ## La MRO
 
+Notes:
+
+Simple démo REPL : `bool.__mro__`.
+
 ## `super()` !
 
 Notes:
 
-Et la coopération.
+Et la coopération, démo avec deux classes : `TCPConnection` qui prend
+`host, port, timeout`, et `HTTPConnection` qui prend url, method, ...`
+
+Démo aussi : passer un argument de trop et voir que object() se plains.
+
+Antisèche : https://wyz.fr/3Z8
 
 
 ## Le protocole « descripteur »

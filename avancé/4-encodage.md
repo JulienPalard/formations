@@ -4,6 +4,7 @@
 
 ```python
 >>> bytes([0x01, 0x02, 0x03]) == b"\x01\x02\x03"
+True
 ```
 
 Notes:

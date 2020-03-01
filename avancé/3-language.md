@@ -127,11 +127,20 @@ En initiation on apprend a les utiliser.
 En avancé on apprend à en faire.
 
 
+Notes:
+
+Just for doctest:
+```python
+def clock(f=None, *args, **kwargs):
+    return lambda *args: None
+```
+
 ## Les décorateurs
 
 ```python3
 @clock
-def fib(...
+def fib(n):
+    ...
 ```
 
 équivaut à
@@ -151,7 +160,8 @@ peut les empiler (clarifier l'ordre).
 
 ```python3
 @clock(deadline=10)
-def fib(...
+def fib(n):
+    ...
 ```
 
 équivaut à

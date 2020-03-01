@@ -1,5 +1,4 @@
-SRCS := $(wildcard *-*.md)
-HTML := $(addprefix output/,$(SRCS:.md=.html))
+SRCS := $(sort $(wildcard *-*.md))
 REVEAL_JS_VERSION := 3.9.2
 REVEAL_JS := output/reveal.js-$(REVEAL_JS_VERSION)/up-to-date
 
@@ -22,25 +21,16 @@ $(REVEAL_JS):
 test:
 	python test.py *.md
 
-index.md: $(SRCS)
-	for file in *-*.md; \
-	    do printf "# [%s](%s)\n\n" "$$file" "$$(printf "%s" "$$file" | sed s/.md/.html/)"; \
-	    grep -h '^#' "$$file" | sed 's/^# /- /;s/^## /    - /'; \
-	done | uniq > $@
-
-index.html: index.md
-	mkdir -p output
-	python -m markdown -o html $< -f $@
-
 .PHONY: static
-static: $(HTML) index.html
-	rm -f output/index.html
-	cp index.html output/index.html
+static: output/index.html
+
+output/index.md: $(SRCS)
+	mkdir -p output/
+	cat $(SRCS) > output/index.md
 
 # To discover pandoc variables: less $(dpkg -L pandoc-data | grep reveal)
-output/%.html: %.md $(REVEAL_JS)
-	mkdir -p output/
-	python3 ../md2reveal/md2reveal.py --revealjs-url "reveal.js-$(REVEAL_JS_VERSION)" $< $@
+output/index.html: output/index.md $(REVEAL_JS)
+	python3 ../md2reveal/md2reveal.py --revealjs-url "reveal.js-$(REVEAL_JS_VERSION)" output/index.md output/index.html
 	if [ -d static ]; then cp -a static output; fi
 
 .PHONY: rsync
@@ -49,4 +39,4 @@ rsync: static
 
 .PHONY: clean
 clean:
-	rm -fr output index.md index.html
+	rm -fr output
