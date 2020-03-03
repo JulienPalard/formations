@@ -3,7 +3,7 @@
 ## Les octets d'abord
 
 ```python
->>> bytes([0x01, 0x02, 0x03]) == b"\x01\x02\x03"
+>>> bytes([0x01, 0x02]) == b"\x01\x02"
 True
 ```
 
@@ -49,3 +49,9 @@ Couvre environ 150 langues (environ toutes).
 
 Calque latin1 de 0 à 255, même C0 (controles bien définis) et C1 (controles
 ignorés, de 0x80 à 0x9F).
+
+
+## encoder, décoder
+
+- `str.encode` → `bytes`
+- `bytes.decode` → `str`

@@ -25,9 +25,6 @@ Souci : Jour 1 pytest nécessite Jour 2 pip...
 - Packaging
  - cookiecutter : docs/, tests/, README, setup.cfg, setup.py, ...
 
-- List comprehension avancé
-  - Double for, double if, walrus
-
 - Multiprocessing / Multithreading / Asyncio
  - IO Bound vs CPU Bound
  - Locks vs Queues

@@ -238,3 +238,69 @@ Notes:
 Oui, par exemple Django `@atomic` et with `atomic:`, `contextlib.ContextDecorator`.
 
 Parler des gestionnaires de contextes réutilisables, puis réentrants.
+
+
+## The Walrus Operator
+
+`:=`
+
+Notes:
+
+Démo REPL avec re.match, rappeler que les parenthèses sont souvent
+obligatoires.
+
+
+## Les listes en intension
+
+```python
+l = []
+for i in range(5):
+  if i % 2 == 0:
+    for j in range(5):
+      if j % 2 == 0:
+        for k in range(5):
+          if k % 2 == 0:
+            if i + j + k == 4:
+              l.append((i,j,k))
+```
+
+## Les listes en intension
+
+```python
+>>> [(i, j, k)
+...  for i in range(5)
+...  if i % 2 == 0
+...  for j in range(5)
+...  if j % 2 == 0
+...  for k in range(5)
+...  if k % 2 == 0
+...  if i + j + k == 4]
+[(0, 0, 4), (0, 2, 2), (0, 4, 0), (2, 0, 2), (2, 2, 0), (4, 0, 0)]
+```
+
+Notes:
+
+Juste pour doctest:
+
+```python
+factors = lambda i: [i]
+```
+
+## Les listes en intension
+
+```python
+{x: factors(x)
+ for x in range(1000)
+ if len(factors(x)) == 3}
+```
+
+Notes: si factors est lent (spoiler: il l'est), c'est du gâchis.
+
+
+## Les listes en intension
+
+```python
+{x: prime_factors
+ for x in range(1000)
+ if len(prime_factors := factors(x)) == 3}
+```
