@@ -19,7 +19,7 @@ __import__('setuptools').setup()
 
 ## setup.cfg
 
-- https://github.com/JulienPalard/teacher
+- https://github.com/JulienPalard/oeis
 - https://setuptools.readthedocs.io/
 
 
@@ -43,7 +43,7 @@ Notes: C'est l'occasion de parler de assert.
 
 ## hypothesis
 
-```
+```python
 @given(integers(min_value=2,
                 max_value=1000))
 def test_fib(i):
@@ -84,4 +84,4 @@ Notes: Voir mon bashrc :] Surtout "viable" depuis la 3.8.
 
 ## Les PyCons
 
-La PyConFr ! Les meetups locaux.
+La PyConFr (tous les ans, sauf cette année) ! Les meetups locaux hors période de pandémie !

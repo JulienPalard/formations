@@ -86,7 +86,7 @@ seq = list("ABCDEF")
 ```
 
 
-# Les *slices*
+## Les *slices*
 
 ```python
 >>> seq[0:3]
@@ -94,7 +94,7 @@ seq = list("ABCDEF")
 ```
 
 
-# Les *slices*
+## Les *slices*
 
 ```python
 >>> seq[3:6]
@@ -102,7 +102,7 @@ seq = list("ABCDEF")
 ```
 
 
-# Les *slices*
+## Les *slices*
 
 ```python
 >>> seq[:]
@@ -110,7 +110,7 @@ seq = list("ABCDEF")
 ```
 
 
-# Les *slices*
+## Les *slices*
 
 ```python
 >>> seq[1:]
@@ -118,7 +118,7 @@ seq = list("ABCDEF")
 ```
 
 
-# Les *slices*
+## Les *slices*
 
 ```python
 >>> seq[-1]
@@ -126,7 +126,7 @@ seq = list("ABCDEF")
 ```
 
 
-# Les *slices*
+## Les *slices*
 
 ```python
 >>> seq[:-2]
@@ -134,7 +134,7 @@ seq = list("ABCDEF")
 ```
 
 
-# Les *slices*
+## Les *slices*
 
 ```python
 >>> seq[0:5:2]
@@ -142,7 +142,7 @@ seq = list("ABCDEF")
 ```
 
 
-# Les *slices*
+## Les *slices*
 
 ```python
 >>> seq[::-1]
@@ -150,7 +150,7 @@ seq = list("ABCDEF")
 ```
 
 
-# Les *slices*
+## Les *slices*
 
 `seq[<start>:<stop>:<step>]`
 
@@ -158,7 +158,9 @@ seq = list("ABCDEF")
 # `*`, `**`
 
 
-## `*` pour aggréger
+## `*`
+
+Signifie « plusieurs », comme dans une liste ou un *n*-uplet.
 
 ```python
 >>> begin, *rest = range(5)
@@ -169,11 +171,17 @@ seq = list("ABCDEF")
 ```
 
 Notes:
+
+Attention, initiation : Le but est de savoir que ça existe, savoire le
+lire.
+
 Équivaut à:
 begin, rest = seq[0], seq[1:]
 
 
-## `*` pour aggréger
+
+
+## `*`
 
 ```python
 >>> def sum(*args):
@@ -184,7 +192,7 @@ begin, rest = seq[0], seq[1:]
 ```
 
 
-## `*` pour déconstruire
+## `*`
 
 ```python
 >>> [0, 0, 0, *range(3)]
@@ -192,7 +200,7 @@ begin, rest = seq[0], seq[1:]
 ```
 
 
-## `*` pour déconstruire
+## `*`
 
 ```python
 >>> print(*range(5))
@@ -200,7 +208,10 @@ begin, rest = seq[0], seq[1:]
 ```
 
 
-## `**` pour aggréger
+## `**`
+
+Signifie « plusieurs, nommés », comme dans un dictionnaire.
+
 
 ```python
 >>> def p(**kwargs):
@@ -213,7 +224,7 @@ y → 12
 ```
 
 
-## `**` pour déconstruire
+## `**`
 
 ```python
 >>> defaults = {"path": "./",
@@ -223,7 +234,7 @@ y → 12
 ```
 
 
-## `**` pour déconstruire
+## `**`
 
 ```python
 >>> def p(x, y):
@@ -240,7 +251,7 @@ y → 12
 # L'encodage
 
 
-# encoder
+## encoder
 
 C'est transformer une chaîne en octets, pour son transport ou stockage :
 
@@ -252,7 +263,7 @@ b"L'\xc3\xa9t\xc3\xa9"
 ```
 
 
-# décoder
+## décoder
 
 C'est le contraire ...
 
@@ -283,18 +294,24 @@ class LeNomDeLaClasse:
 
 Notes:
 
-Dédramatiser l'héritage, l'héritage multiple, les interfaces,
-les abstraites, les virtuelles, ...
+Dédiaboliser l'héritage, l'héritage multiple, les interfaces,
+les classes abstraites, les méthodes virtuelles, ...
 
 
 ## À retenir
 
 On pourrait trier les données en deux types :
 
-- celles dont on connaît¹ les attributs → classes
+- celles dont on connaît les attributs → classes
 - celles dont on ne connaît pas les attributs → dictionnaires
 
-1) à toutes les étapes du programme.
+
+Notes:
+
+Le contexte, le métier, les bibliothèques utilisées peuvent générer
+des cas particuliers, cette règle n'est pas absolue.
+
+préciser peut être : "dont on connaît à toutes les étapes du programme".
 
 
 
@@ -313,7 +330,11 @@ Notes: On connaît les attributs.
 ## Exemple
 
 ```python
->>> headers = {"X-Csrf-Tok": "i8XNjC4"}
+>>> ISIN = {
+...   "GLE": "FR0000130809",
+...   "PARRO": "FR0004038263",
+...   "AM": "FR0000121725",
+... }
 ```
 
 Notes: On ne les connaît pas.
