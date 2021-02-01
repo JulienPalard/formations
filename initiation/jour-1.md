@@ -1,10 +1,21 @@
-# Python 3.8
+# Python 3.8 & 3.9
 
-## Python 3.8 en ~38 minutes
+::: note
+
+Juste pour le doctest:
+```python
+x, y = 0, 0
+```
+
+
+
+## Python 3.8 & 3.9
 
 par
 
 Julien Palard <julien@palard.fr>
+
+https://mdk.fr
 
 ::: notes
 
@@ -13,7 +24,6 @@ Introduce yourself!
 Ça couvre les types de bases survol quelques stricutres de contrôle,
 et quelques fonctions natives.
 
-:::
 
 ## Python : Introduction
 
@@ -49,7 +59,6 @@ https://python.org
 - https://docs.python.org/3/using/mac.html
 - On windows, don't install from the Microsoft Store.
 
-:::
 
 ## Démarrer un interpréteur
 
@@ -70,7 +79,6 @@ python3
 - Définir « Interpréteur »
 - `py` sur Windows trouve l'interpréteur le plus récent.
 
-:::
 
 ## L'interpréteur
 
@@ -91,7 +99,6 @@ Et oui, même après 10 ans de Python, on l'utilise encore.
 
 Expliquer les parties "R", "E", "P", "L".
 
-:::
 
 ## L'interpréteur
 
@@ -122,7 +129,6 @@ nombre entier, l'a stocké dans sa représentation interne, un objet,
 puis nous l'a représenté à son tour avec deux caractères `1` et `0`
 pour qu'on puisse le lire.
 
-:::
 
 ## C'est votre nouvelle calculatrice
 
@@ -145,7 +151,6 @@ ZeroDivisionError: division by zero
 
 Lisez *TOUJOURS* la dernière ligne en premier !
 
-:::
 
 # Types natifs
 
@@ -198,7 +203,6 @@ False
 Expliquer ce qu'est une chaîne, sans parler de pointeurs, on est pas
 dans un cours de C89.
 
-:::
 
 ## Chaînes de caractères
 
@@ -206,6 +210,10 @@ dans un cours de C89.
 >>> 'Colin "Bomber" Harris'
 'Colin "Bomber" Harris'
 ```
+
+::: notes
+
+Les triples quotes apparaissent jour 2.
 
 
 ## Listes
@@ -219,7 +227,6 @@ dans un cours de C89.
 
 La représentation est souvent du Python valide.
 
-:::
 
 ## Listes
 
@@ -232,7 +239,6 @@ La représentation est souvent du Python valide.
 
 Attention à ne pas abuser du mélange autorisé des types.
 
-:::
 
 ## Listes
 
@@ -245,7 +251,6 @@ Attention à ne pas abuser du mélange autorisé des types.
 
 Une liste c'est de la donnée, ce qu'elle contint c'est de la donnée.
 
-:::
 
 ## *n*-uplets, *tuple*
 ```python
@@ -262,7 +267,6 @@ C'est la virgule qui fait le n-uplet, pas les parenthèses.
 Pensez au *n*-uplet comme une structure C, *a record*, pas comme une
 liste, par exemple des coordonnées : (x, y).
 
-:::
 
 ## Ensembles
 
@@ -276,13 +280,12 @@ liste, par exemple des coordonnées : (x, y).
 
 Un ensemble n'est pas ordonné.
 
-:::
 
 ## Dictionnaires
 
 ```python
->>> {"Zero": 0, "Un": 1, "Deux": 2}
-{'Zero': 0, 'Un': 1, 'Deux': 2}
+{"Aval": "Qui se trouve du côté de la vallée.",
+ "Amont": "Qui se trouve du côté de la montagne."}
 ```
 
 ::: notes
@@ -290,7 +293,6 @@ Un ensemble n'est pas ordonné.
 On associe une valeur à une clé. Utile *seulement* si on ne connaît
 pas les clefs à l'avance, sinon c'est une classe.
 
-:::
 
 # Les opérateurs
 
@@ -330,7 +332,6 @@ pas les clefs à l'avance, sinon c'est une classe.
 
 It's called concatenation of strings.
 
-:::
 
 ## Les opérateurs
 
@@ -343,7 +344,6 @@ It's called concatenation of strings.
 
 Tant qu'il n'y a pas d'ambiguité, c'est implémenté.
 
-:::
 
 ## Les opérateurs
 
@@ -370,7 +370,6 @@ False
 Déconseiller l'utilisation de `is`, de toute facons PyLint leur dira
 quand l'utiliser.
 
-:::
 
 ## Logique
 
@@ -411,7 +410,6 @@ True
 
 C'est une union.
 
-:::
 
 ## Travailler avec les ensembles
 
@@ -424,7 +422,6 @@ C'est une union.
 
 Une intersection.
 
-:::
 
 ## Mais en cas d'ambiguité…
 
@@ -464,7 +461,6 @@ TypeError: unsupported operand type(s) for +: 'set' and 'set'
 JAMAIS dire: 10 est assigné à « x ».
 JAMAIS JAMAIS dire : On met 10 dans « x ».
 
-:::
 
 ## Affectation multiple
 
@@ -493,7 +489,6 @@ On réutilise le nom pour accéder au contenu.
 
 Bien prendre le temps d'expliquer la syntaxe ici.
 
-:::
 
 ## Accès par clé
 
@@ -541,13 +536,14 @@ True
 ## Sur les dictionnaires
 
 ```python
->>> d = {"zero": 0, "un": 1, "deux": 2}
+>>> d = {"Aval": "Du côté de la vallée.",
+...      "Amont": "Du côté de la montagne."}
 >>> d.keys()
-dict_keys(['zero', 'un', 'deux'])
+dict_keys(['Aval', 'Amont'])
 >>> d.values()
-dict_values([0, 1, 2])
+dict_values(['Du côté de la vallée.', 'Du côté de la montagne.'])
 >>> d.items()
-dict_items([('zero', 0), ('un', 1), ('deux', 2)])
+dict_items([('Aval', 'Du côté de la vallée.'), ('Amont', 'Du côté de la montagne.')])
 ```
 
 
@@ -565,7 +561,6 @@ zero
 
 C'est leur première fonction, s'attarder sur la syntaxe !
 
-:::
 
 ## print
 
@@ -580,7 +575,20 @@ En effet, le P de REPL étant `print`, le print est implicite dans un REPL.
 
 Mais le REPL sert a tester : on peut bien tester print dans le REPL.
 
-:::
+## str, list, int, ...
+
+```python
+>>> str(12)
+'12'
+```
+
+## str, list, int, ...
+
+```python
+>>> int("12")
+12
+```
+
 
 ## len
 
@@ -640,17 +648,13 @@ Affiche la documentation de n'importe quoi, essayez :
 Accepte aussi une variable mais attention: si la variable est une
 chaîne, help n'affichera pas la documentation des chaînes.
 
-:::
 
 ## enumerate
 
 ```python
->>> txt = """Zero
-... Un
-... Deux"""
->>> lines = txt.split("\n")
->>> list(enumerate(lines))
-[(0, 'Zero'), (1, 'Un'), (2, 'Deux')]
+>>> jours = ["lundi", "mardi", "mercredi"]
+>>> list(enumerate(jours))
+[(0, 'lundi'), (1, 'mardi'), (2, 'mercredi')]
 ```
 
 
@@ -670,7 +674,6 @@ Appeler `exit()` quitte simplement le REPL.
 
 Préferer `sys.exit()` dans un programme.
 
-:::
 
 # Les instructions
 
@@ -693,19 +696,48 @@ Notez le `...`, on a du appyer un coup en « entrée » pour fermer ce bloc.
 1 était premier, avant, mais ça casse le théorème « Every possible
 whole number can be written as a _unique_ product of primes ».
 
-:::
+
+## Le `else`
+
+Après un bloc `if`, on peut ajouter un bloc `else` :
+
+```python
+if x % 2 == 0:
+    print("x est pair.")
+else:
+    print("x est impair.")
+```
+
+
+## Le `elif`
+
+Après un `if`, on peut ajouter un ou des bloc `elif` :
+
+```python
+if (x, y) == (0, 0):
+    print("Point à l'origine")
+elif x == 0:
+    print("Point sur l'abscisse")
+elif y == 0:
+    print("Point sur l'ordonnée")
+else:
+    print("Point ailleurs")
+```
+
+::: notes
+
+Parler de `pass` et de `...`.
+
 
 ## for
 
 ```python
->>> d = {"zero": 0, "un": 1, "deux": 2}
->>> for number in d:
+>>> for number in 1, 2, 3:
 ...     print(number)
 ...
-zero
-un
-deux
->>>
+1
+2
+3
 ```
 
 
@@ -762,52 +794,7 @@ cependant dans quelques cas:
 
 Je sais pour la faute de frappe sur guess, mais sinon ça dépasse.
 
-Méthode_de_Héron.
-
-:::
-
-
-## Le `else`
-
-Après un bloc `if`, on peut ajouter un bloc `else` :
-
-```python
-def fib(x):
-    if x < 2:
-        return 1
-    else:
-        return fib(x - 1) + fib(x - 2)
-```
-
-::: notes
-
-(Juste pour doctest :)
-```python
->>> [fib(x) for x in range(10)]
-[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
-```
-
-:::
-
-## Le `elif`
-
-Après un `if`, on peut ajouter un ou des bloc `elif` :
-
-```python
-def is_prime(n):
-    if n == 2:
-        return True
-    elif n == 1 or n % 2 == 0:
-        return False
-    else:
-        ...
-```
-
-::: notes
-
-Parler de `pass` et de `...`.
-
-:::
+Méthode de Héron.
 
 
 # Les variables (suite)
@@ -831,7 +818,6 @@ On peut « coller » plusieurs étiquettes à une même valeur.
 
 C'est pour ça que pour `n = 10` on dit "n est assigné à 10", et non "10 est mis dans n".
 
-:::
 
 ## La portée des variables
 
@@ -844,7 +830,6 @@ Dans une fonction :
 Pour l'accès pensez à `print` par exemple, l'utiliser n'en fait pas une locale.
 Une variable ne peut *presque* jamais ne pas contenir de valeur, et on ne peut pas la "déclarer".
 
-:::
 
 ## Immuables vs modifiables
 
@@ -857,7 +842,6 @@ On dit qu'elles sont immuables (*immutable* en anglais).
 Attention, les variables sont toujours ... variables, nous n'avons pas
 de constantes.
 
-:::
 
 ## Les types modifiables
 
@@ -885,7 +869,6 @@ est confortable (clef de dictionnaires par exemple, ou la garantie
 qu'un appel à une fonction avec une chaîne en paramètre ne va pas la
 modifier).
 
-:::
 
 ## La vérité
 
@@ -907,9 +890,8 @@ Attention à la sémantique : `if foo` est différent de `if foo is True`.
 Leur rappeler que c'est pylint qui leur dira quand utiliser `is`, leur
 dire quand même : pour `True`, `False`, et `None`.
 
-:::
 
-# Les fonctions (suite)
+# Les fonctions
 
 Créer ses propres fonctions
 
@@ -917,10 +899,8 @@ Créer ses propres fonctions
 ## Syntaxe
 
 ```python
-def la_fonction(ses_paramètres):
-    """Une courte description.
-    """
-    # Le corps de la fonction
+def ma_fonction(ses_paramètres):
+    ...  # Le corps de la fonction
 ```
 
 ::: notes
@@ -930,22 +910,20 @@ Passer du temps sur la syntaxe et le vocabulaire
  - paramètre, argument
  - `return`
 
-:::
 
 ## Paramètres
 
 Une fonction prend des paramètres et renvoie une valeur.
 
 ```python
-def ones_in_binary(value):
-    as_binary = bin(value)
-    return as_binary.count("1")
+def is_even(value):
+    return value % 2 == 0
 ```
 
 ## Arguments
 
 On peut donc lui donner des arguments :
 ```python
->>> print(ones_in_binary(42))
-3
+>>> print(is_even(10))
+True
 ```

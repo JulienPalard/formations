@@ -5,6 +5,11 @@ https://mdk.fr/python-initiation/
 
 ## TODO
 
+- http://scipy.github.io/old-wiki/pages/Tentative_NumPy_Tutorial
+- `*` peut être vu comme de l'unpacking vers des noms qu'on ne voit pas.
+- Ajouter une slide sur "jamais de \ en fin de ligne", il y a toujours
+  un moyen plus lisible.
+- https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html Why numbering should start at zero
 - Les imports
 - Attention avec `def fib` jour 1 on montre les fonctions avant de les
   avoir expliquées.
@@ -12,6 +17,11 @@ https://mdk.fr/python-initiation/
 
 
 ## Notes
+
+Les arguments par defaut conservés peuvent service de memoizer:
+
+    def fib(x, memo={}):
+        ...
 
 **Aucune** fonction n'est montée avant le 3, (à part des méthodes sur
 les types natifs).

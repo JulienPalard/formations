@@ -44,6 +44,9 @@ Notes: C'est l'occasion de parler de assert.
 ## hypothesis
 
 ```python
+from hypothesis import given
+from hypothesis.strategies import integers
+
 @given(integers(min_value=2,
                 max_value=1000))
 def test_fib(i):
