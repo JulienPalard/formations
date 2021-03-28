@@ -87,7 +87,7 @@ Raté
 ```
 
 
-# La notation par intension
+# La notation en compréhension
 
 C'est transformer ça :
 
@@ -101,7 +101,7 @@ C'est transformer ça :
 
 
 
-## La notation par intension
+## La notation en compréhension
 
 en :
 
@@ -111,7 +111,7 @@ en :
 ```
 
 
-## La notation par intension
+## La notation en compréhension
 
 Ou :
 
@@ -125,7 +125,7 @@ def phi(n):
 ```
 
 
-## La notation par intension
+## La notation en compréhension
 
 en :
 

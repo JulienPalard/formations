@@ -1,5 +1,7 @@
 # Python Introduction Slides
 
+https://github.com/nteract/testbook
+
 https://mdk.fr/python-initiation/
 
 
@@ -41,7 +43,7 @@ Souci : Jour 1 pytest nécessite Jour 2 pip...
 
 - Code quality
 - import this, explicit is better
- - sémantique : les ternaires, les listes en intension, sont des
+ - sémantique : les ternaires, les listes en compréhension, sont des
    expressions, elles doivent être utilisées comme des expressions,
    pas comme des instructions.
  - TDD

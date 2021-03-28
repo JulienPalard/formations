@@ -250,7 +250,7 @@ Démo REPL avec re.match, rappeler que les parenthèses sont souvent
 obligatoires.
 
 
-## Les listes en intension
+## Les listes en compréhension
 
 ```python
 l = []
@@ -264,7 +264,7 @@ for i in range(5):
               l.append((i,j,k))
 ```
 
-## Les listes en intension
+## Les listes en compréhension
 
 ```python
 >>> [(i, j, k)
@@ -286,7 +286,7 @@ Juste pour doctest:
 factors = lambda i: [i]
 ```
 
-## Les listes en intension
+## Les listes en compréhension
 
 ```python
 {x: factors(x)
@@ -297,7 +297,7 @@ factors = lambda i: [i]
 Notes: si factors est lent (spoiler: il l'est), c'est du gâchis.
 
 
-## Les listes en intension
+## Les listes en compréhension
 
 ```python
 {x: prime_factors

@@ -1,6 +1,6 @@
 # Python 3.8 & 3.9
 
-::: note
+::: notes
 
 Juste pour le doctest:
 ```python
@@ -41,6 +41,10 @@ YouTube, Dropbox, Reddit, Instagram, Spotify, NASA…
 ## Combien utilisent Python ?
 
 ![](static/Evolution_of_Python.png)
+
+::: notes
+
+https://insights.stackoverflow.com/trends
 
 
 ## Installation
@@ -681,10 +685,8 @@ Préferer `sys.exit()` dans un programme.
 ## if
 
 ```python
->>> if 1 in {2, 3, 5, 7, 11}:
-...     print("1 serait-il premier ?")
-...
->>>
+if 1 in {2, 3, 5, 7, 11}:
+    print("1 serait-il premier ?")
 ```
 
 ::: notes
@@ -819,18 +821,6 @@ On peut « coller » plusieurs étiquettes à une même valeur.
 C'est pour ça que pour `n = 10` on dit "n est assigné à 10", et non "10 est mis dans n".
 
 
-## La portée des variables
-
-Dans une fonction :
-- Si on ne fait qu'accéder, ce sera une globale.
-- Si on affecte, c'est une locale.
-
-::: notes
-
-Pour l'accès pensez à `print` par exemple, l'utiliser n'en fait pas une locale.
-Une variable ne peut *presque* jamais ne pas contenir de valeur, et on ne peut pas la "déclarer".
-
-
 ## Immuables vs modifiables
 
 Certains types sont modifiables, d'autres, non.
@@ -910,6 +900,14 @@ Passer du temps sur la syntaxe et le vocabulaire
  - paramètre, argument
  - `return`
 
+## Exemple
+
+```python
+def add(a, b):
+    return a + b
+
+print(add(1, 2))
+```
 
 ## Paramètres
 
@@ -926,4 +924,24 @@ On peut donc lui donner des arguments :
 ```python
 >>> print(is_even(10))
 True
+```
+
+## La portée des variables
+
+Dans une fonction :
+- Si on ne fait qu'accéder, ce sera une globale.
+- Si on affecte, c'est une locale.
+
+::: notes
+
+Pour l'accès pensez à `print` par exemple, l'utiliser n'en fait pas une locale.
+Une variable ne peut *presque* jamais ne pas contenir de valeur, et on ne peut pas la "déclarer".
+
+
+## Importer des modules
+
+```python
+import math
+
+print(math.factorial(42))
 ```
