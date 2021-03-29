@@ -1,7 +1,4 @@
 SRCS := $(sort $(wildcard *-*.md))
-REVEAL_JS_VERSION := 3.9.2
-REVEAL_JS := output/reveal.js-$(REVEAL_JS_VERSION)/up-to-date
-
 
 .PHONY: help
 help:
@@ -11,12 +8,6 @@ help:
 	@echo "  make rsync  # rsync to prod"
 	@echo "  make clean"
 
-$(REVEAL_JS):
-	mkdir -p output
-	cd output; wget https://github.com/hakimel/reveal.js/archive/$(REVEAL_JS_VERSION).tar.gz
-	cd output; tar -xzf $(REVEAL_JS_VERSION).tar.gz
-	touch $(REVEAL_JS)
-
 .PHONY: check
 test:
 	python test.py *.md
@@ -24,14 +15,12 @@ test:
 .PHONY: static
 static: output/index.html
 
-output/index.md: $(SRCS)
-	mkdir -p output/
-	cat $(SRCS) > output/index.md
+%.html: %.md
+	mdtoreveal $< -o $@
 
-# To discover pandoc variables: less $(dpkg -L pandoc-data | grep reveal)
-output/index.html: output/index.md $(REVEAL_JS)
-	python3 ../md2reveal/md2reveal.py --revealjs-url "reveal.js-$(REVEAL_JS_VERSION)" output/index.md output/index.html
-	if [ -d static ]; then cp -a static output; fi
+output/index.md: $(SRCS)
+	mkdir -p output
+	cat $(SRCS) > output/index.md
 
 .PHONY: rsync
 rsync: static

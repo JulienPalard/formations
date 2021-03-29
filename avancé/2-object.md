@@ -39,6 +39,8 @@ Et `__delete__` et `__setname__`.
 - owner, c'est le type, il est toujours connu donc "devrait" toujours être donné
 - Si instance n'est pas donnée, c'est qu'on accède à l'attribut sur le type.
 
+Exercice : https://www.hackinscience.org/exercises/temperature-class
+
 
 ## Métaclasses
 

@@ -52,6 +52,8 @@ combien y'en-a-il ? Moi 23. Combien `object` en a-il ?
 True
 ```
 
+Ou `help(42 .to_bytes)`.
+
 Notes:
 
 Ouvrir une parenthèse sur la notion de vérité, ce qui est :
@@ -69,6 +71,8 @@ Notes:
 
 Faire le schéma à deux colonnes: noms → mémoire.
 
+https://dreampuf.github.io/GraphvizOnline/
+
 En Python avancé bien insister sur le fait qu'un objet en mémoire à
 une adresse.
 
@@ -76,7 +80,7 @@ Insister sur le fait qu'un paramètre de fonction n'est qu'un nom. On a
 donc pas de « passage par valeur » chez nous.
 
 Bien préciser qu'on ne peut pas « délier » un nom pour le faire
-pointer sur rien (en ce cas on le fait pointer sur None).
+pointer sur rien (en ce cas on le fait pointer sur `None`).
 
 
 ## Pendant qu'on parle des noms

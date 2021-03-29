@@ -294,7 +294,8 @@ factors = lambda i: [i]
  if len(factors(x)) == 3}
 ```
 
-Notes: si factors est lent (spoiler: il l'est), c'est du gâchis.
+Notes: si factors est lent (spoiler: il l'est), c'est du gâchis,
+utiliser un walrus !
 
 
 ## Les listes en compréhension
