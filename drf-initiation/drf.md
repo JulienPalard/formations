@@ -10,7 +10,6 @@ https://mdk.fr
 
 Introduce yourself!
 
-
 # Les bonnes bases : Python
 
 `*args, **kwargs`
@@ -26,6 +25,30 @@ La MRO.
 On travaille dans un venv.
 
 
+## Les bonnes bases : Python
+
+La gestion des dépendances avec `pip-compile`.
+
+
+## Pratique
+
+Rédiger un script, en ligne de commande, permettant de tester si un
+site internet est en bonne santé :
+
+```bash
+$ python checkurl.py mdk.fr
+Redirection HTTPS: OK
+Status: OK (200)
+Response time: OK (0.125s < 1s)
+Certificate: OK (expires in 68 days)
+HSTS: OK (max-age=63072000; always)
+```
+
+::: notes
+
+versionnez !
+
+
 ## Les bonnes bases : Django
 
 ```bash
@@ -34,6 +57,20 @@ django-admin startproject demo
 cd demo
 ./manage.py migrate
 ```
+
+::: notes
+
+Leur faire faire le tour du propriétaire.
+
+
+## Vocabulaire
+
+Dans Django on va avoir des `models`, des `vues`, et des `urls`.
+
+::: notes
+
+Peut être aussi des templates, et l'admin.
+
 
 ## Debug toolbar
 
@@ -54,45 +91,144 @@ Vous devez maintenant avoir une interface d'administration qui
 fonctionne, avec la Debug Toolbar à droite.
 
 
-## Pause bonnes pratiques
+## Bonnes pratiques
 
-- On versionne et on prend le temps de poser un `.gitignore`.
-- On en mettra le moins possible dans le dossier du projet, on
-  utilisera des applications pour le reste du code.
+On versionne et on prend le temps de poser un `.gitignore`.
 
+
+## Bonnes pratiques
+
+On en mettra le moins possible dans le dossier du projet, on
+utilisera des applications pour le reste du code.
+
+
+## Bonnes pratiques
+
+Une bonne gestion des dépendances avec `pip-tools`.
+
+
+## Bonnes pratiques
+
+On surcharge l'objet `User`, même si on pense ne pas en avoir besoin :
+
+```python
+class User(django.contrib.auth.models.AbstractUser):
+    ...
+```
+
+et :
+
+```python
+AUTH_USER_MODEL = ...
+```
+
+## Les URLs
+
+```python
+urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("__debug__/", include(debug_toolbar.urls)),
+]
+```
+
+## Les vues
+
+```python
+def index(request):
+    return HttpResponse("Hello world")
+```
+
+## Pratique
+
+Faire une page d'accueil pour votre Django.
+
+
+## Les modèles
+
+Désambiguons `makemigrations` et `migrate` d'abord.
+
+
+## Les modèles
+
+Personalisez le modèle `User` :
+
+```python
+class User(django.contrib.auth.models.AbstractUser):
+    ...
+```
+
+## Les modèles
+
+Créez un modèle `Domain` :
+
+```python
+class Domain(models.Model):
+    domain = models.CharField(max_length=253)
+    is_up = models.BooleanField(null=True, blank=True)
+```
+
+## L'admin
+
+Indiquez l'existance du modèle domaine à l'admin :
+
+```python
+admin.site.register(Domain)
+```
+
+## Testez
 
 ## Les bonnes bases : DRF
 
 ```bash
 python -m pip install djangorestframework
-# Ajouter l'app rest_framework
+ # Ajouter l'app rest_framework
 ```
 
 
-## Pause vocabulaire
-
-Dans Django on va avoir des `models`, des `urls`, et (optionnel) l'`admin`.
+##  vocabulaire
 
 Dans DRF on va avoir des `serializers`, des `routers`, des `views` et des `permissions`.
 
 
-## Pause resources
+## Le routage de Django
 
-Pour Django on avait : https://ccbv.co.uk/ (Memo: « Classy Class-Based-View »)
+La requête parcourre les `urlpatterns` du projet, c'est donc à lui
+d'inclure les `urlpatterns` des différentes applications.
 
-Pour DRF on a : https://www.cdrf.co/ (Memo: « Classy DRF »)
+
+## Resources
+
+Pour Django on avait : https://ccbv.co.uk/ (Memo: « Classy Class-Based-View »).
+
+Pour DRF on a : https://www.cdrf.co/ (Memo: « Classy DRF »).
 
 
 ## Les media types
 
-Pour représenter des données il existe plusieurs écoles :
+Pour représenter des données on utilise un *media type* il existe
+plusieurs écoles :
 
 - Tout est liste (`Collection+JSON`, ...).
 - Tout est article (`atom+xml`, ...).
-- Tout est fonction (`RPC`).
-- REST (incluant HATEOAS).
-- Snowflakes.
+- Snowflakes (`application/json`).
+
+(On ne parle donc pas de RPC, on parle de **représentation**).
+
+
+## Les media types
+
+Certains *media type* sont plus « tout terrain » que d'autres :
+
+- `JSON-LD`, avec Hydra : le plus générique.
+- `HAL` : Pour la lecture seule.
+- `application/problem+json`
+- `application/json-patch+json`
+- `application/json-home`
 - ...
+
+::: notes
+
+Pensez au web actuel : il mélange text/html, application/javascript, text/css, ...
 
 
 # Mais qu'est-ce que REST ?
@@ -101,12 +237,13 @@ C'est un ensemble de contraintes :
 
 - Client-Serveur
 - Sans état
-- Coopérant avec les caches intermédiaires
-- Interface uniforme
-  - Une URI identifie une resource
-  - Les resources sont manipulées via leurs représentations
-  - Messages auto-descriptifs
-  - HATEOAS
+- Une URI identifie une resource
+- Les resources sont manipulées via leurs représentations
+- ...
+
+::: notes
+
+Pensez au web actuel pour chaque contrainte : ça marche.
 
 
 ## Client-Serveur
@@ -116,9 +253,10 @@ C'est un ensemble de contraintes :
 
 ## Sans état
 
-Attention à l'interprétation : le serveur a bien sûr un état, et cet
-état est amené à changer (un `PUT`, un `POST`, un `DELETE` vont
-typiquement changer quelque chose).
+Attention à l'interprétation : on ne parle pas d'un site statique pour autant.
+
+Le serveur a un état, et cet état est amené à changer (un `PUT`, un
+`POST`, un `DELETE` vont typiquement changer quelque chose).
 
 
 ## Sans état
@@ -154,6 +292,12 @@ Mais :
 PUT /users/1 -d '{"name": "Alan"}'
 PUT /users/2 -d '{"name": "Ada"}'
 ```
+
+::: notes
+
+Si le serveur a oublié la première requête quand elle arrive, pas de souci.
+
+Si les deux requêtes sont gérées par des serveurs différents, pas de souci.
 
 
 ## Coopération avec les caches intermédiaires
@@ -230,7 +374,7 @@ Le mauvais exemple :
     "name": "Brioche",
     "in_stock": false,
     "buy": {
-      "@id": "/cart/"
+      "@id": "/cart/",
       "@type": "hydra/CreateResourceOperation",
       "method": "POST",
       "expects": {"@id": "/products/123"}
@@ -266,6 +410,14 @@ TL;DR
 
 ## POST
 
+# La configuration de Django
+
+## Trois solutions
+
+- `include local_settings.py`
+- `django-configurations`
+- `django-environ`
+
 # Et si on revenait à DRF !?
 
 ## Les serialiseurs
@@ -283,7 +435,8 @@ Et vice versa.
 
 ## Les URLs
 
-Pour commencer: aucune différence avec Django.
+Pour commencer : aucune différence avec Django.
+
 
 ## Les vues
 

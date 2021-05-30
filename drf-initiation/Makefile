@@ -1,9 +1,3 @@
-SRCS := $(wildcard *.md)
-HTML := $(addprefix output/,$(SRCS:.md=.html))
-
-.PHONY: static
-static: $(HTML)
-
 .PHONY: help
 help:
 	@echo "Usage:"
@@ -12,11 +6,14 @@ help:
 	@echo "  make rsync  # rsync to prod"
 	@echo "  make clean"
 
+.PHONY: html
+html: output/drf.html
+
 .PHONY: check
 test:
 	python test.py *.md
 
-output/%.html: %.md $(REVEAL_JS)
+output/%.html: %.md
 	mdtoreveal $< --output $@
 	cp -a static output
 
@@ -26,7 +23,7 @@ rsync: static
 
 .PHONY: clean
 clean:
-	rm -f output/
+	rm -fr output/
 
 .PHONY: serve
 serve:
