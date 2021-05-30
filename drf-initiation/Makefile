@@ -1,10 +1,8 @@
-SRCS := $(wildcard *-*.md)
+SRCS := $(wildcard *.md)
 HTML := $(addprefix output/,$(SRCS:.md=.html))
 
 .PHONY: static
-static: $(HTML) index.html
-	rm -f output/index.html
-	cp index.html output/index.html
+static: $(HTML)
 
 .PHONY: help
 help:
@@ -18,16 +16,6 @@ help:
 test:
 	python test.py *.md
 
-index.md: $(SRCS)
-	for file in *-*.md; \
-	    do printf "# [%s](%s)\n\n" "$$file" "$$(printf "%s" "$$file" | sed s/.md/.html/)"; \
-	    grep -h '^#' "$$file" | sed 's/^# /- /;s/^## /    - /'; \
-	done | uniq > $@
-
-index.html: index.md
-	mkdir -p output
-	python -m markdown -o html $< -f $@
-
 output/%.html: %.md $(REVEAL_JS)
 	mdtoreveal $< --output $@
 	cp -a static output
@@ -38,4 +26,8 @@ rsync: static
 
 .PHONY: clean
 clean:
-	rm -f output/*.html index.md index.html
+	rm -f output/
+
+.PHONY: serve
+serve:
+	python -m http.server -d output/

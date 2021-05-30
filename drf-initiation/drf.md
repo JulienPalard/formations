@@ -1,6 +1,5 @@
 # DRF Initiation
 
-
 par
 
 Julien Palard <julien@palard.fr>
@@ -12,18 +11,29 @@ https://mdk.fr
 Introduce yourself!
 
 
-## Les bonnes bases
+# Les bonnes bases : Python
+
+`*args, **kwargs`
+
+
+## Les bonnes bases : Python
+
+La MRO.
+
+
+## Les bonnes bases : Python
 
 On travaille dans un venv.
 
+
+## Les bonnes bases : Django
+
 ```bash
-python -m pip install djangorestframework
-django-admin startproject drfdemo
-cd drfdemo
-# Ajouter l'app rest_framework
+python -m pip install Django
+django-admin startproject demo
+cd demo
 ./manage.py migrate
 ```
-
 
 ## Debug toolbar
 
@@ -46,15 +56,22 @@ fonctionne, avec la Debug Toolbar à droite.
 
 ## Pause bonnes pratiques
 
-- On versionne, on prend le temps de poser un `.gitignore`.
-- On renomme l'app `app`, sinon c'est ambigu.
-- On en mettra le moins possible dans `app/`, on utilisera des
-  applications pour le reste du code.
+- On versionne et on prend le temps de poser un `.gitignore`.
+- On en mettra le moins possible dans le dossier du projet, on
+  utilisera des applications pour le reste du code.
+
+
+## Les bonnes bases : DRF
+
+```bash
+python -m pip install djangorestframework
+# Ajouter l'app rest_framework
+```
 
 
 ## Pause vocabulaire
 
-Dans Django on va avoir des `models`, des `urls`, et l'`admin`.
+Dans Django on va avoir des `models`, des `urls`, et (optionnel) l'`admin`.
 
 Dans DRF on va avoir des `serializers`, des `routers`, des `views` et des `permissions`.
 
@@ -70,11 +87,11 @@ Pour DRF on a : https://www.cdrf.co/ (Memo: « Classy DRF »)
 
 Pour représenter des données il existe plusieurs écoles :
 
-- Tout est liste (`Collection+JSON`, ...)
-- Tout est article (`atom+xml`, ...)
-- Tout est fonction (`RPC`)
-- REST incluant HATEOAS
-- Snowflakes
+- Tout est liste (`Collection+JSON`, ...).
+- Tout est article (`atom+xml`, ...).
+- Tout est fonction (`RPC`).
+- REST (incluant HATEOAS).
+- Snowflakes.
 - ...
 
 
@@ -106,7 +123,7 @@ typiquement changer quelque chose).
 
 ## Sans état
 
-Quand on dit « *stateless* » on le dit au niveau d'une requête :
+Quand on dit « *stateless* » on pense au niveau d'une requête :
 
 > L'interprétation d'une requête ne doit **pas** dépendre des requêtes précédentes.
 
@@ -178,15 +195,24 @@ GET /users/1
 PUT /users/1 -d '{"name": "Alan Turing", "birthdate": "1912-06-23"}'
 ```
 
+::: notes
+
+Faire une parenthèse sur les etags, `If-Match`, `If-None-Match`.
+
+
 ## Messages auto-descriptifs
 
 Toutes les informations nécessaires à l'interprétation du message
-doivent être dans le message, je n'ai rien contre un lien vers la doc.
+doivent être dans le message.
+
+Je n'ai rien contre un lien vers la doc.
 
 
 ## HATEOAS
 
 C'est celui qui fait peur.
+
+TL;DR: data + interactions
 
 ::: notes
 
@@ -215,3 +241,57 @@ Le mauvais exemple :
 ::: notes
 
 Ce n'est pas vraiment du JSON-LD+Hydra, mais ça loge das la slide...
+
+## HATEOAS
+
+> support on building Hypermedia APIs with REST framework is planned for a future version.
+
+
+## En parlant de sémantique HTTP
+
+TL;DR
+
+## GET / HEAD / OPTIONS
+
+- `safe`
+- `idempotent`
+
+## PUT
+
+- `idempotent`
+
+## DELETE
+
+- `idempotent`
+
+## POST
+
+# Et si on revenait à DRF !?
+
+## Les serialiseurs
+
+Leur rôle est de transformer un objet Python en un objet Python
+facilement sérialisable (en JSON typiquement).
+
+Il va donc, par exemple transformer objet datetime en chaîne, puisque
+JSON ne spécifie pas de représentation pour les dates.
+
+::: notes
+
+Et vice versa.
+
+
+## Les URLs
+
+Pour commencer: aucune différence avec Django.
+
+## Les vues
+
+```python
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+@api_view(["GET"])
+def hello(request):
+    return Response({"Hello": "world."})
+```
