@@ -24,4 +24,4 @@ jobs:
         python3 -m pip install --user mdtoreveal
         PATH="$HOME/.local/bin/:$PATH" make -C initiation rsync
         PATH="$HOME/.local/bin/:$PATH" make -C avancé rsync
-        PATH="$HOME/.local/bin/:$PATH" make -C drf rsync
+        PATH="$HOME/.local/bin/:$PATH" make -C drf-initiation rsync
