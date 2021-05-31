@@ -6,8 +6,8 @@ help:
 	@echo "  make rsync  # rsync to prod"
 	@echo "  make clean"
 
-.PHONY: html
-html: output/drf.html
+.PHONY: static
+static: output/drf.html
 
 .PHONY: check
 test:
