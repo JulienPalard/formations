@@ -448,3 +448,27 @@ from rest_framework.response import Response
 def hello(request):
     return Response({"Hello": "world."})
 ```
+
+
+## Pratique
+
+Avec juste un path dans `urlpatterns` et une vue, faites une API qui
+donne l'heure :
+
+```
+$ curl 0:8000/horloge/
+{"datetime":"2021-05-31T12:24:04.534708"}
+```
+
+
+## Les autres méthodes
+
+```
+@api_view(["GET", "PUT", "DELETE"])
+```
+
+
+## Pratique
+
+Sur une autre `url`, par exemple `/cache/`, implémentez un
+`memcached`, testez-le avec `curl`.
