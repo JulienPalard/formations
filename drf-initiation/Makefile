@@ -19,7 +19,7 @@ output/%.html: %.md
 
 .PHONY: rsync
 rsync: static
-	rsync -vah --delete output/ mdk@mdk.fr:/var/www/mdk.fr/drf-initiation/
+	rsync -vah --delete output/ mdk_fr@mdk.fr:/var/www/mdk.fr/drf-initiation/
 
 .PHONY: clean
 clean:

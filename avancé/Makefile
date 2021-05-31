@@ -24,7 +24,7 @@ output/index.md: $(SRCS)
 
 .PHONY: rsync
 rsync: static
-	rsync -vah --delete output/ mdk@mdk.fr:/var/www/mdk.fr/python-avancé/
+	rsync -vah --delete output/ mdk_fr@mdk.fr:/var/www/mdk.fr/python-avancé/
 
 .PHONY: clean
 clean:
