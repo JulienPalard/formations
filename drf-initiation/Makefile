@@ -15,7 +15,6 @@ test:
 
 output/%.html: %.md
 	mdtoreveal $< --output $@
-	cp -a static output
 
 .PHONY: rsync
 rsync: static
