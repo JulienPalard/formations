@@ -7,14 +7,18 @@ help:
 	@echo "  make clean"
 
 .PHONY: static
-static: output/drf.html
+static: output/index.html
 
 .PHONY: check
 test:
 	python test.py *.md
 
-output/%.html: %.md
+%.html: %.md
 	mdtoreveal $< --output $@
+
+output/index.md: drf.md
+	mkdir -p output
+	cat $< > $@
 
 .PHONY: rsync
 rsync: static

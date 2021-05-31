@@ -16,7 +16,7 @@ test:
 static: output/index.html
 
 %.html: %.md
-	mdtoreveal $< -o $@
+	mdtoreveal $< --output $@
 
 output/index.md: $(SRCS)
 	mkdir -p output
