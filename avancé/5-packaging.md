@@ -29,14 +29,23 @@ Notes:
 Jamais `sudo`, toujours dans un `venv`.
 
 
-## pip install -e .
+## pyproject.toml + setup.cfg
 
-Notes:
+En attendant l'implémentation de la PEP 621.
 
-Probablement celui qu'on utilise le plus souvent.
 
+## pip install .
 
 ## Packager
 
-- Source dist
-- Binary dist
+```bash
+pip install build
+python -m build
+```
+
+### Publier
+
+```bash
+pip instqll twine
+twine upload dist/*
+```

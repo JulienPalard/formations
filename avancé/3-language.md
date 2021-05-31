@@ -223,7 +223,7 @@ Notes:
 
 ## contextlib
 
-- `@suppress`
+- `with suppress:`
 - `@contextmanager`
 
 
