@@ -665,7 +665,7 @@ chaîne, help n'affichera pas la documentation des chaînes.
 ## sorted
 
 ```python
->>> sorted([2, 1, 7, 6])
+>>> sorted({2, 1, 7, 6})
 [1, 2, 6, 7]
 ```
 

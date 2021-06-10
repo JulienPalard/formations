@@ -147,7 +147,7 @@ Elle devrait s'écrire sur une seule ligne, mais, vidéoprojecteur...
 
 
 
-# Les tranches
+# Les *slices*
 
 *slices* en anglais
 
@@ -157,9 +157,7 @@ seq = list("ABCDEF")
 ```
 
 
-# Les *slices*
-
-
+## Les *slices*
 
 ```python
 >>> seq
