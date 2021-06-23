@@ -614,30 +614,6 @@ Mais le REPL sert a tester : on peut bien tester print dans le REPL.
 ```
 
 
-## all
-
-```python
->>> all([True, False, True])
-False
->>> all([True, True, True])
-True
->>> all([False, False, False])
-False
-```
-
-
-## any
-
-```python
->>> any([True, False, True])
-True
->>> any([True, True, True])
-True
->>> any([False, False, False])
-False
-```
-
-
 ## help
 
 Affiche la documentation de n'importe quoi, essayez :

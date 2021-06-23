@@ -472,3 +472,64 @@ $ curl 0:8000/horloge/
 
 Sur une autre `url`, par exemple `/cache/`, implémentez un
 `memcached`, testez-le avec `curl`.
+
+
+## Serializers
+
+- serializers.BaseSerializer
+- serializers.ModelSerializer
+
+
+## BaseSerializer
+
+`to_representation` / `to_internal_value`
+
+```python
+class DateSerializer(serializers.BaseSerializer):
+    def to_representation(self, instance):
+        return instance.isoformat()
+```
+
+## Pratique
+
+Implémentez un `FileSerializer` prenant un `Path` de `pathlib` et
+renvoyant :
+```json
+{
+  "self": "http://127.0.0.1:8000/files/.",
+  "name": "drf-demo",
+  "path": ".",
+  "size": 4096,
+  "ctime": "2021-05-30", "mtime": "2021-05-30", "atime": "2021-04-22",
+  "mode": "0o40755",
+  "is_dir": true,
+  "files": [
+     {
+```
+
+
+## Permissions
+
+```python
+class IsOwner(permissions.BasePermission):
+    def has_object_permission(self, request, view, obj):
+        return request.user == obj.owner
+```
+
+## HyperLinkedModelSerializer
+
+```python
+class DomainSerializer(HyperlinkedModelSerializer):
+    class Meta:
+        model = Domain
+        fields = ["domain", "is_up", "checks_url", "url"]
+```
+
+## ViewSets
+
+```python
+class DomainViewSet(ModelViewSet):
+    queryset = Domain.objects.all()
+    serializer_class = DomainSerializer
+    permission_classes = [IsOwner]
+```
