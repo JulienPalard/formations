@@ -8,16 +8,10 @@ Jour 3
 
 ## Le packaging
 
-Restez dans les standards : `setup.py`, `setup.cfg`.
+Restez dans les standards : `pyproject.toml`, `setup.cfg`.
 
 
-## setup.py
-
-```
-__import__('setuptools').setup()
-```
-
-## setup.cfg
+## pyproject.toml et setup.cfg
 
 - https://github.com/JulienPalard/oeis
 - https://setuptools.readthedocs.io/
