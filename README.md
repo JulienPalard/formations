@@ -1,13 +1,10 @@
 # Python Introduction Slides
 
-https://github.com/nteract/testbook
-
 https://mdk.fr/python-initiation/
 
 
 ## TODO
 
-- Il paraît que humancoders conseille DrPython !??
 - http://scipy.github.io/old-wiki/pages/Tentative_NumPy_Tutorial
 - `*` peut être vu comme de l'unpacking vers des noms qu'on ne voit pas.
 - Ajouter une slide sur "jamais de \ en fin de ligne", il y a toujours
