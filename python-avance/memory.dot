@@ -1,0 +1,26 @@
+digraph Python {
+    subgraph cluster_0 {
+        node [style=filled];
+        label = "Names";
+        color = lightgrey;
+        un;
+        deux;
+        trois;
+        liste;
+    }
+    subgraph cluster_1 {
+        node [style=filled];
+        label = "Values";
+        color = lightgrey;
+        1;
+        2;
+        3;
+        4;
+        "[...]" -> 1;
+        "[...]" -> 2;
+    }
+    un -> 1;
+    deux -> 2;
+    trois -> 3;
+    liste -> "[...]";
+}
