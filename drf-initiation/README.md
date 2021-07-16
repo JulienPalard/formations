@@ -1,5 +1,7 @@
 # Contenu
 
+Side project : https://github.com/JulienPalard/drf-demos
+
 - Revue des bases et consolidation Python et Django
 - Présentation des types d'API, approfondissement de REST/HATEOAS
 - Rappels autour de la sémantique HTTP
