@@ -22,6 +22,8 @@ jobs:
         export deploy_key=""
         python3 -m pip install --user --upgrade pip
         python3 -m pip install --user mdtoreveal
-        PATH="$HOME/.local/bin/:$PATH" make -C initiation rsync
-        PATH="$HOME/.local/bin/:$PATH" make -C avancé rsync
-        PATH="$HOME/.local/bin/:$PATH" make -C drf-initiation rsync
+        export PATH="$HOME/.local/bin/:$PATH"
+        make -C initiation rsync
+        make -C avancé rsync
+        make -C drf-initiation rsync
+        make -C django-initiation rsync
