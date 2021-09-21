@@ -23,7 +23,7 @@ jobs:
         python3 -m pip install --user --upgrade pip
         python3 -m pip install --user mdtoreveal
         export PATH="$HOME/.local/bin/:$PATH"
-        make -C initiation rsync
-        make -C avancé rsync
+        make -C python-initiation rsync
+        make -C python-avancé rsync
         make -C drf-initiation rsync
         make -C django-initiation rsync
