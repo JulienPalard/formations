@@ -31,7 +31,7 @@ Dans Django on va avoir principalement des `models`, des `vues`, des
 `templates`, et des `urls`.
 
 
-# Les bonnes bases : Python
+# Les bonnes bases
 
 On travaillera toujours dans un `venv` :
 
@@ -92,7 +92,7 @@ les differents endroits ou Django peut reutiliser cette information
 (widgets, validation, ...).
 
 
-## La théorie — Première interface d'admin
+## Première interface d'admin
 
 En une ligne, pourquoi pas :
 
@@ -126,7 +126,7 @@ On expliquera plus tard, leur dire que ça crée la DB et que le but
 maintenant c'est surtout d'aller tester ça :)
 
 
-## La théorie — L'interface d'administration
+## L'interface d'administration
 
 On a une DB, mais pas encore d'utilisateur admin dedans :
 
@@ -134,7 +134,7 @@ On a une DB, mais pas encore d'utilisateur admin dedans :
 python manage.py createsuperuser
 ```
 
-## La théorie — L'interface d'administration
+## Terminé
 
 On a terminé, on peut démarrer le serveur :
 
@@ -218,7 +218,7 @@ On a une DB, mais pas encore d'utilisateur admin dedans :
 python manage.py createsuperuser
 ```
 
-## L'interface d'administration
+## Terminé
 
 On a terminé, on peut essayer maintenant ?
 
@@ -418,7 +418,8 @@ Et si on ajoutais de la données provenant de la DB dans le template ?
 from django.http import HttpResponse
 
 def index(request):
-    return render(request, "watch/index.html", {"websites": Website.objects.all()})
+    return render(request, "watch/index.html",
+                  {"websites": Website.objects.all()})
 ```
 
 ::: notes
@@ -461,7 +462,7 @@ class WebsiteListView(ListView):
 page…
 
 
-## Les templates — extends
+## Les templates
 
 En utilisant `extends`, on peut réutiliser des templates.
 
@@ -508,6 +509,8 @@ Méthodes simples de requêtage en base de données
 
 # Les tests
 ## Les fixtures
+
+loaddata / dumpdata
 
 # Forms
 ## Forms fields
