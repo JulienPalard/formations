@@ -269,6 +269,27 @@ Ajoutez une interface d'admin pour ce modèle, et ajoutez à la main quelques «
 Les faire tester ça.
 
 
+## Personalisons
+
+Dans chaque modèle, un `__str__` aide l'admin à être lisible.
+
+
+## Personalisons
+
+Dans `admin.py` on peut préciser les colonnes qu'on veut afficher :
+
+```python
+@admin.register(Website)
+class WebsiteAdmin(admin.ModelAdmin):
+    list_display = ("host", "is_up", "last_check")
+
+
+@admin.register(Check)
+class CheckAdmin(admin.ModelAdmin):
+    list_display = ("website", "date", "is_up", "message")
+```
+
+
 # Les URLs & les vues
 
 Changons complètement de sujet : les URLs et des vues.
