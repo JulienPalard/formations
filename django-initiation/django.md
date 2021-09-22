@@ -360,18 +360,9 @@ Avec les espaces de nommage, on a donc :
 
 sans ambiguité.
 
-
-## namespaces
-
-À l'usage, dans les templates :
-
-```html
-{% url 'admin:index' %}
-```
-
 ::: notes
 
-Utilisez-en, c'est bien.
+Utiliez-en, c'est bien.
 
 
 ## Les vues
@@ -380,6 +371,7 @@ Dans `watch/views.py` :
 
 ```python
 from django.http import HttpResponse
+from django.shortcuts import render
 
 
 def index(request):
@@ -404,6 +396,7 @@ def index(request):
     return render(request, "watch/index.html")
 ```
 
+
 ## Les templates
 
 Django va chercher `watch/index.html` dans tous les dossiers de
@@ -427,6 +420,11 @@ Donc dans `watch/templates/watch/index.html` :
 </html>
 ```
 
+::: notes
+
+La création du dossier `templates/` est typiquement quelque chose que
+`runserver` ne voit pas, il faut le redémarrer.
+
 
 ## Les vues
 
@@ -436,7 +434,8 @@ Et si on ajoutais de la données provenant de la DB dans le template ?
 ## Les vues
 
 ```python
-from django.http import HttpResponse
+...
+from watch.models import Website
 
 def index(request):
     return render(request, "watch/index.html",
@@ -444,6 +443,8 @@ def index(request):
 ```
 
 ::: notes
+
+Ne pas oublier les imports…
 
 Premier apperçu de l'ORM en passant.
 
@@ -522,10 +523,99 @@ Exposent les opérations de requête de base de donnée, c'est le `.objects`.
 
 Ces opérations (des méthodes) renvoient des `queryset`s.
 
+```pycon
+In [2]: Website.objects
+Out[2]: <django.db.models.manager.Manager at 0x7fa77a9a1500>
+```
+
 ## Les *Queryset*
 
-Introduction aux concepts Manager et Queryset, RelatedManager
-Méthodes simples de requêtage en base de données
+Représentent un ensemble d'élément de base de donnée. Ils ont les
+mêmes méthodes que les *managers* :
+
+- filter
+- get
+- order_by
+- ...
+
+## Les *Queryset*
+
+```pycon
+In [3]: Website.objects.all()
+Out[3]: <QuerySet [<Website: mdk.fr>]>
+```
+
+## Les *RelatedManager*
+
+Sont des managers, mais sur les relations :
+
+```
+In [4]: Website.objects.get(host="mdk.fr").check_set.all()
+Out[4]: <QuerySet [<Check: mdk.fr is up>, <Check: mdk.fr is up>]>
+```
+
+
+# Forms
+
+Comme pour l'admin, Django peut utiliser les informations des modèles
+pour vous aider à générer des formulaires.
+
+
+## Forms fields
+
+Créer un formulaire ressemble à créer un modèle, on décrit les champs :
+
+```python
+class WebsiteForm(forms.Form):
+    host = forms.CharField(label='Website hostname', max_length=512)
+```
+
+
+## Forms
+
+On le donne au template :
+
+```python
+    return render(
+        request,
+        "watch/index.html",
+        {"websites": Website.objects.all(), "form": WebsiteForm},
+    )
+```
+
+
+## Forms
+
+On l'affiche dans le template :
+
+```html
+<form action="/" method="post">
+  {% csrf_token %}
+  {{ form }}
+  <input type="submit" value="Add">
+</form>
+```
+
+## Forms
+
+Mais là on a pas utilisé les informations données par les modèles…
+
+
+## ModelForm
+
+Avec un ModelForm on ne répète pas les fields :
+
+```python
+class WebsiteForm(forms.ModelForm):
+    class Meta:
+        model = Website
+        fields = ("host",)
+```
+
+## Widgets
+## ModelForm
+## Validation
+
 
 
 # Les tests
@@ -533,11 +623,6 @@ Méthodes simples de requêtage en base de données
 
 loaddata / dumpdata
 
-# Forms
-## Forms fields
-## Widgets
-## ModelForm
-## Validation
 
 # Modèles
 ## Relations
