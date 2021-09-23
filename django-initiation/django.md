@@ -519,18 +519,25 @@ Essayer `.all`, `.filter`, `.get`, `.order_by`, et les slices.
 
 ## Les *Managers*
 
-Exposent les opérations de requête de base de donnée, c'est le `.objects`.
+Les *managers* représentent une table, il sont accessible via
+l'attribut `objects` d'un modèle.
 
-Ces opérations (des méthodes) renvoient des `queryset`s.
+Ses opérations (des méthodes) renvoient des `queryset`s.
 
 ```pycon
 In [2]: Website.objects
 Out[2]: <django.db.models.manager.Manager at 0x7fa77a9a1500>
 ```
 
+
+## Les instances de modèles
+
+Les instances de modèles représentent une ligne de la table.
+
+
 ## Les *Queryset*
 
-Représentent un ensemble d'élément de base de donnée. Ils ont les
+Représentent un ensemble de lignes de la base de donnée. Ils ont les
 mêmes méthodes que les *managers* :
 
 - filter
@@ -538,12 +545,20 @@ mêmes méthodes que les *managers* :
 - order_by
 - ...
 
+
 ## Les *Queryset*
 
 ```pycon
 In [3]: Website.objects.all()
 Out[3]: <QuerySet [<Website: mdk.fr>]>
 ```
+
+
+## Les *Queryset*
+
+Pour ceux qui ont fait du SQL c'est un "lazy select" : c'est un
+`SELECT` qui ne s'éxécutera que si nécessaire.
+
 
 ## Les *RelatedManager*
 
@@ -603,7 +618,7 @@ Mais là on a pas utilisé les informations données par les modèles…
 
 ## ModelForm
 
-Avec un ModelForm on ne répète pas les fields :
+Avec un `ModelForm` on ne répète pas les fields :
 
 ```python
 class WebsiteForm(forms.ModelForm):
@@ -612,41 +627,210 @@ class WebsiteForm(forms.ModelForm):
         fields = ("host",)
 ```
 
+
 ## Widgets
-## ModelForm
+
+Le rendu HTML d'un champ de formulaire est appelé un `Widget`, il est
+possible de le changer, par exemple si vous préférez un `<input` à un
+`<textarea` ou vice-versa.
+
+
 ## Validation
 
+Une instance de formulaire à une méthode `is_valid` :
+
+```python
+if request.method == "POST":
+    form = WebsiteForm(request.POST)
+    if form.is_valid():
+        Website.objects.create(host=form.cleaned_data["host"])
+```
+
+::: notes
+
+Django peut donc vérifier que les champs non-empty sont bien pas
+vides, que les longuers sont respectées, etc…
 
 
 # Les tests
+
+Tester c'est douter.
+
+::: notes
+
+Ou pas. Avoir les tests qui passent avant de pousser, avant de merger
+une PR, avant de mettre en prod c'est un véritable confort.
+
+
 ## Les fixtures
 
-loaddata / dumpdata
+Pour tester on va avoir besoin de données de test.
+
+On appelera ça des « fixtures ».
 
 
-# Modèles
-## Relations
-## ForeignKey
-## ManyToManyField
-## OneToOneField
-## InlineModeladmin
+## Les fixtures
+
+Le moyen simple de créer des fixtures est d'utiliser les données que
+vous avez crées via l'admin :
+
+```bash
+./manage.py dumpdata -o watch/fixtures/initial.json
+```
+
+::: notes
+
+Créez le dossier d'abord ;)
+
+
+## Les fixtures
+
+Profitez-en pour indiquer aux collègues dans le README qu'ils peuvent les charger aussi :
+
+```bash
+git clone …
+cd project
+./manage.py migrate
+./manage.py loaddata initial
+```
+
+
+# Les relations entres modèles
+
+On a déjà fait une `Foreignkey`, mais il existe aussi :
+
+- OneToOneField
+- ManyToManyField
+
+
+::: notes
+
+Parler des cas d'usage, et parler de `thrue`.
+
 
 # Users
 ## Groups
 ## Permissions
 ## Authentication
-How to protect views
 
-# Static assets (day 3)
+# Static assets
+
+Chaque application peut déposer des fichiers dans son dossier `/static/`.
+
+
+## Static assets
+
+En dev ils seront tous accessibles via l'URL `/static/`.
+
+
+## Static assets
+
+En prod cependant il y a beaucoup plus efficace pour les servir :
+
+```bash
+./manage.py collectstatic
+```
+
+Puis configurez votre serveur HTTP (`nginx`/`apache2`) pour servir le
+dossier généré sans passer par Python.
+
+
 # Deployment
-## gunicorn
 
-# Bonus bonnes pratiques Python
+En parlant de prod, comment mettre un Django en prod ?
+
+
+## Deployment
+
+Django utilise le protocole `wsgi`, un standard en Python.
+
+
+## Deployment
+
+Attention, `runserver` c'est bien en dev, mais ça n'est pas voué à partir en prod.
+
+::: notes
+
+Sérieusement.
+
+
+## Deployment
+
+`runserver` c'est un peu comme un groupe éléctrogène :
+
+- C'est vrai que ça fonctionne.
+- Ça dépanne quand on est seul dessus, chez soi.
+- Mais on alimente pas un quartier ou une ville avec.
+
+::: notes
+
+Trouver mieux :D
+
+
+## Deployment
+
+Nginx et Apache2 gèrent `wsgi`, d'autres serveurs aussi, probablement.
+
+
+## Deployment
+
+Mais en production on ne veut pas juste une instance de Django, on en
+veut plusieurs, pour traiter plus de requêtes, pour ça on peut
+utiliser `gunicorn`, `uwsgi`, …
+
+
+## Deployment
+
+`gunicorn` est un bon point de départ :
+
+```bash
+pip install gunicorn
+gunicorn -w 16 project.wsgi
+```
+
+## Deployment
+
+`gunicorn` est bien derrière un `nginx` qui va s'occuper, entre autre,
+de la décapsulation HTTPS, ou de délivrer vos fichiers statiques sans
+passer par Python.
+
+
+## Deployment
+
+```nginx
+server {
+    listen 443 http2 ssl;
+    server_name example.com;
+
+    include snippets/letsencrypt-example.com.conf;
+
+    location /static {
+        alias /opt/example.com/static/;
+    }
+
+    location / {
+        proxy_pass http://unix:/run/example.com/wsgi.sock;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-Protocol $scheme;
+    }
+}
+```
+
+
+# Bonnes pratiques
+
+Pas de `order_by` / `fiter` / ... dans les vues, rangez ça dans les
+modèles (dans des *managers* personalisés).
+
+Ça permet de nommer et de réutiliser.
+
+
+## Bonnes pratiques
 
 La gestion des dépendances avec `pip-compile`.
 
 
-## Bonus bonnes pratiques Python
+## Bonnes pratiques
 
 Versionnez !!
 
