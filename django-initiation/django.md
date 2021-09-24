@@ -704,9 +704,63 @@ cd project
 ```
 
 
+## Les tests
+
+Par défaut Django utilise la bibliothèque native `unittest`, on
+placera les tests de nos applications dans le dossier `tests` ou le
+fichier `tests.py` des applications.
+
+::: notes
+
+Habituellement on dit que le nom du fichier n'a aucune importance, que
+seul le succès de l'import compte. Ici c'est le contraire, le nom du
+fichier doit commencer par `test` pour être trouvé.
+
+
+## Les tests
+
+Les tests s'exécutent via :
+
+```python
+python manage.py test
+```
+
+## Les tests
+
+Tous nos tests seront des instances de `TestCase` :
+
+```python
+from django.test import TestCase
+
+class WatchTestCase(TestCase):
+    fixtures = ["initial"]
+
+    def test_can_access_home(self):
+        ...
+```
+
+
+## Les tests
+
+Pour vérifier que tout se passe bien `unittest` et `Django` nous
+fournissent une collection d'assertions :
+
+- assertTemplateUsed
+- assertRedirects
+- assertHTMLEqual
+- assertInHTML
+- ...
+
+
+## Les tests
+
+Personnellement habitué à pytest j'abuse de `assert`. Attention, bien
+que ça fonctionne, les messages ne sont pas aussi lisibles.
+
+
 # Les relations entres modèles
 
-On a déjà fait une `Foreignkey`, mais il existe aussi :
+On a déjà fait une `ForeignKey`, mais il existe aussi :
 
 - OneToOneField
 - ManyToManyField
