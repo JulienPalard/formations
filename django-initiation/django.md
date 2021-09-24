@@ -112,6 +112,10 @@ admin.site.register(Website)
 Leur faire croire 2 secondes qu'on va devoir s'installer et se
 configurer un serveur de base de donnée :D
 
+Leur expliquer que sqlite est utilisé dans les applications : pas
+besoin d'installer un postgresql pour utiliser Firefox, pourtant
+Firefox a besoin d'une base de donnée.
+
 
 ## La théorie — La DB
 
@@ -371,7 +375,6 @@ Dans `watch/views.py` :
 
 ```python
 from django.http import HttpResponse
-from django.shortcuts import render
 
 
 def index(request):
@@ -391,6 +394,8 @@ Mieux :
 
 ```python
 from django.http import HttpResponse
+from django.shortcuts import render
+
 
 def index(request):
     return render(request, "watch/index.html")
@@ -582,7 +587,8 @@ Créer un formulaire ressemble à créer un modèle, on décrit les champs :
 
 ```python
 class WebsiteForm(forms.Form):
-    host = forms.CharField(label='Website hostname', max_length=512)
+    host = forms.CharField(label='Website hostname',
+                           max_length=512)
 ```
 
 
@@ -594,7 +600,10 @@ On le donne au template :
     return render(
         request,
         "watch/index.html",
-        {"websites": Website.objects.all(), "form": WebsiteForm},
+        {
+            "websites": Website.objects.all(),
+            "form": WebsiteForm,
+        },
     )
 ```
 
@@ -618,7 +627,7 @@ Mais là on a pas utilisé les informations données par les modèles…
 
 ## ModelForm
 
-Avec un `ModelForm` on ne répète pas les fields :
+Avec un `ModelForm` on ne répète pas les attributs fields :
 
 ```python
 class WebsiteForm(forms.ModelForm):
@@ -637,7 +646,7 @@ possible de le changer, par exemple si vous préférez un `<input` à un
 
 ## Validation
 
-Une instance de formulaire à une méthode `is_valid` :
+Une instance de formulaire a une méthode `is_valid` :
 
 ```python
 if request.method == "POST":
