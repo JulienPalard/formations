@@ -772,9 +772,10 @@ Parler des cas d'usage, et parler de `thrue`.
 
 
 # Users
-## Groups
-## Permissions
-## Authentication
+
+- Groups
+- Permissions
+- Authentication
 
 # Static assets
 
@@ -925,13 +926,13 @@ AUTH_USER_MODEL = ...
 ```
 
 
-## Resources
-
-Pour Django on avait : https://ccbv.co.uk/ (Memo: « Classy Class-Based-View »).
-
-
-# La configuration de Django
+## La configuration de Django
 
 - `include local_settings.py`
 - `django-configurations`
 - `django-environ`
+
+
+## Resources
+
+Pour Django on avait : https://ccbv.co.uk/ (Memo: « Classy Class-Based-View »).
