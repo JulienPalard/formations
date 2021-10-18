@@ -7,6 +7,12 @@ tout en autaurisant les abus de langages (si un élève parle de
 terminal au lieu de shell ou vice-versa, aucun souci, on le fait
 tous).
 
+Pour le rôle du terminal, donner en exemple :
+
+=> https://mdk.fr/blog/how-apt-does-its-fancy-progress-bar.html
+
+Pour le rôle du shell, donner en exemple l'auto-complétion de bash.
+
 Expliquer le vocabulaire *commande*, *programme*, *argument* :
 
 C'est très flou, pour un débutant, que lorsqu'il tape `ls /`, `ls` est
