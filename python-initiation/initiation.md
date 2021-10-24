@@ -815,7 +815,7 @@ de constantes.
 - ...
 
 
-## les types immuables
+## Les types immuables
 
 - On ne peut pas dire que maintenant 10 vaut 12.
 - Ni que faux devient vrai.
@@ -838,7 +838,8 @@ modifier).
 
 ## La vérité
 
-En Python, ce qui est vide est faux, 0 est faux. Le reste est vrai :
+En Python, ce qui est vide est faux, `0` est faux, `None` est faux,
+`False` est faux. Le reste est vrai :
 
 ```python
 >>> bool("Non vide")
