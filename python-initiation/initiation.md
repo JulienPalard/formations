@@ -860,10 +860,23 @@ dire quand même : pour `True`, `False`, et `None`.
 
 # Les fonctions
 
-Créer ses propres fonctions
+## Les importer des modules
+
+```python
+from random import choice
+
+print(choice(["Pizzeria", "Japonais"]))
+```
+
+
+::: notes
+
+Exercice : Import.
 
 
 ## Syntaxe
+
+Les faire soi-même :
 
 ```python
 def ma_fonction(ses_paramètres):
@@ -901,7 +914,17 @@ On peut donc lui donner des arguments :
 ```python
 >>> print(is_even(10))
 True
+>>> print(is_even(11))
+False
+>>> print(is_even(12))
+True
+>>> print(is_even(13))
+False
 ```
+
+::: notes
+
+Exercices: First function, Print even numbers, ...
 
 ## La portée des variables
 
@@ -914,14 +937,6 @@ Dans une fonction :
 Pour l'accès pensez à `print` par exemple, l'utiliser n'en fait pas une locale.
 Une variable ne peut *presque* jamais ne pas contenir de valeur, et on ne peut pas la "déclarer".
 
-
-## Importer des modules
-
-```python
-import math
-
-print(math.factorial(42))
-```
 
 
 # Les chaînes
