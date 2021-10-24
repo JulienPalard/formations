@@ -1158,130 +1158,6 @@ seq = list("ABCDEF")
 `seq[<start>:<stop>:<step>]`
 
 
-# `*`, `**`
-
-
-## `*`
-
-Signifie « plusieurs », comme dans une liste ou un *n*-uplet.
-
-```python
->>> begin, *rest = range(5)
->>> begin
-0
->>> rest
-[1, 2, 3, 4]
-```
-
-Notes:
-
-Attention, initiation : Le but est de savoir que ça existe, savoire le
-lire.
-
-Équivaut à:
-begin, rest = seq[0], seq[1:]
-
-
-
-
-## `*`
-
-```python
->>> def sum(*args):
-...    print(args)
-...
->>> sum(1, 2, 3, 4, 5)
-(1, 2, 3, 4, 5)
-```
-
-
-## `*`
-
-```python
->>> [0, 0, 0, *range(3)]
-[0, 0, 0, 0, 1, 2]
-```
-
-
-## `*`
-
-```python
->>> print(*range(5))
-0 1 2 3 4
-```
-
-
-## `**`
-
-Signifie « plusieurs, nommés », comme dans un dictionnaire.
-
-
-```python
->>> def p(**kwargs):
-...    for key, value in kwargs.items():
-...        print(key, "→", value)
-...
->>> p(x=10, y=12)
-x → 10
-y → 12
-```
-
-
-## `**`
-
-```python
->>> defaults = {"path": "./",
-...             "pattern": "*.txt"}
->>> {**defaults, "pattern": "*.md"}
-{'path': './', 'pattern': '*.md'}
-```
-
-
-## `**`
-
-```python
->>> def p(x, y):
-...    print(f"x → {x}")
-...    print(f"y → {y}")
-...
->>> point = {"x": 10, "y": 12}
->>> p(**point)
-x → 10
-y → 12
-```
-
-
-# L'encodage
-
-
-## encoder
-
-C'est transformer une chaîne en octets, pour son transport ou stockage :
-
-```python
->>> "L'été".encode()
-b"L'\xc3\xa9t\xc3\xa9"
->>> list("L'été".encode())
-[76, 39, 195, 169, 116, 195, 169]
-```
-
-
-## décoder
-
-C'est le contraire ...
-
-```python
->>> bytes([76, 39, 195, 169, 116, 195, 169]).decode()
-"L'été"
-```
-
-Notes:
-
-Parler d'unicode, d'UTF-8, de latin-1. Ne pas oubilier de mentionner
-que latin-1 et companie sont à taille fixe, et qu'UTF-8 est à taille
-variable.
-
-
 # Les classes
 
 
@@ -1556,6 +1432,130 @@ Permet de lancer les tests:
 - en parallèle.
 
 Notes: c.f. gh/JulienPalard/oeis.
+
+
+# `*`, `**`
+
+
+## `*`
+
+Signifie « plusieurs », comme dans une liste ou un *n*-uplet.
+
+```python
+>>> begin, *rest = range(5)
+>>> begin
+0
+>>> rest
+[1, 2, 3, 4]
+```
+
+Notes:
+
+Attention, initiation : Le but est de savoir que ça existe, savoire le
+lire.
+
+Équivaut à:
+begin, rest = seq[0], seq[1:]
+
+
+
+
+## `*`
+
+```python
+>>> def sum(*args):
+...    print(args)
+...
+>>> sum(1, 2, 3, 4, 5)
+(1, 2, 3, 4, 5)
+```
+
+
+## `*`
+
+```python
+>>> [0, 0, 0, *range(3)]
+[0, 0, 0, 0, 1, 2]
+```
+
+
+## `*`
+
+```python
+>>> print(*range(5))
+0 1 2 3 4
+```
+
+
+## `**`
+
+Signifie « plusieurs, nommés », comme dans un dictionnaire.
+
+
+```python
+>>> def p(**kwargs):
+...    for key, value in kwargs.items():
+...        print(key, "→", value)
+...
+>>> p(x=10, y=12)
+x → 10
+y → 12
+```
+
+
+## `**`
+
+```python
+>>> defaults = {"path": "./",
+...             "pattern": "*.txt"}
+>>> {**defaults, "pattern": "*.md"}
+{'path': './', 'pattern': '*.md'}
+```
+
+
+## `**`
+
+```python
+>>> def p(x, y):
+...    print(f"x → {x}")
+...    print(f"y → {y}")
+...
+>>> point = {"x": 10, "y": 12}
+>>> p(**point)
+x → 10
+y → 12
+```
+
+
+# L'encodage
+
+
+## encoder
+
+C'est transformer une chaîne en octets, pour son transport ou stockage :
+
+```python
+>>> "L'été".encode()
+b"L'\xc3\xa9t\xc3\xa9"
+>>> list("L'été".encode())
+[76, 39, 195, 169, 116, 195, 169]
+```
+
+
+## décoder
+
+C'est le contraire ...
+
+```python
+>>> bytes([76, 39, 195, 169, 116, 195, 169]).decode()
+"L'été"
+```
+
+Notes:
+
+Parler d'unicode, d'UTF-8, de latin-1. Ne pas oubilier de mentionner
+que latin-1 et companie sont à taille fixe, et qu'UTF-8 est à taille
+variable.
 
 
 # Le packaging
