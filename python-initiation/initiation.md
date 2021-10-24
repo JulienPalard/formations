@@ -277,8 +277,7 @@ liste, par exemple des coordonnées : (x, y).
 ## Ensembles
 
 ```python
->>> {101, 103, 107, 109} == {103, 101, 109, 107}
-True
+{101, 103, 107, 109}
 ```
 
 ::: notes
