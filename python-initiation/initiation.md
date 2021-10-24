@@ -1,4 +1,4 @@
-# Python 3.8 & 3.9
+# Python
 
 ::: notes
 
@@ -9,7 +9,7 @@ x, y = 0, 0
 
 
 
-## Python 3.8 & 3.9
+## Python
 
 par
 
