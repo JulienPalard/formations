@@ -1,7 +1,5 @@
 # TODO
 
-On montre `or`, `and`, `not` mais a aucun moment on ne leur montre d'exemple.
-
 On montre la syntaxe d'appel de méthode bien avant de montrer la
 syntaxe d'appel de fonction, louche.
 

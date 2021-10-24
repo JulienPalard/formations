@@ -171,6 +171,7 @@ False
 ```
 
 
+
 ## Nombres
 
 ```python
@@ -257,6 +258,7 @@ Une liste c'est de la donnée, ce qu'elle contint c'est de la donnée.
 
 
 ## *n*-uplets, *tuple*
+
 ```python
 >>> 1, 2
 (1, 2)
@@ -275,9 +277,8 @@ liste, par exemple des coordonnées : (x, y).
 ## Ensembles
 
 ```python
->>> {101, 103, 107, 109}
-{109, 107, 101, 103}
-
+>>> {101, 103, 107, 109} == {103, 101, 109, 107}
+True
 ```
 
 ::: notes
@@ -385,6 +386,10 @@ False
 >>> not True
 False
 ```
+
+::: notes
+
+On utilisera ça plus tard, avec les structures de contrôle.
 
 
 ## Test d'appartenance

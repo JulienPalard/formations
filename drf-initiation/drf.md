@@ -10,6 +10,11 @@ https://mdk.fr
 
 Introduce yourself!
 
+Et juste pour doctest:
+```python
+import django.contrib.auth.models
+```
+
 # Les bonnes bases : Python
 
 `*args, **kwargs`

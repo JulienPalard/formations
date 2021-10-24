@@ -1,29 +1,45 @@
+---
+
 name: Publish
 
 on: [push]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: publish
-      env:
-        deploy_key: ${{secrets.deploy_key}}
-        known_hosts: ${{secrets.known_hosts}}
-      run: |
-        mkdir -p ${HOME}/.ssh
-        printf "%s\n" "$known_hosts" > ${HOME}/.ssh/known_hosts
-        printf "%s\n" "$deploy_key" > ${HOME}/.ssh/id_ed25519
-        chmod 600 ${HOME}/.ssh/id_ed25519
-        eval $(ssh-agent)
-        ssh-add
-        rm ${HOME}/.ssh/id_ed25519
-        export deploy_key=""
-        python3 -m pip install --user --upgrade pip
-        python3 -m pip install --user mdtoreveal
-        export PATH="$HOME/.local/bin/:$PATH"
-        make -C python-initiation rsync
-        make -C python-avance rsync
-        make -C drf-initiation rsync
-        make -C django-initiation rsync
+      - uses: actions/checkout@v1
+      - name: test
+        run: |
+          python -m pip install pytest hypothesis django
+          make -C python-initiation test
+          make -C python-avance test
+          # TODO: The following needs a configured Django:
+          # make -C drf-initiation test
+          # make -C django-initiation test
+
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: publish
+        env:
+          deploy_key: ${{secrets.deploy_key}}
+          known_hosts: ${{secrets.known_hosts}}
+        run: |
+          mkdir -p ${HOME}/.ssh
+          printf "%s\n" "$known_hosts" > ${HOME}/.ssh/known_hosts
+          printf "%s\n" "$deploy_key" > ${HOME}/.ssh/id_ed25519
+          chmod 600 ${HOME}/.ssh/id_ed25519
+          eval $(ssh-agent)
+          ssh-add
+          rm ${HOME}/.ssh/id_ed25519
+          export deploy_key=""
+          python3 -m pip install --user --upgrade pip
+          python3 -m pip install --user mdtoreveal
+          export PATH="$HOME/.local/bin/:$PATH"
+          make -C python-initiation rsync
+          make -C python-avance rsync
+          make -C drf-initiation rsync
+          make -C django-initiation rsync

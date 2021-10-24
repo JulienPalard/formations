@@ -38,7 +38,10 @@ async def pong_handler():
 
 ## Generator-based coroutines
 
-```python
+```pytho
+import types
+
+
 @types.coroutine
 def get_then_print(url):
     ...
@@ -183,7 +186,7 @@ print(coro_manager(wont_terminate_here()))
 ## Gérer ses coroutines
 
 
-```
+```python
 def frenetic_coro_manager(coro):
     try:
         while True:
@@ -196,6 +199,9 @@ def frenetic_coro_manager(coro):
 ## Gérer ses coroutines
 
 ```python
+import random
+
+
 def frenetic_coros_manager(*coros):
     coros = list(coros)
     while coros:
@@ -211,14 +217,14 @@ def frenetic_coros_manager(*coros):
 
 ```python
 async def tum():
-    while True:
+    for _ in range(10):  # ou : while True:
         await Awaitable()
         print("Tum")
 
 async def pak():
-    while True:
+    for _ in range(10):  # ou : while True:
         await Awaitable()
         print("Pak")
 
-frenetic_coro_manager(tum(), pak())
+frenetic_coros_manager(tum(), pak())
 ```
