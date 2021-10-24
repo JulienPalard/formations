@@ -158,9 +158,6 @@ Lisez *TOUJOURS* la dernière ligne en premier !
 
 # Types natifs
 
-Les types natifs, leurs opérateurs et leurs méthodes, les variables.
-
-
 ## Booléens
 
 ```python
