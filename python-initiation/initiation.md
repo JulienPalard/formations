@@ -597,56 +597,7 @@ chaînes.
 ```
 
 
-# Les méthodes
-
-## Sur les chaînes
-```python
->>> s = "The prime numbers."
->>> s.title()
-'The Prime Numbers.'
->>> s.startswith("The")
-True
->>> s.split()
-['The', 'prime', 'numbers.']
-```
-
-
-## Sur les chaînes
-
-```python
->>> s = "phi = {}"
->>> s.format((1 + 5 ** 0.5) / 2)
-'phi = 1.618033988749895'
-```
-
-
-## Sur les listes
-
-```python
->>> l = [2, 3, 5, 7]
->>> l.append(11)
->>> l.sort(reverse=True)
->>> l
-[11, 7, 5, 3, 2]
-```
-
-
-## Sur les dictionnaires
-
-```python
->>> d = {"Aval": "Du côté de la vallée.",
-...      "Amont": "Du côté de la montagne."}
->>> d.keys()
-dict_keys(['Aval', 'Amont'])
->>> d.values()
-dict_values(['Du côté de la vallée.', 'Du côté de la montagne.'])
->>> d.items()
-dict_items([('Aval', 'Du côté de la vallée.'), ('Amont', 'Du côté de la montagne.')])
-```
-
-
 # Les instructions
-
 
 ## if
 
@@ -763,6 +714,54 @@ cependant dans quelques cas:
 Je sais pour la faute de frappe sur guess, mais sinon ça dépasse.
 
 Méthode de Héron.
+
+
+# Les méthodes
+
+## Sur les chaînes
+```python
+>>> s = "The prime numbers."
+>>> s.title()
+'The Prime Numbers.'
+>>> s.startswith("The")
+True
+>>> s.split()
+['The', 'prime', 'numbers.']
+```
+
+
+## Sur les chaînes
+
+```python
+>>> s = "phi = {}"
+>>> s.format((1 + 5 ** 0.5) / 2)
+'phi = 1.618033988749895'
+```
+
+
+## Sur les listes
+
+```python
+>>> l = [2, 3, 5, 7]
+>>> l.append(11)
+>>> l.sort(reverse=True)
+>>> l
+[11, 7, 5, 3, 2]
+```
+
+
+## Sur les dictionnaires
+
+```python
+>>> d = {"Aval": "Du côté de la vallée.",
+...      "Amont": "Du côté de la montagne."}
+>>> d.keys()
+dict_keys(['Aval', 'Amont'])
+>>> d.values()
+dict_values(['Du côté de la vallée.', 'Du côté de la montagne.'])
+>>> d.items()
+dict_items([('Aval', 'Du côté de la vallée.'), ('Amont', 'Du côté de la montagne.')])
+```
 
 
 # Les variables (suite)
