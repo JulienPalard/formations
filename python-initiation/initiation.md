@@ -5,6 +5,9 @@
 Juste pour le doctest:
 ```python
 x, y = 0, 0
+
+def randint(a, b):
+    return 4  # https://xkcd.com/221/
 ```
 
 
@@ -1168,7 +1171,6 @@ seq = list("ABCDEF")
 
 # Les classes
 
-
 ## La syntaxe
 
 ```python
@@ -1232,9 +1234,7 @@ Notes: On ne les connaît pas.
 ```python
 class Dice:
     def throw(self):
-        self.value = 4
-        # Chosen by fair dice roll.
-        # Guaranteed to be random.
+        self.value = randint(1, 6)
 ```
 
 Notes: Une classe *ne sert pas* à stocker des fonctions, mais des
