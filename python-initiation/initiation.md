@@ -506,7 +506,6 @@ Bien prendre le temps d'expliquer la syntaxe ici.
 
 # Les fonctions natives
 
-
 ## print
 
 ```python
@@ -532,6 +531,11 @@ En effet, le P de REPL étant `print`, le print est implicite dans un REPL.
 
 Mais le REPL sert a tester : on peut bien tester print dans le REPL.
 
+Exercices:
+ - Print 42
+ - Number of seconds in a year
+ - Using operators
+
 ## str, list, int, ...
 
 ```python
@@ -556,6 +560,9 @@ Mais le REPL sert a tester : on peut bien tester print dans le REPL.
 7
 ```
 
+::: notes
+
+Exercise: Character counting
 
 ## range
 
@@ -582,30 +589,12 @@ variable est une chaîne, `help` n'affichera pas la documentation des
 chaînes.
 
 
-## enumerate
-
-```python
->>> jours = ["lundi", "mardi", "mercredi"]
->>> list(enumerate(jours))
-[(0, 'lundi'), (1, 'mardi'), (2, 'mercredi')]
-```
-
-
 ## sorted
 
 ```python
 >>> sorted({2, 1, 7, 6})
 [1, 2, 6, 7]
 ```
-
-
-## exit
-
-Appeler `exit()` quitte simplement le REPL.
-
-::: notes
-
-Préferer `sys.exit()` dans un programme.
 
 
 # Les méthodes
