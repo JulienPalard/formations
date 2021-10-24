@@ -1068,14 +1068,7 @@ en :
 
 ```python
 def phi(n):
-    return len(
-        [
-            i
-            for i in range(n)
-            if math.gcd(i, n) == i
-        ]
-    )
-
+    return len([i for i in range(n) if math.gcd(i, n) == i])
 ```
 
 ::: notes
