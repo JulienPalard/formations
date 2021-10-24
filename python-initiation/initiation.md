@@ -571,15 +571,15 @@ Mais le REPL sert a tester : on peut bien tester print dans le REPL.
 
 Affiche la documentation de n'importe quoi, essayez :
 
-   - `help()` pour un mode interactif.
    - `help(str)`
    - `help(list)`
-   - `help("list")`
+   - ...
 
 ::: notes
 
-Accepte aussi une variable mais attention: si la variable est une
-chaîne, help n'affichera pas la documentation des chaînes.
+Accepte aussi une valeur (et donc une variable) mais attention : si la
+variable est une chaîne, `help` n'affichera pas la documentation des
+chaînes.
 
 
 ## enumerate
