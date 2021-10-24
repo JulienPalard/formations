@@ -686,6 +686,9 @@ deux 2
 4
 ```
 
+::: notes
+
+Exercice : Square numbers, powers of two, comparisons.
 
 ## L'instruction `while`
 
@@ -700,20 +703,20 @@ cependant dans quelques cas:
 
 ```python
 >>> sq = 5
->>> gues = 2
->>> error = abs(sq - gues * gues)
+>>> guess = 2
+>>> error = abs(sq - guess * guess)
 >>> while error > 0.0001:
-...     gues = (gues + sq / gues) / 2
-...     error = abs(sq - gues * gues)
->>> gues
+...     guess = (guess + sq / guess) / 2
+...     error = abs(sq - guess * guess)
+>>> guess
 2.2360679779158037
 ```
 
 ::: notes
 
-Je sais pour la faute de frappe sur guess, mais sinon ça dépasse.
-
-Méthode de Héron.
+C'est la méthode de Héron, mais ne pas rentrer dans le détail, juste
+montrer la ligne du while, les laisser revenir dessus plus tard s'ils
+le veulent.
 
 
 # Les méthodes
@@ -729,6 +732,9 @@ True
 ['The', 'prime', 'numbers.']
 ```
 
+::: notes
+
+Exercise : Counting Words.
 
 ## Sur les chaînes
 
@@ -755,10 +761,6 @@ True
 ```python
 >>> d = {"Aval": "Du côté de la vallée.",
 ...      "Amont": "Du côté de la montagne."}
->>> d.keys()
-dict_keys(['Aval', 'Amont'])
->>> d.values()
-dict_values(['Du côté de la vallée.', 'Du côté de la montagne.'])
 >>> d.items()
 dict_items([('Aval', 'Du côté de la vallée.'), ('Amont', 'Du côté de la montagne.')])
 ```
@@ -800,24 +802,33 @@ de constantes.
 
 ## Les types modifiables
 
-Parmis les types modifiables on trouve :
+- On peut ajouter à une liste.
+- On peut vider un ensemble.
+- On peut supprimer une clef d'un dictionnaire.
+- ...
 
-Les listes, les dictionnaires, les ensembles, …
+::: notes
 
-*On peut ajouter a une liste, modifier la valeur pour une clé d'un
-dictionnaire, ou vider un ensemble par exemple.*
+- Listes
+- Dictionnaires
+- Ensembles
+- ...
 
 
 ## les types immuables
 
-Parmis les types immuables on trouve :
-
-Les chaînes de caractères, les *n*-uplets, les entiers, les booléens, …
-
-*On ne peut pas dire que maintenant 10 vaut 12, ni que faux est vrai.*
-
+- On ne peut pas dire que maintenant 10 vaut 12.
+- Ni que faux devient vrai.
+- Ni qu'une paire contient maintenant trois éléments.
+- ...
 
 ::: notes
+
+- Les chaînes
+- Les *n*-uplets
+- Les entiers
+- Les booléens
+- ...
 
 Pour les chaînes c'est discutable, mais avoir des chaînes immuables
 est confortable (clef de dictionnaires par exemple, ou la garantie
