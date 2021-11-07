@@ -666,13 +666,14 @@ Parler de `pass` et de `...`.
 ## for
 
 ```python
->>> d = {"zero": 0, "un": 1, "deux": 2}
->>> for number, value in d.items():
-...     print(number, value)
+>>> for letter in "Hello":
+...     print(letter)
 ...
-zero 0
-un 1
-deux 2
+H
+e
+l
+l
+o
 >>>
 ```
 
@@ -1583,7 +1584,7 @@ Restez dans les standards : `pyproject.toml`, `setup.cfg`.
 ## pip
 
 ```bash
-(test) $ pip install -e .
+(test) $ pip install .
 ```
 
 
