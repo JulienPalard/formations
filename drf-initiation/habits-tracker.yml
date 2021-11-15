@@ -157,6 +157,24 @@ paths:
         401:
           description: Unauthorized
           content: {}
+    post:
+      summary: New habit
+      description: Add new habit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Habit'
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Habit'
+        401:
+          description: Unauthorized
+          content: {}
 
   /habits/{habit_id}/done/:
     parameters:
