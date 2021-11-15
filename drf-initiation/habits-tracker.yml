@@ -1,0 +1,310 @@
+---
+
+openapi: 3.0.1
+info:
+  title: Activity API
+  description: Track your activities
+  contact:
+    name: Julien Palard
+    url: https://mdk.fr
+  license:
+    name: MIT License
+    url: https://opensource.org/licenses/MIT
+  version: 1.0.0
+servers:
+  - url: /api
+paths:
+  /users/:
+    post:
+      summary: Register a new user
+      description: Register a new user
+      requestBody:
+        description: Details of the new user to register
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /jwt/:
+    post:
+      summary: Creates a JWT
+      description: Creates a JWT for the given user credentials
+      requestBody:
+        description: Credentials to use
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        401:
+          description: Unauthorized
+          content: {}
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  /me:
+    get:
+      summary: Get current user
+      description: Gets the currently logged-in user
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        401:
+          description: Unauthorized
+          content: {}
+    put:
+      summary: Update current user
+      description: Updated user information for current user
+      requestBody:
+        description: User details to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        401:
+          description: Unauthorized
+          content: {}
+    delete:
+      summary: Unregister own account
+      description: Delete the currently logged-in user
+      responses:
+        200:
+          description: OK
+          content: {}
+
+  /users/{id}/:
+    parameters:
+      - name: id
+        in: path
+        description: User id of the user to get
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: Get a user profile
+      description: Get any user profile
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    put:
+      summary: Update user
+      description: Updated user information for this user
+      requestBody:
+        description: User details to update
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        401:
+          description: Unauthorized
+          content: {}
+    delete:
+      summary: Delete a user
+      description: Delete the user (admin only)
+      responses:
+        200:
+          description: OK
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+
+  /habits/:
+    get:
+      summary: List my habits
+      description: List all my habits
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Habits'
+        401:
+          description: Unauthorized
+          content: {}
+
+  /habits/{habit_id}/done/:
+    parameters:
+      - name: habit_id
+        in: path
+        description: Habit id
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: When I did it.
+      description: Get the list of the times when I did it.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Dones'
+        401:
+          description: Unauthorized
+          content: {}
+    post:
+      summary: I did it!
+      description: Add a done entry in the list of moment I did this habit.
+      requestBody:
+        description: One can POST with an empty body to let the server
+          pick the current time.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Done'
+      responses:
+        201:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Done'
+        401:
+          description: Unauthorized
+          content: {}
+
+  /habits/{habit_id}/done/{done_id}/:
+    parameters:
+      - name: habit_id
+        in: path
+        description: Habit id
+        required: true
+        schema:
+          type: integer
+      - name: done_id
+        in: path
+        description: Done id
+        required: true
+        schema:
+          type: integer
+    get:
+      summary: One time I did it.
+      description: Get the details of the time I did it.
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Done'
+        401:
+          description: Unauthorized
+          content: {}
+    delete:
+      summary: Drop this time.
+      description: Drop this time, in case you mis-click and in fact you haven't done it.
+      responses:
+        200:
+          description: OK
+          content: {}
+        401:
+          description: Unauthorized
+          content: {}
+
+components:
+  schemas:
+    Habits:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Habit'
+        next:
+          type: string
+        prev:
+          type: string
+        count:
+          type: integer
+    Habit:
+      type: object
+      properties:
+        url:
+          type: string
+          description: Identifier as an URL of this habit.
+        name:
+          type: string
+        qty:
+          type: integer
+          description: The number of time it should be done during the interval
+        interval:
+          anyOf:
+            - type: integer
+              description: The number of seconds the user have to do the habit
+                qty times.
+            - type: string
+              description: One of "hourly", "daily", "weekly", "monthly", "yearly".
+        done:
+          type: string
+          description: Link to the list of moments this habit has been done.
+    Done:
+      type: object
+      properties:
+        url:
+          type: string
+          description: URL as an identifier of this done object.
+        at:
+          type: string
+          format: date-time
+    Dones:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Done'
+        next:
+          type: string
+        prev:
+          type: string
+        count:
+          type: integer
+    User:
+      type: object
+      properties:
+        email:
+          type: string
+        username:
+          type: string
+        jwt:
+          type: string
+        password:
+          type: string
+          format: password
