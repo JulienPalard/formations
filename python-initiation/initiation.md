@@ -313,7 +313,7 @@ pas les clefs à l'avance, sinon c'est une classe.
 ## Les opérateurs mathématiques
 
 ```python
->>> (4 * 10 ** 1) + (2 * 10 ** 0)
+>>> (4 * 10**1) + (2 * 10**0)
 42
 ```
 
@@ -484,7 +484,7 @@ JAMAIS JAMAIS dire : On met 10 dans « x ».
 ## Accès par indice
 
 ```python
->>> first_primes = [2, 3, 5, 7, 11, 13]
+>>> first_primes = [2, 3, 5, 7]
 >>> first_primes[0]
 2
 >>> first_primes[1]
@@ -654,12 +654,26 @@ Parler de `pass` et de `...`.
 ## for
 
 ```python
->>> for number in 1, 2, 3:
-...     print(number)
+>>> for un_nombre in first_primes:
+...     print(un_nombre)
 ...
-1
 2
 3
+5
+7
+```
+
+Équivalent à :
+
+```python
+un_nombre = first_primes[0]
+print(un_nombre)
+un_nombre = first_primes[1]
+print(un_nombre)
+un_nombre = first_primes[2]
+print(un_nombre)
+un_nombre = first_primes[3]
+print(un_nombre)
 ```
 
 
