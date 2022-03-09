@@ -8,6 +8,7 @@ x, y = 0, 0
 
 def randint(a, b):
     return 4  # https://xkcd.com/221/
+first_primes = [2, 3, 5, 7]
 ```
 
 
