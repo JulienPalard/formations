@@ -960,6 +960,10 @@ Une variable ne peut *presque* jamais ne pas contenir de valeur, et on ne peut p
 
 # Les chaînes
 
+::: notes
+
+~ fin de jour 1 début de jour 2
+
 ```python
 >>> """Anne Elk's Theory est "mieux"."""
 'Anne Elk\'s Theory est "mieux".'
@@ -1353,6 +1357,7 @@ $ conda activate test
 
 Notes: Prérequis: pip et venv.
 
+~fin jour 2 / début jour 3.
 
 ## Bonnes habitudes
 
