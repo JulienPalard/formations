@@ -29,10 +29,7 @@ Notes:
 Jamais `sudo`, toujours dans un `venv`.
 
 
-## pyproject.toml + setup.cfg
-
-En attendant l'implémentation de la PEP 621.
-
+## pyproject.toml
 
 ## pip install .
 

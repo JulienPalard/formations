@@ -71,7 +71,7 @@ Notes:
 
 Faire le schéma à deux colonnes: noms → mémoire.
 
-https://dreampuf.github.io/GraphvizOnline/
+https://dreampuf.github.io/GraphvizOnline/#%23%20a%3A%20list%20%3D%20%5B%5D%20%20%20%20%20%20%23%20a%3A%20int%20%3D%200%0A%23%20b%20%3D%20a%20%20%20%20%20%20%20%23%20b%20%3D%20a%0A%23%20b.append(1)%20%23%20b%20%3D%20b%20%2B%201%0A%23%20print(a)%20%20%20%20%23%20print(a)%0A%23%20%5B1%5D%20%20%20%20%20%20%20%20%20%23%200%0A%0A%23%20a%20%3D%20%5B%5B%5D%2C%20%5B%5D%5D%0A%23%20b%20%3D%20a%0A%23%20b%5B0%5D.append(5)%0A%23%20print(a)%0A%23%20%5B%5B5%5D%2C%20%5B%5D%5D%0A%0A%23%20import%20math%0A%0A%23%20def%20print_tau()%3A%0A%23%20%20%20...%0A%0A%0Adigraph%20G%20%7B%0A%0A%20%20subgraph%20cluster_0%20%7B%0A%20%20%20%20%20label%20%3D%20%22Noms%22%3B%0A%20%20%20%20%20a%3B%0A%20%20%20%20%20b%3B%0A%20%20%20%20%20math%3B%0A%20%20%20%20%20print_tau%3B%0A%20%20%7D%0A%0A%20%20subgraph%20cluster_1%20%7B%0A%20%20%20%20%20label%20%3D%20%22Objets%22%3B%0A%20%20%20%20%20%22%3Cmodule%20math%3E%22%0A%20%20%20%20%20%22%3Cfunction%20print_tau%3E%22%0A%20%20%20%20%20%22int(5)%22%3B%0A%20%20%20%20%20%22list1(%5B%5Bint(5)%5D%2C%20%5B%5D%5D)%22%3B%0A%20%20%20%20%20%22list2(%5Bint(5)%5D)%22%3B%0A%20%20%20%20%20%22list3(%5B%5D)%22%3B%0A%20%20%20%20%20%22list1(%5B%5Bint(5)%5D%2C%20%5B%5D%5D)%22%20-%3E%20%22list2(%5Bint(5)%5D)%22%0A%20%20%20%20%20%22list1(%5B%5Bint(5)%5D%2C%20%5B%5D%5D)%22%20-%3E%20%22list3(%5B%5D)%22%0A%20%20%20%20%22list2(%5Bint(5)%5D)%22%20-%3E%20%22int(5)%22%0A%20%20%7D%0A%20%20%0A%20%20a%20-%3E%20%22list1(%5B%5Bint(5)%5D%2C%20%5B%5D%5D)%22%0A%20%20b%20-%3E%20%22list1(%5B%5Bint(5)%5D%2C%20%5B%5D%5D)%22%0A%20%20math%20-%3E%20%22%3Cmodule%20math%3E%22%0A%20%20print_tau%20-%3E%20%22%3Cfunction%20print_tau%3E%22%0A%7D
 
 En Python avancé bien insister sur le fait qu'un objet en mémoire à
 une adresse.
@@ -97,14 +97,7 @@ declared as global.
 
 ## UnboundLocalError
 
-Mais qui ment dans l'histoire ?
-
 Notes:
-
-Personne :
-
-On ne peut pas « délier » un nom, mais il peut très bien ne jamais
-avoir été lié.
 
 Faire un exemple dans un fichier.
 

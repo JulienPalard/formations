@@ -33,7 +33,7 @@ Antisèche : https://wyz.fr/3Z8
 
 Notes:
 
-Et `__delete__` et `__setname__`.
+Et `__delete__` et `__set_name__`.
 
 - instance... c'est l'instance.
 - owner, c'est le type, il est toujours connu donc "devrait" toujours être donné

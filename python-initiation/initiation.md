@@ -1278,6 +1278,8 @@ Notes: Leur faire faire implémenter le __repr__, min, max, et mean.
 
 Leur faire faire 1000 tirages dans un Counter, avec des valeurs ENTIẼRES.
 
+BiaisedDice(Dice) est un bon exemple d'héritage.
+
 
 ## Utilisation
 
