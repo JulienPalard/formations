@@ -508,7 +508,7 @@ Bien prendre le temps d'expliquer la syntaxe ici.
 ```
 
 
-# Les fonctions natives
+# Les fonctions
 
 ## print
 
@@ -540,6 +540,7 @@ Exercices:
  - Number of seconds in a year
  - Using operators
 
+
 ## str, list, int, ...
 
 ```python
@@ -567,6 +568,7 @@ Exercices:
 ::: notes
 
 Exercise: Character counting
+
 
 ## range
 
@@ -599,6 +601,18 @@ chaînes.
 >>> sorted({2, 1, 7, 6})
 [1, 2, 6, 7]
 ```
+
+## Les importer des modules
+
+```python
+from random import choice
+
+print(choice(["Pizzeria", "Japonais"]))
+```
+
+::: notes
+
+Exercice : Import.
 
 
 # Les instructions
@@ -879,23 +893,7 @@ dire quand même : pour `True`, `False`, et `None`.
 
 # Les fonctions
 
-## Les importer des modules
-
-```python
-from random import choice
-
-print(choice(["Pizzeria", "Japonais"]))
-```
-
-
-::: notes
-
-Exercice : Import.
-
-
 ## Syntaxe
-
-Les faire soi-même :
 
 ```python
 def ma_fonction(ses_paramètres):
