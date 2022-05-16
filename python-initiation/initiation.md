@@ -945,18 +945,6 @@ False
 
 Exercices: First function, Print even numbers, ...
 
-## La portée des variables
-
-Dans une fonction :
-- Si on ne fait qu'accéder, ce sera une globale.
-- Si on affecte, c'est une locale.
-
-::: notes
-
-Pour l'accès pensez à `print` par exemple, l'utiliser n'en fait pas une locale.
-Une variable ne peut *presque* jamais ne pas contenir de valeur, et on ne peut pas la "déclarer".
-
-
 
 # Les chaînes
 
