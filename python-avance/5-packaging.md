@@ -43,6 +43,6 @@ python -m build
 ### Publier
 
 ```bash
-pip instqll twine
+pip install twine
 twine upload dist/*
 ```
