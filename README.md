@@ -11,8 +11,6 @@ https://mdk.fr/python-initiation/
   un moyen plus lisible.
 - https://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD831.html Why numbering should start at zero
 - Les imports
-- Attention avec `def fib` jour 1 on montre les fonctions avant de les
-  avoir expliquées.
 - with statement
 
 
