@@ -1,0 +1,3 @@
+#!/bin/sh
+
+bkt --ttl 1y --cache-dir .cache "$@" 2>&1

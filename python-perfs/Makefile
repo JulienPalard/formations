@@ -1,5 +1,12 @@
+export PATH := $(PATH):bin
+
+# Only run watch with -j2 so entr and serve are run in parallel.
+.PHONY: watch
+watch: entr serve
+
 .PHONY: static
 static: output/index.html
+	cp -a *.png output/
 
 .PHONY: help
 help:
@@ -12,6 +19,11 @@ help:
 .PHONY: check
 test:
 	python test.py *.md
+
+
+.PHONY: entr
+entr:
+	ls -1 *.md *.py | entr $(MAKE) static
 
 output/index.html: perfs.md
 	sed 's/#!//e;' perfs.md | mdtoreveal /dev/stdin --output $@

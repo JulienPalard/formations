@@ -63,11 +63,11 @@ Mais retenir par cœur la complexité de quelques structures
 ```bash
 $ python -m timeit -s 'container = list(range(10_000_000))' \
   '10_000_001 in container'
-#!bkt -- python -m timeit -s 'container = list(range(10_000_000))' '10_000_001 in container'
+#!cache -- python -m timeit -s 'container = list(range(10_000_000))' '10_000_001 in container'
 
 $ python -m timeit -s 'container = set(range(10_000_000))' \
   '10_000_001 in container'
-#!bkt -- python -m timeit -n 100 -s 'container = set(range(10_000_000))' '10_000_001 in container'
+#!cache -- python -m timeit -n 100 -s 'container = set(range(10_000_000))' '10_000_001 in container'
 ```
 
 Pourquoi une si grande différence !?
@@ -86,10 +86,10 @@ C'est l'heure du live coding !
 
 ```bash
 $ time python -c 'container = set(range(10_000_000))'
-#!bkt -- time -p python -c 'container = set(range(10_000_000))' 2>&1
+#!cache -- time -p python -c 'container = set(range(10_000_000))' 2>&1
 ```
 
-Mais `time` ne teste qu'une fois, ce n'est pas fiable.
+Mais `time` ne teste qu'une fois.
 
 ::: notes
 
@@ -174,7 +174,7 @@ cProfile nous aider à trouver la fonction coupable dans un script plus gros.
 ## cProfile, exemple
 
 ```python
-#! cat approx_phi_up_to_1.py | tail -n 13
+#!sed -n '/def fib/,/return approx/p' phi1.py
 ```
 
 
@@ -183,13 +183,14 @@ cProfile nous aider à trouver la fonction coupable dans un script plus gros.
 Testons :
 
 ```python
-#! cat approx_phi_test.py
+#!sed -n '/import sys/,$p' phi1.py
 ```
 
 ```text
-$ python approx_phi_test.py
-#!bkt -- python approx_phi_test.py
+$ time python phi1.py 10
+#!cache -- time -p python phi1.py 10
 ```
+
 
 C'est déjà lent, et pour `20` c'est interminable...
 
@@ -199,127 +200,76 @@ C'est déjà lent, et pour `20` c'est interminable...
 Sortons cProfile :
 
 ```text
-$ python -m cProfile --sort cumulative approx_phi_test.py
-#! bkt -- python -m cProfile --sort cumulative approx_phi_test.py | head
+$ python -m cProfile --sort cumulative phi1.py 10
+#!cache -- python -m cProfile --sort cumulative phi1.py 10 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
+...
+```
+
+C'est donc `fib` la coupable :
+- C'est ~100% du temps (`cumtime`).
+- C'est ~100% des appels de fonctions.
+
+
+## cProfile, exemple
+
+Cachons les résultats de `fib` :
+```python
+#!sed -n '/import cache/,/return fib/p' phi2.py
 ```
 
 ## cProfile, exemple
 
+Et on repasse dans cProfile !
 
-```bash
-
-$ python -m pstats fib.prof
-prof% stats 10
-Mon Jun 13 10:12:29 2022    prof
-
-         30903333 function calls (133 primitive calls) in 5.381 seconds
-
-   Ordered by: cumulative time
-
-   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-        1    0.000    0.000    5.381    5.381 {built-in method builtins.exec}
-        1    0.000    0.000    5.381    5.381 /tmp/fib.py:1(<module>)
-       33    0.000    0.000    5.381    0.163 /tmp/fib.py:8(approx_phi)
-30903265/65    5.381    0.000    5.381    0.083 /tmp/fib.py:3(fib)
+```text
+$ python -m cProfile --sort cumulative phi2.py 10
+#!cache -- python -m cProfile --sort cumulative phi2.py 10 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
 ```
 
-## cProfile, exemple
-
-30903265 appels à la fonction `fib` !? On a notre coupable !
+C'est mieux !
 
 ## cProfile, exemple
 
+On essaye d'aller plus loin ?
+
+```text
+$ python -m cProfile --sort cumulative phi2.py 1000
+#!cache -- python -m cProfile --sort cumulative phi2.py 1000 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
+```
+
+Ça tient, mais peut-on faire mieux ?
+
+
+## cProfile, exemple
+
+Divisons par 10 le nombre d'appels, on réduira mécaniquement par 10 le
+temps d'exécution ?
 
 ```python
-@cache
-def fib(n):
-    if n < 2:
-        return 1
-    return fib(n - 1) + fib(n - 2)
-
-def approx_phi(n):
-    return fib(n + 1) / fib(n)
-
-def approx_phi_up_to(n_digits):
-    with localcontext() as ctx:
-        ctx.prec = n_digits + 1
-        for n in count():
-            step1 = approx_phi(n)
-            step2 = approx_phi(n + 1)
-            if step1 == step2:
-                return step1
+#!sed -n '/def approx_phi_up_to/,/return step1/p' phi3.py
 ```
-
-notes :::
-
-On est très vite limités par les floats...
-
-## cProfile, exemple
-
-Dépassons la limite des floats avec le module Decimal :
-
-```python
-def approx_phi(n):
-    return Decimal(fib(n + 1)) / Decimal(fib(n))
-```
-
-## cProfile, exemple
-
-Et allons plus loin :
-
-```python
-def approx_phi_up_to(n_digits):
-    with localcontext() as ctx:
-        ctx.prec = n_digits + 1
-        for n in count():
-            step1 = approx_phi(n)
-            step2 = approx_phi(n + 1)
-            if step1 == step2:
-                return step1
-```
-
-::: notes
-
-Jusqu'à 5000 décimales ça marche bien, mais bon ça devient lent, c'est l'heure de cProfile !
 
 ## cProfile, exemple
 
 ```text
-   Ordered by: cumulative time
-   List reduced from 140 to 10 due to restriction <10>
-
-   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
-      3/1    0.000    0.000   15.266   15.266 {built-in method builtins.exec}
-        1    0.000    0.000   15.266   15.266 /tmp/fib.py:1(<module>)
-        1    0.012    0.012   15.264   15.264 /tmp/fib.py:16(approx_phi_up_to)
-    28714   15.244    0.001   15.252    0.001 /tmp/fib.py:13(approx_phi)
-    14359    0.008    0.000    0.008    0.000 /tmp/fib.py:7(fib)
+$ python -m cProfile --sort cumulative phi3.py 1000
+#!cache -- python -m cProfile --sort cumulative phi3.py 1000 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
 ```
-
-`fib` n'y est pour rien, c'est `approx_phi` qui prend près de 100% du
-temps, surtout parce qu'il est appelé près de 30_000 fois !
-
 
 ## cProfile, exemple
 
-Divisons par 10 le nombre d'appels, on réduira mécaniquement par 10 le temps d'exécution :
+En cachant `approx_phi` ?
 
 ```python
-    [...]
-    step1 = approx_phi(10 * n)
-    step2 = approx_phi(10 * n + 1)
-    [...]
+#!sed -n '10,/return step1/p' phi4.py
 ```
+
+::: notes
+
+Notez l'astuce pour que le `step2` d'un
+tour soit le `step1` du suivant...
+
 ## cProfile, exemple
-
-En rajoutant du cache sur `approx_phi` et en faisant en sorte de
-réutiliser un des deux appels à chaque étape, on peut certainement
-encore au moins diviser par deux le temps d'exécution :
-
-```python
-    step1 = approx_phi(2 ** n)
-    step2 = approx_phi(2 ** (n+1))
-```
 
 `RecursionError` !? En effet, en avançant par si grands pas, le cache
 de `fib` n'est pas chaud, et il peut vite devoir descendre
@@ -330,29 +280,38 @@ profondément en récursion...
 Il est temps de sortir une implémentation de `fib` plus robuste, basée
 sur l'algorithme « matrix exponentiation » :
 
-```
-@cache
-def fib(n):
-    if n in (0, 1):
-        return 1
-    x = n // 2
-    return fib(x - 1) * fib(n - x - 1) + fib(x) * fib(n - x)
+```python
+#!sed -n '/def fib/,/return fib/p' phi5.py
 ```
 
 
 ## cProfile, exemple
 
-```bash
-$ time python fib.py
-real    0m0.064s
-user    0m0.060s
-sys     0m0.005s
+```text
+$ python -m cProfile --sort cumulative phi5.py 1000
+#!cache -- python -m cProfile --sort cumulative phi5.py 1000 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
 ```
+
+::: notes
 
 Mieux.
 
-## TODO
+## Snakeviz
 
+```text
+python -m pip install snakeviz
+#!python -m pip install snakeviz >/dev/null 2>&1
+python -m cProfile -o phi5.prof phi5.py 1000
+#!if [ ! -f phi5.prof ]; then python -m cProfile -o /tmp/phi5.prof phi5.py 1000 >/dev/null 2>&1; fi
+python -m snakeviz phi5.prof
+#!if [ ! -f phi5.png ]; then python -m snakeviz -s phi5.prof & sleep 1; cutycapt --min-width=1024 --delay=500 --url=http://127.0.0.1:8080/snakeviz/%2Ftmp%2Fphi5.prof --out=phi5.png ; kill %1; fi
+```
+
+## Snakeviz
+
+![](phi5.png)
+
+## TODO
 snakeviz
 scalene
 vprof

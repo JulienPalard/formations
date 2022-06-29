@@ -14,3 +14,8 @@ def approx_phi_up_to(n_digits):
         for n in count():
             if approx_phi(n) == approx_phi(n + 1):
                 return approx_phi(n)
+
+import sys
+
+if __name__ == "__main__":
+    print(approx_phi_up_to(int(sys.argv[1])))
