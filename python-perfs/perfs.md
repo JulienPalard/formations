@@ -371,9 +371,9 @@ Mieux.
 python -m pip install snakeviz
 #!python -m pip install snakeviz >/dev/null 2>&1
 python -m cProfile -o phi5.prof phi5.py 2000
-#!if [ ! -f .cache/phi5.prof ]; then python -m cProfile -o .cache/phi5.prof include/phi5.py 2000 >/dev/null 2>&1; fi
+#!if [ ! -f /tmp/phi5.prof ]; then python -m cProfile -o /tmp/phi5.prof include/phi5.py 2000 >/dev/null 2>&1; fi
 python -m snakeviz phi5.prof
-#!if [ ! -f .cache/phi5-snakeviz.png ]; then python -m snakeviz -s .cache/phi5.prof & TOKILL=$!; sleep 1; cutycapt --min-width=1024 --delay=500 --url=http://127.0.0.1:8080/snakeviz/%2Ftmp%2Fphi5.prof --out=.cache/phi5-snakeviz.png ; kill $TOKILL; fi
+#!if [ ! -f .cache/phi5-snakeviz.png ]; then python -m snakeviz -s /tmp/phi5.prof & TOKILL=$!; sleep 1; cutycapt --min-width=1024 --delay=500 --url=http://127.0.0.1:8080/snakeviz/%2Ftmp%2Fphi5.prof --out=.cache/phi5-snakeviz.png ; kill $TOKILL; fi
 ```
 
 ## Snakeviz
@@ -386,7 +386,7 @@ python -m snakeviz phi5.prof
 $ python -m pip install scalene
 #!python -m pip install scalene >/dev/null 2>&1
 $ scalene phi5.py 100000
-#!if [ ! -f .cache/phi5.html ]; then scalene include/phi5.py 100000 --html --outfile .cache/phi5.html --cli >/dev/null 2>&1; fi
+#!if [ ! -f .cache/phi5.html ]; then scalene include/phi5.py 100000 --html --outfile .cache/phi5.html --cli >&2; fi
 #!if [ ! -f .cache/phi5-scalene.png ]; then cutycapt --min-width=1024 --delay=100 --url=file://$(pwd)/.cache/phi5.html --out=.cache/phi5-scalene.png; fi
 ```
 
