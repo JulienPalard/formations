@@ -6,7 +6,7 @@ watch: entr serve
 
 .PHONY: static
 static: output/index.html
-	cp -a *.png output/
+	cp -a .cache/*.png output/
 
 .PHONY: help
 help:
@@ -16,16 +16,12 @@ help:
 	@echo "  make rsync"
 	@echo "  make clean"
 
-.PHONY: check
-test:
-	python test.py *.md
-
-
 .PHONY: entr
 entr:
-	ls -1 *.md *.py | entr $(MAKE) static
+	ls -1 *.md include/*.py | entr $(MAKE) static
 
 output/index.html: perfs.md
+	mkdir -p .cache
 	sed 's/#!//e;' perfs.md | mdtoreveal /dev/stdin --output $@
 	if [ -d static ]; then cp -a static output; fi
 

@@ -43,3 +43,4 @@ jobs:
           make -C python-avance rsync
           make -C drf-initiation rsync
           make -C django-initiation rsync
+          make -C python-perfs rsync

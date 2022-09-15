@@ -14,18 +14,77 @@ C'est bien choisir l'algorihtme qu'on va utiliser.
 
 ## Comparaison asymptotique
 
-Les notations les plus utiisées :
+Les notations les plus utilisées :
 
 ```text
 O(1)        Constant
-O(log(n))   Logarithmique
+O(log n)    Logarithmique
 O(n)        Linéaire
-O(n log(n)) Parfois appelée « linéarithmique »
+O(n log n)  Parfois appelée « linéarithmique »
 O(n²)       Quadratique
 O(nᶜ)       Polynomiale
 O(cⁿ)       Exponentielle
 O(n!)       Factorielle
 ```
+
+::: notes
+
+Il faut les grapher pour s'en rendre compte : cf. include/big.o.py
+
+## Comparaison asymptotique
+
+Exemples.
+
+
+## O(1)
+
+```python
+def get_item(a_list: list, an_idx):
+    return a_list[an_idx]
+```
+
+ou
+
+```python
+def is_in(a_set: set, a_value):
+    return a_value in a_set
+```
+
+::: notes
+
+Peu importe la taille de la liste, accéder à un élément prend le même temps.
+
+
+## O(log n)
+
+Attention c'est toujours en base deux.
+
+Exemple typique : chercher dans un annuaire.
+
+::: notes
+
+Un annuaire deux fois plus gros ne vous demandera pas deux fois plus
+de temps mais peut-être une opération de plus.
+
+
+## O(log n)
+
+```python
+#!sed -n '/def index/,/raise ValueError/p' include/find_in_list.py
+```
+
+## O(n)
+
+```python
+#!sed -n '/def dumb_index/,/raise ValueError/p' include/find_in_list.py
+```
+
+## O(n log n)
+
+C'est `n` fois un `log n`, par exemple rayer `n` personnes dans un annuaire.
+
+Typique d'algorithmes de tris.
+
 
 ## Les mesures de complexité
 
@@ -119,6 +178,11 @@ Benchmark 1: python -c pass
   Time (mean ± σ):      19.4 ms ±   0.6 ms
 ```
 
+::: notes
+
+N'essayez pas de retenir les chiffres, retenez les faits.
+
+
 ## Petite parenthèse
 
 Et puis il peut dépendre de la version de Python, des options de compilation, ... :
@@ -164,7 +228,7 @@ démarrer** puis d'exécuter `pass`, ici on teste combien de temps ça
 prend d'exécuter `pass`.
 
 
-## cProfile
+# cProfile
 
 time, timeit, hyperfine, pyperf c'est bien pour mesurer, comparer.
 
@@ -174,7 +238,7 @@ cProfile nous aider à trouver la fonction coupable dans un script plus gros.
 ## cProfile, exemple
 
 ```python
-#!sed -n '/def fib/,/return approx/p' phi1.py
+#!sed -n '/def fib/,/return approx/p' include/phi1.py
 ```
 
 
@@ -183,12 +247,12 @@ cProfile nous aider à trouver la fonction coupable dans un script plus gros.
 Testons :
 
 ```python
-#!sed -n '/import sys/,$p' phi1.py
+#!sed -n '/import sys/,$p' include/phi1.py
 ```
 
 ```text
 $ time python phi1.py 10
-#!cache -- time -p python phi1.py 10
+#!cache -- time -p python include/phi1.py 10
 ```
 
 
@@ -201,7 +265,8 @@ Sortons cProfile :
 
 ```text
 $ python -m cProfile --sort cumulative phi1.py 10
-#!cache -- python -m cProfile --sort cumulative phi1.py 10 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
+...
+#!cache -- python -m cProfile --sort cumulative include/phi1.py 10 | sed -n '/fib\|function calls/{s/ \+/ /g;s/^ *//;p}'
 ...
 ```
 
@@ -214,7 +279,7 @@ C'est donc `fib` la coupable :
 
 Cachons les résultats de `fib` :
 ```python
-#!sed -n '/import cache/,/return fib/p' phi2.py
+#!sed -n '/import cache/,/return fib/p' include/phi2.py
 ```
 
 ## cProfile, exemple
@@ -223,7 +288,7 @@ Et on repasse dans cProfile !
 
 ```text
 $ python -m cProfile --sort cumulative phi2.py 10
-#!cache -- python -m cProfile --sort cumulative phi2.py 10 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
+#!cache -- python -m cProfile --sort cumulative include/phi2.py 10 | sed -n '/fib\|function calls/{s/ \+/ /g;s/^ *//;p}'
 ```
 
 C'est mieux !
@@ -233,8 +298,8 @@ C'est mieux !
 On essaye d'aller plus loin ?
 
 ```text
-$ python -m cProfile --sort cumulative phi2.py 1000
-#!cache -- python -m cProfile --sort cumulative phi2.py 1000 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
+$ python -m cProfile --sort cumulative phi2.py 2000
+#!cache -- python -m cProfile --sort cumulative include/phi2.py 2000 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
 ```
 
 Ça tient, mais peut-on faire mieux ?
@@ -246,14 +311,14 @@ Divisons par 10 le nombre d'appels, on réduira mécaniquement par 10 le
 temps d'exécution ?
 
 ```python
-#!sed -n '/def approx_phi_up_to/,/return step1/p' phi3.py
+#!sed -n '/def approx_phi_up_to/,/return step1/p' include/phi3.py
 ```
 
 ## cProfile, exemple
 
 ```text
-$ python -m cProfile --sort cumulative phi3.py 1000
-#!cache -- python -m cProfile --sort cumulative phi3.py 1000 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
+$ python -m cProfile --sort cumulative phi3.py 2000
+#!cache -- python -m cProfile --sort cumulative include/phi3.py 2000 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
 ```
 
 ## cProfile, exemple
@@ -261,7 +326,7 @@ $ python -m cProfile --sort cumulative phi3.py 1000
 En cachant `approx_phi` ?
 
 ```python
-#!sed -n '10,/return step1/p' phi4.py
+#!sed -n '10,/return step1/p' include/phi4.py
 ```
 
 ::: notes
@@ -270,6 +335,10 @@ Notez l'astuce pour que le `step2` d'un
 tour soit le `step1` du suivant...
 
 ## cProfile, exemple
+
+```
+$ python -m cProfile --sort cumulative phi4.py 2000
+```
 
 `RecursionError` !? En effet, en avançant par si grands pas, le cache
 de `fib` n'est pas chaud, et il peut vite devoir descendre
@@ -281,15 +350,15 @@ Il est temps de sortir une implémentation de `fib` plus robuste, basée
 sur l'algorithme « matrix exponentiation » :
 
 ```python
-#!sed -n '/def fib/,/return fib/p' phi5.py
+#!sed -n '/def fib/,/return fib/p' include/phi5.py
 ```
 
 
 ## cProfile, exemple
 
 ```text
-$ python -m cProfile --sort cumulative phi5.py 1000
-#!cache -- python -m cProfile --sort cumulative phi5.py 1000 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
+$ python -m cProfile --sort cumulative phi5.py 2000
+#!cache -- python -m cProfile --sort cumulative include/phi5.py 2000 | head -n 2 | sed 's/^ *//g;s/seconds/s/g'
 ```
 
 ::: notes
@@ -301,22 +370,44 @@ Mieux.
 ```text
 python -m pip install snakeviz
 #!python -m pip install snakeviz >/dev/null 2>&1
-python -m cProfile -o phi5.prof phi5.py 1000
-#!if [ ! -f phi5.prof ]; then python -m cProfile -o /tmp/phi5.prof phi5.py 1000 >/dev/null 2>&1; fi
+python -m cProfile -o phi5.prof phi5.py 2000
+#!if [ ! -f .cache/phi5.prof ]; then python -m cProfile -o .cache/phi5.prof include/phi5.py 2000 >/dev/null 2>&1; fi
 python -m snakeviz phi5.prof
-#!if [ ! -f phi5.png ]; then python -m snakeviz -s phi5.prof & sleep 1; cutycapt --min-width=1024 --delay=500 --url=http://127.0.0.1:8080/snakeviz/%2Ftmp%2Fphi5.prof --out=phi5.png ; kill %1; fi
+#!if [ ! -f .cache/phi5-snakeviz.png ]; then python -m snakeviz -s .cache/phi5.prof & TOKILL=$!; sleep 1; cutycapt --min-width=1024 --delay=500 --url=http://127.0.0.1:8080/snakeviz/%2Ftmp%2Fphi5.prof --out=.cache/phi5-snakeviz.png ; kill $TOKILL; fi
 ```
 
 ## Snakeviz
 
-![](phi5.png)
+![](phi5-snakeviz.png)
+
+## Scalene
+
+```bash
+$ python -m pip install scalene
+#!python -m pip install scalene >/dev/null 2>&1
+$ scalene phi5.py 100000
+#!if [ ! -f .cache/phi5.html ]; then scalene phi5.py 100000 --html --outfile .cache/phi5.html --cli >/dev/null 2>&1; fi
+#!if [ ! -f .cache/phi5-scalene.png ]; then cutycapt --min-width=1024 --delay=100 --url=file://$(pwd)/.cache/phi5.html --out=.cache/phi5-scalene.png; fi
+```
+
+## Scalene
+
+![](phi5-scalene.png)
+
+
+## Atelier
+
+Générateur de prénoms français.
+
+::: notes
+
+See includes/prenom-*.py
+
 
 ## TODO
-snakeviz
-scalene
-vprof
-https://pypi.org/project/pyflame/
-...
+- vprof
+- https://pypi.org/project/pyflame/
+
 
 # Cython
 
