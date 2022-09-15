@@ -386,7 +386,7 @@ python -m snakeviz phi5.prof
 $ python -m pip install scalene
 #!python -m pip install scalene >/dev/null 2>&1
 $ scalene phi5.py 100000
-#!if [ ! -f .cache/phi5.html ]; then scalene phi5.py 100000 --html --outfile .cache/phi5.html --cli >/dev/null 2>&1; fi
+#!if [ ! -f .cache/phi5.html ]; then scalene include/phi5.py 100000 --html --outfile .cache/phi5.html --cli >/dev/null 2>&1; fi
 #!if [ ! -f .cache/phi5-scalene.png ]; then cutycapt --min-width=1024 --delay=100 --url=file://$(pwd)/.cache/phi5.html --out=.cache/phi5-scalene.png; fi
 ```
 

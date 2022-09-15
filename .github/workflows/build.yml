@@ -44,4 +44,4 @@ jobs:
           make -C drf-initiation rsync
           make -C django-initiation rsync
           sudo apt-get install -y cutycapt
-          make -C python-perfs rsync
+          QT_QPA_PLATFORM=offscreen make -C python-perfs rsync
