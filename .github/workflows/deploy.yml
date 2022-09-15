@@ -1,0 +1,41 @@
+---
+
+on:
+  workflow_call:
+    inputs:
+      directory:
+        required: true
+        type: string
+    secrets:
+      deploy_key:
+        required: true
+      known_hosts:
+        required: true
+jobs:
+  build_and_publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      - run: |
+          sudo apt-get install -y cutycapt
+      - name: Build and Publish
+        env:
+          deploy_key: ${{secrets.deploy_key}}
+          known_hosts: ${{secrets.known_hosts}}
+          QT_QPA_PLATFORM: offscreen
+        run: |
+          mkdir -p ${HOME}/.ssh
+          printf "%s\n" "$known_hosts" > ${HOME}/.ssh/known_hosts
+          printf "%s\n" "$deploy_key" > ${HOME}/.ssh/id_ed25519
+          chmod 600 ${HOME}/.ssh/id_ed25519
+          eval $(ssh-agent)
+          ssh-add
+          rm ${HOME}/.ssh/id_ed25519
+          export deploy_key=""
+          python3 -m pip install --user --upgrade pip
+          python3 -m pip install --user mdtoreveal
+          export PATH="$HOME/.local/bin/:$PATH"
+          make -C ${{ inputs.directory }} rsync
