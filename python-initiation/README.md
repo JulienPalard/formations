@@ -1,31 +1,20 @@
-# Plan
+# TODO
 
-## Jour 1
+Lors de la présentation des fonctions natives dans un REPL, il y a une
+ambiguité (`print` vs `return`):
 
-- Types natifs
-- Les opérateurs
-- Les variables
-- Les fonctions natives
-- Les instructions
-- Les méthodes
-- Les variables (suite)
-- Les fonctions
+    >>> int("42")
+    42
+    >>> print("42")
+    42
 
-## Jour 2
+On pourrait passer par une variable peut-être :
 
-- Les chaînes
-- Les nombres
-- `for` et `while`
-- La notation en compréhension
-- Les *slices*
-- Les classes
-- pip, venvs, conda
-- Les bonnes pratiques
+    >>> quarante_deux = int("42")
+    >>> quarante_deux
+    42
 
-## Jour 3
-
-- `*`, `**`
-- L'encodage
-- Le packaging
-- Les modules utiles
-- La communauté
+    >>> result = print("42")
+    42
+    >>> print(result)
+    None
