@@ -35,7 +35,7 @@ Dans Django on va avoir principalement des `models`, des `vues`, des
 
 On travaillera toujours dans un `venv` :
 
-```python
+```bash
 python -m pip install django
 ```
 
@@ -43,7 +43,7 @@ python -m pip install django
 
 Pour démarrer un projet, une commande :
 
-```python
+```bash
 django-admin startproject project
 ```
 
@@ -51,7 +51,7 @@ django-admin startproject project
 
 Une fois dans le projet, pour créer une application, une commande :
 
-```python
+```bash
 python manage.py startapp watch
 ```
 
@@ -307,8 +307,8 @@ Dans `project/urls.py` on va se rajouter une URL pour la page d'accueil :
 from watch import views
 
 urlpatterns = [
-   ...
-   ...
+   ...,
+   ...,
    path("", views.index, name="index"),
 ]
 ```
@@ -721,7 +721,7 @@ fichier doit commencer par `test` pour être trouvé.
 
 Les tests s'exécutent via :
 
-```python
+```bash
 python manage.py test
 ```
 

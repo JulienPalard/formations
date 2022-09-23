@@ -1,6 +1,16 @@
-# Python Introduction Slides
+# The slides I use while teaching
 
-https://mdk.fr/python-initiation/
+Each directory contains a Makefile that builds the slides using
+[mdtoreveal](https://pypi.org/project/mdtoreveal/).
+
+Each directory is also uploaded to mdk.fr:
+
+- https://mdk.fr/python-initiation
+- https://mdk.fr/python-avancé
+- https://mdk.fr/drf-initiation
+- https://mdk.fr/django-initiation
+- https://mdk.fr/python-perfs
+- https://mdk.fr/git-initiation
 
 
 ## TODO
@@ -74,3 +84,76 @@ Souci : Jour 1 pytest nécessite Jour 2 pip...
  - jupyter
 
 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />Ce(tte) œuvre est mise à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.
+
+# DRF
+
+Side project : https://github.com/JulienPalard/drf-demos
+
+- Revue des bases et consolidation Python et Django
+- Présentation des types d'API, approfondissement de REST/HATEOAS
+- Rappels autour de la sémantique HTTP
+- django-rest-framework: La sérialisation
+- django-rest-framework: Les différents types de vues
+- django-rest-framework: Les permissions
+- django-rest-framework: Les relations
+- Les tests et la maintenabilité
+
+
+# Objectifs pédagogiques
+
+- Pouvoir démarrer rapidement un projet DRF.
+- Savoir designer une API.
+- Implémenter un service headless en utilisant DRF.
+
+
+# TP
+
+- Projet 1 : API « Horloge parlante ».
+- Projet 2 : API « memcached ».
+- Projet 3 : API « file system ».
+- Projet 4 : API « uptime manager ».
+
+
+# Formation Initiation Linux (2 jours)
+
+Cette formation est destinée à toute personne souhaitant utiliser
+Linux, pour du développement, de l'administration système, ou pour un
+usage quotidien.
+
+
+## Stagiaires
+
+Maximum 5 par sessions, pour commencer, peut monter à 7.
+
+
+## Pré-requis
+
+Aucun.
+
+
+## Objectifs pédagogiques
+
+- Pouvoir utiliser une machine sous Linux au quotidien.
+- Être à l'aise avec les interfaces en ligne de commande.
+- Savoir installer et utiliser des logiciels.
+- Manipuler des fichiers, des données.
+
+
+## Plan
+
+### Jour 1
+
+- Présentation de l'environnement Linux.
+- Maniement de l'émulateur de terminal.
+- Approche des commandes classiques :
+  - `man`, `cd`, `ls`, `pwd`, `mv`, `cp`, `rm`, `less`, …
+- Installer, désinstaller des applications depuis le gestionnaire de paquets.
+
+
+### Jour 2
+
+- L'accès à l'extérieur avec `ssh`, `rsync`, `curl`, et gestion des sauvegardes.
+- Introduction à la gestion de sources en utilisant `git`.
+- Manipulation de données en utilisant `awk`, `sed`, `grep`, `find`.
+- L'édition de texte depuis un terminal en utilisant `emacs`.
+- Approche du système de fichier : les droits, la sécurité, `mount`.

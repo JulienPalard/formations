@@ -11,7 +11,7 @@ jobs:
       matrix:
         directory:
           - python-initiation
-          - python-avance
+          - python-avancé
           - drf-initiation
           - django-initiation
           - python-perfs

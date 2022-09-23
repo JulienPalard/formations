@@ -21,6 +21,7 @@ jobs:
           python-version: '3.10'
           cache: pip
       - run: sudo apt-get install -y cutycapt
+      - run: python3 -m pip install -r requirements.txt
       - run: make -C ${{ inputs.directory }} test
       - name: Publish
         env:
