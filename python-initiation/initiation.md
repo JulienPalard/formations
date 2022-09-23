@@ -1346,13 +1346,13 @@ $ conda activate test
 
 ## Le packaging
 
-Restez dans les standards : `pyproject.toml`, `setup.cfg`.
+Restez dans les standards : `pyproject.toml`.
 
 
-## pyproject.toml et setup.cfg
+## pyproject.toml
 
-- https://github.com/JulienPalard/oeis
 - https://setuptools.readthedocs.io/
+- https://github.com/JulienPalard/oeis
 
 
 ## pip
