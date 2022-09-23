@@ -1341,6 +1341,51 @@ $ conda activate test
 ```
 
 
+# Le packaging
+
+
+## Le packaging
+
+Restez dans les standards : `pyproject.toml`, `setup.cfg`.
+
+
+## pyproject.toml et setup.cfg
+
+- https://github.com/JulienPalard/oeis
+- https://setuptools.readthedocs.io/
+
+
+## pip
+
+```bash
+(test) $ pip install .
+```
+
+
+## pytest
+
+```bash
+(test) $ mkdir tests/
+(test) $ pip install pytest
+(test) $ editor tests/test_dice.py
+```
+
+Notes: C'est l'occasion de parler de assert.
+
+
+## hypothesis
+
+```python
+from hypothesis import given
+from hypothesis.strategies import integers
+
+@given(integers(min_value=2,
+                max_value=1000))
+def test_fib(i):
+    assert fib(i) == fib(i-1) + fib(i-2)
+```
+
+
 # Les bonnes pratiques
 
 Notes: Prérequis: pip et venv.
@@ -1449,6 +1494,21 @@ Permet de lancer les tests:
 - en parallèle.
 
 Notes: c.f. gh/JulienPalard/oeis.
+
+
+## pdb
+
+```
+breakpoint()
+```
+
+
+## PYTHONDEVMODE=y
+
+Et `./configure --with-pydebug`.
+
+Notes: Voir mon bashrc :] Surtout "viable" depuis la 3.8.
+
 
 
 # `*`, `**`
@@ -1573,66 +1633,6 @@ Notes:
 Parler d'unicode, d'UTF-8, de latin-1. Ne pas oubilier de mentionner
 que latin-1 et companie sont à taille fixe, et qu'UTF-8 est à taille
 variable.
-
-
-# Le packaging
-
-
-## Le packaging
-
-Restez dans les standards : `pyproject.toml`, `setup.cfg`.
-
-
-## pyproject.toml et setup.cfg
-
-- https://github.com/JulienPalard/oeis
-- https://setuptools.readthedocs.io/
-
-
-## pip
-
-```bash
-(test) $ pip install .
-```
-
-
-## pytest
-
-```bash
-(test) $ mkdir tests/
-(test) $ pip install pytest
-(test) $ editor tests/test_dice.py
-```
-
-Notes: C'est l'occasion de parler de assert.
-
-
-## hypothesis
-
-```python
-from hypothesis import given
-from hypothesis.strategies import integers
-
-@given(integers(min_value=2,
-                max_value=1000))
-def test_fib(i):
-    assert fib(i) == fib(i-1) + fib(i-2)
-```
-
-
-## pdb
-
-```
-breakpoint()
-```
-
-
-## PYTHONDEVMODE=y
-
-Et `./configure --with-pydebug`.
-
-Notes: Voir mon bashrc :] Surtout "viable" depuis la 3.8.
-
 
 
 # Les modules utiles
