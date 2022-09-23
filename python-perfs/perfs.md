@@ -417,4 +417,8 @@ See includes/prenom-*.py
 
 # Pythran
 
+# Nuitka
+
+# https://github.com/pfalcon/awesome-python-compilers
+
 # Hand crafted C
