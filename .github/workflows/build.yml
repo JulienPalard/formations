@@ -28,6 +28,7 @@ jobs:
           - drf-initiation
           - django-initiation
           - python-perfs
+          - git-initiation
     secrets:
       deploy_key: ${{ secrets.deploy_key }}
       known_hosts: ${{ secrets.known_hosts }}
