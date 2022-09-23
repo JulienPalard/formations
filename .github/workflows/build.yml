@@ -5,21 +5,8 @@ name: Publish
 on: [push]
 
 jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - name: test
-        run: |
-          python -m pip install pytest hypothesis django
-          make -C python-initiation test
-          make -C python-avance test
-          # TODO: The following needs a configured Django:
-          # make -C drf-initiation test
-          # make -C django-initiation test
-
-  build_and_publish:
-    needs: test
+  publish:
+    name: ${{ matrix.directory }}
     strategy:
       matrix:
         directory:
