@@ -5,7 +5,7 @@ DEST := $(notdir $(PWD))
 static: output/index.html
 
 %.html: %.md
-	sed 's/#!//e;' perfs.md | mdtoreveal /dev/stdin --output $@
+	sed 's/#!//e;' $< | mdtoreveal /dev/stdin --output $@
 
 output/index.md: $(SRCS)
 	mkdir -p output
