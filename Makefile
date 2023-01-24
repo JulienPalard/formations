@@ -3,6 +3,7 @@ DEST := $(notdir $(PWD))
 
 .PHONY: static
 static: output/index.html
+	cp -a static/ output/
 
 %.html: %.md
 	sed 's/#!//e;' $< | mdtoreveal /dev/stdin --output $@
@@ -13,7 +14,7 @@ output/index.md: $(SRCS)
 
 .PHONY: rsync
 rsync: static
-	rsync -vah --delete output/ mdk_fr@mdk.fr:/var/www/mdk.fr/$DEST/
+	rsync -vah --delete output/ mdk_fr@mdk.fr:/var/www/mdk.fr/$(DEST)/
 
 .PHONY: clean
 clean:
