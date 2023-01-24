@@ -147,6 +147,10 @@ Comment, sans `git`, pourraît-on résoudre ces deux problèmes ?
 
 ## Analogie
 
+![Moteur Vulcain](static/Moteur-Vulcain.jpg)
+
+## Analogie
+
 En prenant une photo du projet (entier) à chaque modification.
 
 Au dos de la photo on pourrait même rajouter des meta-données :
@@ -210,6 +214,9 @@ Je vais devoir prendre une décision :
 - Prendre sa version.
 - Prendre un peu des deux.
 
+
+## Analogie
+
 Le résultat sera un nouvel état, encore plus avancé du projet, vite,
 je le photographie, je commente au dos de la photo les raisons de ce
 choix, et je l'envoie au collègue.
@@ -237,25 +244,82 @@ remettre ça dans l'ordre.
 
 Qu'aurai-on pu faire pour ne pas que ça arrive ?
 
-::: notes
 
-Écrire au dos la photo "parente" : l'état précédent, c'est ce que fait git.
+## Analogie
 
-Notez qu'une photo peut avoir 0 (initial commt), 1 (normal commit), ou
-deux (merge commit) parents.
+Au dos de chaque photo on écrit un identifiant **unique**.
+
+Au dos de chaque photo on écrit aussi l'identifiant de la photo précédente !
+
+
+## Analogie
+
+Notez qu'une photo peut ne pas avoir de photo précédente.
+
+C'est la première photo.
+
+
+## Analogie
+
+Notez qu'une photo peut avoir deux photos précédentes, c'est la photo faite après la résolution d'une contradiction :
+
+- Une des deux précédentes vient de **ma** pile.
+- L'autre vient de **sa** pile.
+
+
+## Analogie
+
+Notez enfin que l'identifiant d'une photo peut aisément être utilisé **plusieurs fois** :
+
+- Soit pour faire plusieurs tests différents à partir d'un même état.
+- Soit lorsqu'un collègue se met à travailler sans pour autant que je m'arrête.
 
 
 # Avec git
 
-- « Prendre une photo » c'est « un `commit` », en français c'est « valider ».
-- Envoyer des photos c'est « un `push` ».
-- Un conflit c'est « un `conflit` ».
-- La photo de résolution d'un conflit c'est « un `merge` ».
+« Prendre une photo » c'est <br/> « faire un `commit` ».
+
+Dans un jeu vidéo ce serait « Sauvegarder ».
+
+Abusez-en.
+
+::: notes
+
+En français c'est parfois traduit « valider ».
+
+## Avec git
+
+Ce qui est commit ne peut pas être perdu¹.
+
+<br/><br/>
+
+<small>¹: Sauf si votre machine brûle.</small>
 
 
 ## Avec git
 
-Comme avec une photo on peut aussi choisir ce qu'on prend, ça
+Envoyer un carton de photos c'est « un `push` ».
+
+## Avec git
+
+![In case of fire](static/in-case-of-fire.png)
+
+
+## Avec git
+
+Récupérer un carton de photos c'est « un `fetch` ».
+
+## Avec git
+
+Une contradiction entre deux séries de photos c'est « un `conflit` ».
+
+## Avec git
+
+La photo de résolution d'un conflit c'est « un `merge` ».
+
+## Avec git
+
+Comme avec une photo on peut aussi choisir ce qui sera dans le cadre, ça
 s'appelle le « staging area », la scène dans notre analogie.
 
 
@@ -270,7 +334,7 @@ chaque photo.
 
 ::: notes
 
-De toute façons, sur un même projet, on utilise pas tous les mêmes outils.
+De toutes façons, sur un même projet, on utilise pas tous les mêmes outils.
 
 ## Avec git
 
@@ -406,6 +470,7 @@ Git aura vite besoin de savoir qui vous êtes, on va commencer par lui dire :
 
     git config --global --edit
 
+Pour mettre votre nom dans vos commits.
 
 ## `git init`
 
@@ -505,30 +570,6 @@ souhaite, n'en ajouter qu'une pour faire un premier commit, puis
 ajouter la seconde pour faire un second commit.
 
 
-## `git commit`
-
-Dans notre analogie de la photo, c'est « prendre une photo ».
-
-Comme dans un manuel pour monter un meuble : on veut prendre une photo à chaque étape
-du projet.
-
-
-::: notes
-
-Rappelez-vous qu'au dos de la photo on a des informations: qui, quand, un commentaire, ...
-
-
-## `git commit`
-
-Une autre analogie pour `git commit` :<br/>
-c'est la sauvegarde dans un jeu vidéo.
-
-::: notes
-
-Il vaut mieux en faire un peu trop qu'oublier d'en faire.
-
-On pourra toujours revenir à une sauvegarde en cas de problème.
-
 
 ## `git grep`
 
@@ -536,7 +577,7 @@ Un substitut à `grep`, cherchons la définition de la fonction `random` :
 
     git grep "def random("
 
-Rapide, pour chercher dans ~200k lignes de code ?
+Rapide, pour chercher dans ~200k lignes de code, n'est-ce pas ?
 
 
 ## `git diff`
