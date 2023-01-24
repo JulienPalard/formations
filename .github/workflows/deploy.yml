@@ -38,4 +38,5 @@ jobs:
           rm ${HOME}/.ssh/id_ed25519
           export deploy_key=""
           export PATH="$HOME/.local/bin/:$PATH"
-          make -C ${{ inputs.directory }} rsync
+          cd ${{ inputs.directory }}
+          make rsync
