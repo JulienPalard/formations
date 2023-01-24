@@ -3,7 +3,7 @@ DEST := $(notdir $(PWD))
 
 .PHONY: static
 static: output/index.html
-	cp -a static/ output/
+	if [ -d static ]; then cp -a static/ output/; fi
 
 %.html: %.md
 	sed 's/#!//e;' $< | mdtoreveal /dev/stdin --output $@
