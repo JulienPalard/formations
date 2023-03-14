@@ -1341,26 +1341,7 @@ $ conda activate test
 ```
 
 
-# Le packaging
-
-
-## Le packaging
-
-Restez dans les standards : `pyproject.toml`.
-
-
-## pyproject.toml
-
-- https://setuptools.readthedocs.io/
-- https://github.com/JulienPalard/oeis
-
-
-## pip
-
-```bash
-(test) $ pip install .
-```
-
+# Tester
 
 ## pytest
 

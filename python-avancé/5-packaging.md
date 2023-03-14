@@ -31,7 +31,11 @@ Jamais `sudo`, toujours dans un `venv`.
 
 ## pyproject.toml
 
-## pip install .
+- https://setuptools.readthedocs.io/
+- https://github.com/JulienPalard/oeis
+
+
+## pip install -e .
 
 ## Packager
 
